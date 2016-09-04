@@ -1,0 +1,56 @@
+@media screen and (max-width:1920px){
+.beijing{width:1200px; height:1000px; margin:0 auto;}
+.head{width:1200px; height:200px; background:red; float:left;}
+.nav{width:200px; float:left; margin-left:50px; margin-top:30px;}
+.nav li{width:200px; cursor:pointer;}
+.tubiao{width:5px; height:8px; position:absolute; top:37px; right:10px;}
+.caidan{background:#c9cacb;}
+.caidan dt{width:200px; height:80px; line-height:80px; text-align:center; position:relative;}
+.caidan dd{width:200px; display:none; line-height:40px; text-align:center;}
+.caidan a{color:#000;}
+.caidan dd:hover{background:#ececec;}
+.you{width:900px; float:left; margin-top:30px;}
+/*-------------------------------------以上为导航栏样式-----------------------------------------------------------------*/
+.yi{margin-left:50px; float:left;}
+.yi li{float:left;}
+.er{float:left; margin-left:50px; margin-top:20px;}
+.er li{width:700px; color:#09F;}
+.red{color:red;}
+.blue{color:#4f7ca9;}
+.gre{color:#66cd00;}
+.san{float:left; margin-left:50px; width:800px;}
+.san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
+.lv{color:green;}
+.beizhu{margin-left:50px; margin-top:10px; float:left; width:800px; height:40px; line-height:40px; text-align:center;}
+.kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+/*-------------------------------------以下为备案号样式-----------------------------------------------------------------*/
+
+.foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
+.beian{margin-top:80px;}
+}
+@media screen and (max-width:1520px){
+}
+/*-------------------------------------以下为css3动画-----------------------------------------------------------------*/
+@keyframes move{
+0%{background:#c9cacb; color:#000;}
+100%{background:#ff0000; color:#fff;}
+}
+@keyframes dow{
+0%{background:#ff0000; color:#fff;}
+100%{background:#c9cacb; color:#000;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

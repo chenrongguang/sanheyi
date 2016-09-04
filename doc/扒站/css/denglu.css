@@ -1,0 +1,32 @@
+@media screen and (max-width:1920px){
+.beijing{width:100%; margin:0 auto; position:relative;}
+.denglu{width:30%; background:#fff; position:absolute; border:1px solid #c2c2c2;
+border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;}
+.geren{ position:absolute; left:30%; top:40%; cursor:pointer; background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);background-repeat: repeat-x; border-color: #28a4c9;
+box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
+border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
+.qiye{ position:absolute; right:30%; top:40%; cursor:pointer; background-image: linear-gradient(to bottom, #d9534f 0px, #c12e2a 100%);background-repeat: repeat-x;border-color: #b92c28;
+box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
+border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
+.geren:hover{background-color:#2aabd2;}
+}
+@media screen and (max-width:1520px){
+.geren{left:25%;}
+.qiye{right:25%;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
