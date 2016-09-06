@@ -17,4 +17,18 @@ class AcceptController extends BaseController  {
         parent::_initialize();
     }
 
+    //发起接受资助
+    public function sendAccept(){
+        $this->display();
+    }
+
+    public function sendAcceptDo(){
+
+
+    }
+
+    public function acceptlist(){
+        $this->display();
+    }
+
 }

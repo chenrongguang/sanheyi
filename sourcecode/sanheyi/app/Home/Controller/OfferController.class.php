@@ -17,4 +17,29 @@ class OfferController extends BaseController  {
         parent::_initialize();
     }
 
+    //发起提供资助
+    public function sendOffer(){
+        $this->display();
+    }
+
+    public function sendOfferDo(){
+
+
+    }
+
+    public function offerlist(){
+        $this->display();
+    }
+
+
+    //取消提供
+    public function canceloffer(){
+
+
+    }
+
+    public function cancelofferDo(){
+
+
+    }
 }

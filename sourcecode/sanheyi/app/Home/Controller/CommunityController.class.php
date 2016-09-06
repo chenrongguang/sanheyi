@@ -17,4 +17,19 @@ class CommunityController extends BaseController  {
         parent::_initialize();
     }
 
+    //社区列表
+    public  function  community_list(){
+        $this->display();
+    }
+
+    //社区选择界面=提供资助用
+    public  function  community_select_offer(){
+        $this->display();
+    }
+
+    //社区选择界面=接受资助用
+    public  function  community_select_accept(){
+        $this->display();
+    }
+
 }

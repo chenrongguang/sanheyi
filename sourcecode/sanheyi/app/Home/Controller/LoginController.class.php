@@ -9,10 +9,12 @@
 
 namespace Home\Controller;
 use Think\Controller;
+use Think\Verify;
 
 class LoginController extends Controller  {
-    public  function  index(){
-       $this->display('login');
+
+    public  function  login(){
+        $this->display();
     }
     //登录操作
     public  function  loginDo(){
@@ -28,10 +30,10 @@ class LoginController extends Controller  {
         $result= $model->where($map)->find();
         //登录成功，设置session
         if($result!=false && $result !=null){
-            $_SESSION['user']['id']=$result['id'];
+            $_SESSION['user']['user_id']=$result['user_id'];
             $_SESSION['user']['name']=$result['name'];
             //$return_data['url']= '/home/index/';
-            $return_data['url']= U('index/index');
+            $return_data['url']= U('public/main');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
         }
         //登录不成功
@@ -49,5 +51,82 @@ class LoginController extends Controller  {
         redirect(U('login/login'));
     }
 
+    /**
+     * 显示验证码
+     */
+    public function showVerify(){
+        $config =	array(
+            'fontSize'  =>  10,              // 验证码字体大小(px)
+            'useCurve'  =>  true,            // 是否画混淆曲线
+            'useNoise'  =>  true,            // 是否添加杂点
+            'imageH'    =>  35,               // 验证码图片高度
+            'imageW'    =>  80,               // 验证码图片宽度
+            'length'    =>  4,               // 验证码位数
+            'fontttf'   =>  '4.ttf',              // 验证码字体，不设置随机获取
+        );
+        $Verify =     new Verify($config);
+        $Verify->entry();
+    }
+
+    public  function findpwd(){
+        $this->display();
+    }
+    public  function findpwdDo(){
+
+    }
+
+    public  function reg(){
+        $this->display();
+    }
+
+
+    public  function regDo(){
+
+        $data = I("post.");
+        $data['create_time'] = time();
+        $data['pwd'] =  md5($data['pwd']);
+        $result = M('user')->add($data);
+        if($result) {
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
+            $return_data['url']= U('login/login');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
+        }
+        else{
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','保存失败，请重试!'));
+        }
+
+    }
+    //检测名字是否重复
+    public  function ajaxCheckName(){
+        $where['name']=I("post.name");
+        $reult= M('user')->where($where)->find();
+        //找到了
+        if($reult!==false && $reult!==null){
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
+            //$return_data['url']= '/home/message/messlist';
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','该用户名已经存在!'));
+
+        }
+        else{
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功'));
+        }
+
+    }
+
+    //检测推荐人是否存在
+    public  function ajaxCheckPid(){
+        $where['name']=I("post.p_name");
+        $reult= M('user')->where($where)->find();
+        //找到
+        if($reult!==false && $reult!==null){
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
+            $return_data['p_id']=$reult[user_id];
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
+
+        }
+        else{
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','该推荐人不存在!'));
+        }
+    }
 
 }

@@ -17,6 +17,12 @@ class PublicController extends BaseController  {
         parent::_initialize();
     }
 
+    //登陆之后的首页
+    public function main(){
+        $this->display();
+    }
+
+
     public  function  footer(){
        $this->display();
     }

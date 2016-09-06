@@ -17,10 +17,9 @@ class MessageController extends BaseController  {
         parent::_initialize();
     }
 
-    public  function  add(){
-       $this->display();
-    }
-    public  function  messlist(){
+
+    //系统公告
+    public  function  mess_sys_list(){
 
         if ($_GET['keywords']) {
             $keywords = $_GET['keywords'];
@@ -48,6 +47,43 @@ class MessageController extends BaseController  {
 
         $this->display();
     }
+
+    //查看某个公告的内容
+    public  function  mess_content(){
+        $this->display();
+    }
+
+    //审核公告
+    public  function  mess_check_list(){
+
+        if ($_GET['keywords']) {
+            $keywords = $_GET['keywords'];
+            $conditionData['title'] = array('like', '%' . $keywords . '%');
+        }
+
+        $conditionData['use_yn'] = 'Y';
+
+        $model = M('message');
+        $total = $model->field('id')->where($conditionData)->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+        $list = $model->field('id,title,content,create_time,use_yn')
+            ->where($conditionData)
+            ->order("id desc")
+            ->limit($Page->firstRow . ',' . $Page->listRows)
+            ->select();
+
+        //$show = $Page->showAjax("mainarea");
+        $show = $Page->show();
+
+        $this->assign('keywords', $keywords);
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
+        $this->display();
+    }
+
+
     public function edit(){
         $id=$_GET['messid'];
         if(empty($id)){

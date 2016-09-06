@@ -21,7 +21,7 @@ class BaseController extends Controller  {
     //登录判断
     public function login_check(){
 
-        if (empty($_SESSION['user']['id'])) {
+        if (empty($_SESSION['user']['user_id'])) {
             //$this->display('Login:login');
             //redirect('/home/login/login');
             redirect(U('login/login'));

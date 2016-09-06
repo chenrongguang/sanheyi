@@ -16,4 +16,6 @@ return array(
     'DB_FIELDS_CACHE' => true,
     'DB_CHARSET' => 'utf8',
 
+    //'URL_CASE_INSENSITIVE' => true,
+
 );

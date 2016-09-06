@@ -7,6 +7,7 @@ function clickAll() {
     $(".checkOne").prop("checked", $(".checkAll").prop("checked"));
 }
 
+
 //checkbox单个按钮---标签必须（class="checkOne" onclick="clickOne()"）
 function clickOne() {
     var allChecked = true;
@@ -20,6 +21,17 @@ function clickOne() {
     } else {
         $(".checkAll").prop("checked", false);
     }
+}
+
+
+function sub()
+{
+    //检查和校验处理
+    if(false== validate_handle()){
+        return;
+    }
+
+    subform();
 }
 
 //提交
