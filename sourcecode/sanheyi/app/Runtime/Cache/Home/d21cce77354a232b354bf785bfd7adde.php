@@ -70,8 +70,8 @@
             </div>
             <div class="two">
                 <div class="qian">推荐人账号：</div>
-                <input class="inp" type="text" placeholder="推荐人的登录账号"  id="p_name" name="p_name" />
-                <input class="inp" type="hidden"   id="p_id" name="p_id" />
+                <input class="inp" type="text" placeholder="推荐人的登录账号"  id="p_name" name="p_name" value="<?php echo ($p_name); ?>" />
+                <input class="inp" type="hidden"   id="p_id" name="p_id" value="<?php echo ($p_id); ?>" />
                 <span class="zhong">*</span>
                 <span class="hou">无此推荐人</span>
             </div>
@@ -89,11 +89,12 @@
 
     //检查名字是否可用
     $('#name').bind('blur', function(){
+        var name =$(this).val();
         var path = "<?php echo U('login/ajaxCheckName');?>";
         $.ajax({
             type : "post",
             url : path,
-            data : JSON.stringify({name:encodeURIComponent($(this).val())}),
+            data : JSON.stringify({name:encodeURIComponent(name)}),
             async : false,
             success : function(data){
                 //return_handle(data);
@@ -110,11 +111,12 @@
 
     //检查推荐人是否正确存在
     $('#p_name').bind('blur', function(){
+        var p_name =$(this).val();
         var path = "<?php echo U('login/ajaxCheckPid');?>";
         $.ajax({
             type : "post",
             url : path,
-            data : JSON.stringify({p_name:encodeURIComponent($(this).val())}),
+            data : JSON.stringify({p_name:encodeURIComponent(p_name)}),
             async : false,
             success : function(data){
                 //return_handle(data);

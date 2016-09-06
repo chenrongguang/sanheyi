@@ -21,27 +21,22 @@ class MessageController extends BaseController  {
     //系统公告
     public  function  mess_sys_list(){
 
-        if ($_GET['keywords']) {
-            $keywords = $_GET['keywords'];
-            $conditionData['title'] = array('like', '%' . $keywords . '%');
-        }
-
         $conditionData['use_yn'] = 'Y';
+        $conditionData['type'] = 0;
 
         $model = M('message');
-        $total = $model->field('id')->where($conditionData)->count();
+        $total = $model->field('message_id')->where($conditionData)->count();
 
         $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
-        $list = $model->field('id,title,content,create_time,use_yn')
+        $list = $model->field('message_id,title,content,create_time,use_yn')
             ->where($conditionData)
-            ->order("id desc")
+            ->order("message_id desc")
             ->limit($Page->firstRow . ',' . $Page->listRows)
             ->select();
 
         //$show = $Page->showAjax("mainarea");
         $show = $Page->show();
 
-        $this->assign('keywords', $keywords);
         $this->assign('page', $show);
         $this->assign('list', $list);
 
@@ -49,34 +44,41 @@ class MessageController extends BaseController  {
     }
 
     //查看某个公告的内容
-    public  function  mess_content(){
+    public  function  message_content(){
+        $message_id=I('get.message_id');
+        $where['message_id']=$message_id;
+        $where['use_yn']='Y';
+        $content='';
+
+        $result=M('message')->where($where)->find();
+
+        if($result!=false && $result!==null){
+            $content=$result['content'];
+        }
+        $this->assign('content',$content);
+
         $this->display();
     }
 
     //审核公告
     public  function  mess_check_list(){
 
-        if ($_GET['keywords']) {
-            $keywords = $_GET['keywords'];
-            $conditionData['title'] = array('like', '%' . $keywords . '%');
-        }
-
         $conditionData['use_yn'] = 'Y';
+        $conditionData['type'] = 1;
 
         $model = M('message');
-        $total = $model->field('id')->where($conditionData)->count();
+        $total = $model->field('message_id')->where($conditionData)->count();
 
         $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
-        $list = $model->field('id,title,content,create_time,use_yn')
+        $list = $model->field('message_id,title,content,create_time,use_yn')
             ->where($conditionData)
-            ->order("id desc")
+            ->order("message_id desc")
             ->limit($Page->firstRow . ',' . $Page->listRows)
             ->select();
 
         //$show = $Page->showAjax("mainarea");
         $show = $Page->show();
 
-        $this->assign('keywords', $keywords);
         $this->assign('page', $show);
         $this->assign('list', $list);
 

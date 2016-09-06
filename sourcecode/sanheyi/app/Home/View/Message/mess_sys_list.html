@@ -17,8 +17,11 @@
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
     </style>
+
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/pagination.css" rel="stylesheet" type="text/css" />
+
     <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
@@ -31,8 +34,8 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="gonggao.html">公告通知</a></li>
+            <li><a href="U('public/main')">主页</a>＞</li>
+            <li><a href="U('message/mess_sys_list')">公告通知</a></li>
         </ul>
         <br />
         <ul class="san">
@@ -41,25 +44,23 @@
             <li>类型</li>
             <li>时间</li>
         </ul>
-        <ul class="san">
-            <li>ID6049</li>
-            <li style="width:350px;"><a href="">发布六则重磅消息</a></li>
-            <li>系统公告</li>
-            <li>2016-09-01 23:57:19</li>
-        </ul>
-        <ul class="san">
-            <li>ID6048</li>
-            <li style="width:350px;"><a href="">匹配调整通知</a></li>
-            <li>系统公告</li>
-            <li>2016-08-25 22:17:01</li>
-        </ul>
-        <ul class="san">
-            <li>ID6046</li>
-            <li style="width:350px;"><a href="">关于集中处理特困申请的公告</a></li>
-            <li>系统公告</li>
-            <li>2016-08-19 01:03:59</li>
-        </ul>
-        <div class="beizhu">此处可放分页条</div>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.message_id}</li>
+                <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
+                <li>系统公告</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="4">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
+
     </div>
     <include file ='Public:foot' />
 </div>

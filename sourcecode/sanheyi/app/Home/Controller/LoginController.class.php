@@ -76,6 +76,8 @@ class LoginController extends Controller  {
     }
 
     public  function reg(){
+        $this->assign('p_id',I('get.p_id'));
+        $this->assign('p_name',I('get.p_name'));
         $this->display();
     }
 

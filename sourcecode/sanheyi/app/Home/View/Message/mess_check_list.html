@@ -31,21 +31,26 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="shenhetongzhi.html">审核通知</a></li>
+            <li><a href="U('public/main')">主页</a>＞</li>
+            <li><a href="U('message/mess_check_list')">审核通知</a></li>
         </ul>
         <br />
-        <ul class="san">
-            <li>编号</li>
-            <li style="width:350px;">审核通知</li>
-            <li>时间</li>
-        </ul>
-        <ul class="san">
-            <li>1111</li>
-            <li style="width:350px;">2222</li>
-            <li>3333</li>
-        </ul>
-        <div class="beizhu">此处可放分页条</div>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.message_id}</li>
+                <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
+                <li>审核公告</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="4">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
     </div>
     <include file ='Public:foot' />
 </div>
