@@ -46,23 +46,24 @@
             <li style="width:200px;">备注</li>
             <li style="width:200px;">时间</li>
         </ul>
-        <ul class="san">
-            <li>扣除出局钱包</li>
-            <li>出局钱包</li>
-            <li>2600</li>
-            <li>admin</li>
-            <li style="width:200px;">接受资助</li>
-            <li style="width:200px;">2016-08-29 07:07:25</li>
-        </ul>
-        <ul class="san">
-            <li>支出善心币</li>
-            <li>善心币</li>
-            <li>1</li>
-            <li>admin</li>
-            <li style="width:200px;">提供资助扣善心币</li>
-            <li style="width:200px;">2016-08-20 14:11:34</li>
-        </ul>
-        <div class="beizhu">此处可放分页工具条</div>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.handle_type}</li>
+                <li>{$vo.name}</li>
+                <li>{$vo.detail_num}</li>
+                <li>{$vo.rel_user}</li>
+                <li style="width:200px;">{$vo.remark}</li>
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="6">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
     </div>
     <include file ='Public:foot' />
 </div>

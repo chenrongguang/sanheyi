@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>个人登录</title>
+    <title>快速注册</title>
     <style type="text/css">
         @media screen and (max-width:1920px){
             .beijing{width:100%; margin:0 auto; position:relative;}
@@ -94,7 +94,7 @@
         $.ajax({
             type : "post",
             url : path,
-            data : JSON.stringify({name:encodeURIComponent(name)}),
+            data : JSON.stringify({name:name}),
             async : false,
             success : function(data){
                 //return_handle(data);
@@ -116,7 +116,7 @@
         $.ajax({
             type : "post",
             url : path,
-            data : JSON.stringify({p_name:encodeURIComponent(p_name)}),
+            data : JSON.stringify({p_name:p_name}),
             async : false,
             success : function(data){
                 //return_handle(data);

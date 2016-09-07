@@ -87,6 +87,7 @@ class LoginController extends Controller  {
         $data = I("post.");
         $data['create_time'] = time();
         $data['pwd'] =  md5($data['pwd']);
+        $data['high_pwd'] =  md5($data['pwd']);//默认密码和登陆密码一样
         $result = M('user')->add($data);
         if($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
@@ -100,7 +101,12 @@ class LoginController extends Controller  {
     }
     //检测名字是否重复
     public  function ajaxCheckName(){
-        $where['name']=I("post.name");
+
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $name=$post['name'];
+        $where['name']=$name;
+        //$where['name']=I("post.name");
         $reult= M('user')->where($where)->find();
         //找到了
         if($reult!==false && $reult!==null){
@@ -117,7 +123,12 @@ class LoginController extends Controller  {
 
     //检测推荐人是否存在
     public  function ajaxCheckPid(){
-        $where['name']=I("post.p_name");
+
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $name=$post['p_name'];
+        $where['name']=$name;
+       // $where['name']=I("post.p_name");
         $reult= M('user')->where($where)->find();
         //找到
         if($reult!==false && $reult!==null){

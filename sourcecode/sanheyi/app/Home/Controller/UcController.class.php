@@ -27,7 +27,7 @@ class UcController extends BaseController
         $para['where'] = $where;
         $result = D('user_currency')->getSingle($para);
         if ($result !== false && $result !== null) {
-            $show_data['szz_num'] = $result['num'];
+            $show_data['szz_num'] = (int)$result['num'];
         } else {
             $show_data['szz_num'] = 0;
         }
@@ -37,7 +37,7 @@ class UcController extends BaseController
         $para['where'] = $where;
         $result = D('user_currency')->getSingle($para);
         if ($result !== false && $result !== null) {
-            $show_data['sxb_num'] = $result['num'];
+            $show_data['sxb_num'] = (int)$result['num'];
         } else {
             $show_data['sxb_num'] = 0;
         }
@@ -46,7 +46,7 @@ class UcController extends BaseController
         $para['where'] = $where;
         $result = D('user_currency')->getSingle($para);
         if ($result !== false && $result !== null) {
-            $show_data['sjb_num'] = $result['num'];
+            $show_data['sjb_num'] = (int)$result['num'];
         } else {
             $show_data['sjb_num'] = 0;
         }
@@ -104,13 +104,52 @@ class UcController extends BaseController
     //收入明细
     public function in_detail()
     {
+        $conditionData['detail_type'] = 1;
+        $conditionData['user_id'] = $_SESSION['user']['user_id'];
+
+        $model = M('user_currency_detail');
+        $total = $model->field('detail_id')->where($conditionData)->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+
+        $paras['detail_type']=1;
+        $paras['user_id']=$_SESSION['user']['user_id'];
+        $paras['page']=$Page;
+
+        $list=D('UserCurrencyDetail')->getList($paras);
+
+        $show = $Page->show();
+
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
         $this->display();
     }
 
     //支出明细
     public function out_detail()
     {
+        $conditionData['detail_type'] = 2;
+        $conditionData['user_id'] = $_SESSION['user']['user_id'];
+
+        $model = M('user_currency_detail');
+        $total = $model->field('detail_id')->where($conditionData)->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+
+        $paras['detail_type']=2;
+        $paras['user_id']=$_SESSION['user']['user_id'];
+        $paras['page']=$Page;
+
+        $list=D('UserCurrencyDetail')->getList($paras);
+
+        $show = $Page->show();
+
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
         $this->display();
+
     }
 
     //动态获取该用户当前该货币的数量

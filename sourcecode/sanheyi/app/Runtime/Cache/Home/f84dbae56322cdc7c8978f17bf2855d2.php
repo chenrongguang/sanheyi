@@ -63,9 +63,9 @@
     <li>
         <dl class="caidan">
             <dt><h2>财务管理</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
-            <dd><a href="<?php echo U('usercurrency/detail');?>">账户明细</a></dd>
-            <dd><a href="<?php echo U('usercurrency/out_detail');?>">支出记录</a></dd>
-            <dd><a href="<?php echo U('usercurrency/in_detail');?>">收入记录</a></dd>
+            <dd><a href="<?php echo U('Uc/detail');?>">账户明细</a></dd>
+            <dd><a href="<?php echo U('Uc/out_detail');?>">支出记录</a></dd>
+            <dd><a href="<?php echo U('Uc/in_detail');?>">收入记录</a></dd>
         </dl>
     </li>
     <li>
