@@ -91,8 +91,10 @@
                     //location.href= data.return_data.url;
                 }else{
                     //该名字不可以用,已经有人注册了
-                    $(this).val('');
+                    //$('#name').val('');
                     alert(data.msg);
+                    $('#name').focus();
+
                 }
 
             }

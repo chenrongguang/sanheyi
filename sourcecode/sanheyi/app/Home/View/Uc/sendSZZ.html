@@ -43,38 +43,77 @@
         </ul>
         <br />
         <ul class="er">
-            <form method="post">
+            <form method="post" action="{:U('uc/sendSZZDo')}" name="form" id="form">
                 <li>
                     <div class="nei1">币种：</div>
                     <div class="nei2">善种子</div>
                 </li>
                 <li>
                     <div class="nei1">接收人的账户：</div>
-                    <div class="nei2"><input type="text" class="inp1" /><span class="xin">*</span><span class="tishi">无此用户</span></div>
+                    <div class="nei2"><input type="text" id="name" name="name" class="inp1" /><span class="xin">*</span><span class="tishi">无此用户</span></div>
+                    <input type="hidden" name="to_user_id" id="to_user_id"/>
                 </li>
                 <li>
                     <div class="nei1">个数：</div>
                     <div class="nei2">
                         <div class="jian"><img src="images/6.png" /></div>
-                        <input type="text" class="inp2" value="1" />
+                        <input type="text" class="inp2" value="1" name="send_num" id="send_num" />
                         <div class="jia"><img src="images/7.png" /></div>
                         <span class="tishi">单次限100个</span>
                     </div>
                 </li>
                 <li>
                     <div class="nei1">二级密码：</div>
-                    <div class="nei2"><input type="text" class="inp1" /><span class="xin">*</span><span class="tishi">密码错误</span></div>
+                    <div class="nei2"><input type="password" id="high_pwd" name="high_pwd" class="inp1" /><span class="xin">*</span><span class="tishi">密码错误</span></div>
                 </li>
                 <li>
                     <div class="nei1">备注：</div>
-                    <div class="nei2"><input type="text" class="inp1" /><span class="xin">*</span><span class="tishi">备注不能为空</span></div>
+                    <div class="nei2"><input type="text" class="inp1" name="remark" id="remark" /><span class="xin">*</span><span class="tishi">备注不能为空</span></div>
                 </li>
-                <li><input type="submit" class="tijiao" value="确定" /></li>
-                <li><a href="shouye.html">[返回主页]</a><a href="shanzhongzi.html">[继续转<span class="di">善种子</span>]</a><a href="shanxinbi.html">[继续转<span class="di">善心币</span>]</a></li>
+                <li><input id="btn_sub"  type="button" class="tijiao" value="确定" onclick="sub(1)" /></li>
+                <li><a href="{:U('public/main')}">[返回主页]</a><a href="{:U('uc/sendSZZ')}">[继续转<span class="di">善种子</span>]</a><a href="{:U('uc/sendSXB')}">[继续转<span class="di">善心币</span>]</a></li>
             </form>
         </ul>
     </div>
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+
+    //检查名字是否可用
+    $('#name').bind('blur', function(){
+        var name =$(this).val();
+        var path = "{:U('login/ajaxCheckPid')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({p_name:name}),
+            async : false,
+            success : function(data){
+                //该人存在
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                    $('#to_user_id').val(data.return_data.p_id);//获得该接收人的id
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    alert(data.msg);
+                    //$('#to_user_id').val();
+                    //$('#name').val('');
+                    //$('#name').focus();
+
+                }
+
+            }
+        });
+    });
+
+
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+</script>
+
 </body>
 </html>

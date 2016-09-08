@@ -121,7 +121,7 @@ class LoginController extends Controller  {
 
     }
 
-    //检测推荐人是否存在
+    //检测该人是否存在,名字定的有点问题,新这样吧
     public  function ajaxCheckPid(){
 
         $content = file_get_contents('php://input');
@@ -138,7 +138,7 @@ class LoginController extends Controller  {
 
         }
         else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','该推荐人不存在!'));
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','该用户不存在!'));
         }
     }
 
