@@ -24,22 +24,22 @@ function clickOne() {
 }
 
 
-function sub()
+function sub(showmessflag)
 {
     //检查和校验处理
     if(false== validate_handle()){
         return;
     }
 
-    subform();
+    subform(showmessflag);
 }
 
 //提交
-function subform(){
+function subform(showmessflag){
 
     var ajax_info = {
         success: function(data){
-            return_handle(data);
+            return_handle(data,showmessflag);
         },
         resetForm: false,
         dataType: 'json'
@@ -49,9 +49,13 @@ function subform(){
 }
 
 //处理返回
-function return_handle(data)
+function return_handle(data,showmessflag)
 {
     if(data.result=='SUCCESS'){
+        //如果需要先显示消息,则先显示消息之后跳转
+        if (showmessflag ==1){
+            alert(data.msg);
+        }
         location.href= data.return_data.url;
     }
     else{

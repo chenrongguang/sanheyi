@@ -57,18 +57,18 @@
     <li>
         <dl class="caidan">
             <dt><h2>财务管理</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
-            <dd><a href="<?php echo U('usercurrency/detail');?>">账户明细</a></dd>
-            <dd><a href="<?php echo U('usercurrency/out_detail');?>">支出记录</a></dd>
-            <dd><a href="<?php echo U('usercurrency/in_detail');?>">收入记录</a></dd>
+            <dd><a href="<?php echo U('Uc/detail');?>">账户明细</a></dd>
+            <dd><a href="<?php echo U('Uc/out_detail');?>">支出记录</a></dd>
+            <dd><a href="<?php echo U('Uc/in_detail');?>">收入记录</a></dd>
         </dl>
     </li>
     <li>
         <dl class="caidan">
             <dt><h2>交易中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('community/community_list');?>">功德社区</a></dd>
-            <dd><a href="<?php echo U('offer/sendoffer');?>">提供资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_offer');?>">提供资助</a></dd>
             <dd><a href="<?php echo U('offer/offerlist');?>">提供资助列表</a></dd>
-            <dd><a href="<?php echo U('accept/sendaccept');?>">接受资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_accept');?>">接受资助</a></dd>
             <dd><a href="<?php echo U('accept/acceptlist');?>">接受资助列表</a></dd>
         </dl>
     </li>

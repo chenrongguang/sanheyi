@@ -54,27 +54,27 @@
     <div class="you">
         <div class="yi">
             <ul class="yi1">
-                <li>会员帐号：lyly888</li>
-                <li>会员名称：李跃</li>
-                <li>所属组：普通会员</li>
+                <li>{$person_info['name']}</li>
+                <li>{$person_info['family_name']}</li>
+                <li>{$person_info['group']}</li>
             </ul>
             <ul class="yi1">
-                <li>激活状态：激活</li>
-                <li>审核状态：通过</li>
-                <li>注册时间：2016-08-19 13:58:07</li>
+                <li>{$person_info['act_status']}</li>
+                <li>{$person_info['confirm_status']}</li>
+                <li>{$person_info['create_time']}</li>
             </ul>
         </div>
         <ul class="er">
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
             </li>
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
             </li>
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>审核反馈</h3></div>
             </li>
         </ul>
@@ -86,12 +86,13 @@
             <li>出局钱包</li>
         </ul>
         <ul class="si">
-            <li style="border-left:1px solid #c2c2c2;"><a href="shanzhongzi.html">0</a></li>
-            <li><a href="shanxinbi.html">1</a></li>
-            <li>100</li>
-            <li><a href="">没有页面</a></li>
-            <li><a href="chujuqianbao.html">0</a></li>
+            <li><a href="{:U('Uc/sendSZZ')}">{$user_currency['szz_num']}</a></li>
+            <li><a href="{:U('Uc/sendSXB')}">{$user_currency['sxb_num']}</a></li>
+            <li>{$user_currency['sjb_num']}</li>
+            <li><a href="{:U('Uc/manager_money')}">{$user_currency['glqb_num']}</a></li>
+            <li><a href="{:U('community/community_select_accept')}">{$user_currency['cjqb_num']}</a></li>
         </ul>
+
         <ul class="wu">
             <li style="border-left:1px solid #c2c2c2;">ID</li>
             <li>类型</li>
@@ -101,46 +102,62 @@
             <li>详细信息</li>
             <li>匹配信息</li>
         </ul>
-        <ul class="liu">
-            <li style="border-left:1px solid #c2c2c2;">P72188085</li>
-            <li>提供资助</li>
-            <li>贫穷社区</li>
-            <li>2000</li>
-            <li>2016-08-20</li>
-            <li><a href="xiangxixinxi.html">已完成</a></li>
-            <li><a href="xiangxixinxi.html">已匹配</a></li>
-        </ul>
+        <volist name="offer_list" id="vo">
+            <ul class="liu">
+                <li>{$vo.offer_id}</li>
+                <li>提供资助</li>
+                <li>{$vo.cname}</li>
+                <li>{$vo.num}</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
+                <li><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+            </ul>
+        </volist>
         <ul class="qi">
             <li style="border-left:1px solid #c2c2c2;">ID</li>
             <li>类型</li>
             <li>金额</li>
             <li style="width:190px">提交时间</li>
             <li>详细信息</li>
+            <li>操作</li>
         </ul>
-        <ul class="ba">
-            <li style="border-left:1px solid #c2c2c2;">R68164662</li>
-            <li>接受资助</li>
-            <li>2600</li>
-            <li style="width:190px;">2016-08-29 07:07:25</li>
-            <li><span class="pipei">待匹配</span></li>
-        </ul>
-        <div class="gonggao">系统公告</div>
-        <ul class="neirong">
-            <li>ID6049</li>
-            <li><a href="">发布六则重磅消息</a></li>
-            <li>系统公告</li>
-            <li>2016-09-01 23:57:19</li>
-        </ul>
-        <ul class="neirong">
-            <li>ID6048</li>
-            <li><a href="">匹配调整通知</a></li>
-            <li>系统公告</li>
-            <li>2016-08-25 22:17:01</li>
-        </ul>
-        <div class="gengduo"><a href="gonggao.html">更多</a></div>
-    </div>
+        <volist name="accept_list" id="vo">
+            <ul class="ba">
+                <li>{$vo.accept_id}</li>
+                <li>接受资助</li>
+                <li>{$vo.total_num}</li>
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+                <li><input type="button" value="查看" onclick="show_match_accept('{$vo.accept_id}')"></li>
+            </ul>
+        </volist>
 
+        <div class="gonggao">系统公告</div>
+        <volist name="message_list" id="vo">
+            <ul class="neirong">
+                <li>{$vo.message_id}</li>
+                <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
+                <li>系统公告</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            </ul>
+        </volist>
+        <div class="gengduo"><a href="{:U('message/mess_sys_list')}">更多</a></div>
+
+        </div>
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+
+    function show_match_offer(offer_id){
+        alert(offer_id);
+    }
+
+    function  show_match_accept(accept_id){
+        alert(offer_id);
+    }
+
+</script>
+
 </body>
 </html>

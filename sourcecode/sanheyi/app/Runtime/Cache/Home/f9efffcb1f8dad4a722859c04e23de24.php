@@ -51,7 +51,7 @@
                 <div class="tubiao"><img src="/Public/images/2.png" /></div>
                 <input class="shuru" type="password" name="password" placeholder="密码" />
             </div>
-            <div class="yanzheng">
+            <div class="yanzheng" style="display: none">
                 <input class="yan" type="text" />
                 <div class="shuzi">此处放验证码</div>
             </div>
@@ -59,7 +59,7 @@
                 <input class="tj" type="button" value="登录" onclick="sub()" />
                 <ul class="lianjie">
                     <li><a href="<?php echo U('Login/reg');?>">快速注册</a></li>
-                    <li><a href="<?php echo U('Login/findpwd');?>">找回密码</a></li>
+                    <!--<li><a href="<?php echo U('Login/findpwd');?>">找回密码</a></li>-->
                 </ul>
             </div>
         </form>

@@ -57,18 +57,18 @@
     <li>
         <dl class="caidan">
             <dt><h2>财务管理</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
-            <dd><a href="<?php echo U('usercurrency/detail');?>">账户明细</a></dd>
-            <dd><a href="<?php echo U('usercurrency/out_detail');?>">支出记录</a></dd>
-            <dd><a href="<?php echo U('usercurrency/in_detail');?>">收入记录</a></dd>
+            <dd><a href="<?php echo U('Uc/detail');?>">账户明细</a></dd>
+            <dd><a href="<?php echo U('Uc/out_detail');?>">支出记录</a></dd>
+            <dd><a href="<?php echo U('Uc/in_detail');?>">收入记录</a></dd>
         </dl>
     </li>
     <li>
         <dl class="caidan">
             <dt><h2>交易中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('community/community_list');?>">功德社区</a></dd>
-            <dd><a href="<?php echo U('offer/sendoffer');?>">提供资助</a></dd>
-            <dd><a href="<?php echo U('offer/offlist');?>">提供资助列表</a></dd>
-            <dd><a href="<?php echo U('accept/sendaccept');?>">接受资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_offer');?>">提供资助</a></dd>
+            <dd><a href="<?php echo U('offer/offerlist');?>">提供资助列表</a></dd>
+            <dd><a href="<?php echo U('community/community_select_accept');?>">接受资助</a></dd>
             <dd><a href="<?php echo U('accept/acceptlist');?>">接受资助列表</a></dd>
         </dl>
     </li>
@@ -87,58 +87,83 @@
 </ul>
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="xiangxixinxi.html">资料修改：【审核状态：<span class="red">通过</span>】</a></li>
+            <li><a href="<?php echo U('public/main');?>">主页</a>＞</li>
+            <li><a>资料修改：【审核状态：<span class="red"><?php echo ($show_data['confirm_status_name']); ?></span>】</a></li>
         </ul>
         <br />
         <ul class="er">
             <li>审核通过之后，不能修改资料信息。如需修改，请向服务中心申请。</li>
         </ul>
-        <ul class="san">
-            <li style="text-align:right;">手机号码：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">收货地址：</li>
-            <li><div class="kuang">贵州省赫章县白果镇新城国际B6栋1单元</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">电子邮箱：</li>
-            <li><div class="kuang">16403455@qq.com</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">居住城市：</li>
-            <li><div class="kuang">毕节</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">支付宝账号：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">微信账号：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">开户银行：</li>
-            <li><div class="kuang">农业银行</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">银行帐号：</li>
-            <li><div class="kuang">6222 3333 4444 5555</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">身份证姓名：</li>
-            <li><div class="kuang">李悦</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">身份证号码：</li>
-            <li><div class="kuang">521236198912123548</div></li>
-        </ul>
+        <form method="post" action="<?php echo U('user/accountinfoDo');?>" name="form" id="form">
+            <ul class="san">
+                <li style="text-align:right;">手机号码：</li>
+                <li><input type="text" name="mobile" id="mobile" value="<?php echo ($show_data['mobile']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">收货地址：</li>
+                <li><input type="text" name="address" id="address" value="<?php echo ($show_data['address']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">电子邮箱：</li>
+                <li><input type="text" name="email" id="email" value="<?php echo ($show_data['email']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">居住城市：</li>
+                <li><input type="text" name="city" id="city" value="<?php echo ($show_data['city']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">支付宝账号：</li>
+                <li><input type="text" name="alipay_no" id="alipay_no" value="<?php echo ($show_data['alipay_no']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">微信账号：</li>
+                <li><input type="text" name="weixin_no" id="weixin_no" value="<?php echo ($show_data['weixin_no']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">开户银行：</li>
+                <li><input type="text" name="bank" id="bank" value="<?php echo ($show_data['bank']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">银行帐号：</li>
+                <li><input type="text" name="bank_no" id="bank_no" value="<?php echo ($show_data['bank_no']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">身份证姓名：</li>
+                <li><input type="text" name="family_name" id="family_name" value="<?php echo ($show_data['family_name']); ?>"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">身份证号码：</li>
+                <li><input type="text" name="card_no" id="card_no" value="<?php echo ($show_data['card_no']); ?>"></li>
+            </ul>
+            <ul>
+               <li><input  id="btn_sub"  type="button" value="保存" onclick="sub(1)" /></li>
+            </ul>
+        </form>
     </div>
 
     <div class="foot">
     <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+
+    $(document).ready(function(){
+        //状态为2，不让修改
+        var st="<?php echo ($show_data['confirm_status']); ?>";
+        if(st==2){
+            $(':text').attr('readonly','readonly');
+            $('#btn_sub').css('display','none');
+        }
+
+    });
+
+</script>
+
 </body>
 </html>

@@ -33,56 +33,81 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="xiangxixinxi.html">资料修改：【审核状态：<span class="red">通过</span>】</a></li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li><a>资料修改：【审核状态：<span class="red">{$show_data['confirm_status_name']}</span>】</a></li>
         </ul>
         <br />
         <ul class="er">
             <li>审核通过之后，不能修改资料信息。如需修改，请向服务中心申请。</li>
         </ul>
-        <ul class="san">
-            <li style="text-align:right;">手机号码：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">收货地址：</li>
-            <li><div class="kuang">贵州省赫章县白果镇新城国际B6栋1单元</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">电子邮箱：</li>
-            <li><div class="kuang">16403455@qq.com</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">居住城市：</li>
-            <li><div class="kuang">毕节</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">支付宝账号：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">微信账号：</li>
-            <li><div class="kuang">15885884266</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">开户银行：</li>
-            <li><div class="kuang">农业银行</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">银行帐号：</li>
-            <li><div class="kuang">6222 3333 4444 5555</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">身份证姓名：</li>
-            <li><div class="kuang">李悦</div></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">身份证号码：</li>
-            <li><div class="kuang">521236198912123548</div></li>
-        </ul>
+        <form method="post" action="{:U('user/accountinfoDo')}" name="form" id="form">
+            <ul class="san">
+                <li style="text-align:right;">手机号码：</li>
+                <li><input type="text" name="mobile" id="mobile" value="{$show_data['mobile']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">收货地址：</li>
+                <li><input type="text" name="address" id="address" value="{$show_data['address']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">电子邮箱：</li>
+                <li><input type="text" name="email" id="email" value="{$show_data['email']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">居住城市：</li>
+                <li><input type="text" name="city" id="city" value="{$show_data['city']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">支付宝账号：</li>
+                <li><input type="text" name="alipay_no" id="alipay_no" value="{$show_data['alipay_no']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">微信账号：</li>
+                <li><input type="text" name="weixin_no" id="weixin_no" value="{$show_data['weixin_no']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">开户银行：</li>
+                <li><input type="text" name="bank" id="bank" value="{$show_data['bank']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">银行帐号：</li>
+                <li><input type="text" name="bank_no" id="bank_no" value="{$show_data['bank_no']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">身份证姓名：</li>
+                <li><input type="text" name="family_name" id="family_name" value="{$show_data['family_name']}"></li>
+            </ul>
+            <ul class="san">
+                <li style="text-align:right;">身份证号码：</li>
+                <li><input type="text" name="card_no" id="card_no" value="{$show_data['card_no']}"></li>
+            </ul>
+            <ul>
+               <li><input  id="btn_sub"  type="button" value="提交保存" onclick="sub(1)" /></li>
+            </ul>
+        </form>
     </div>
 
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+
+    $(document).ready(function(){
+        //状态为2，不让修改
+        var st="{$show_data['confirm_status']}";
+        if(st==2){
+            $(':text').attr('readonly','readonly');
+            $('#btn_sub').css('display','none');
+        }
+
+    });
+
+</script>
+
 </body>
 </html>

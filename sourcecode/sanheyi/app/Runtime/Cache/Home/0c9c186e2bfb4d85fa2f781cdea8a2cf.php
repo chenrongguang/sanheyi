@@ -75,9 +75,9 @@
         <dl class="caidan">
             <dt><h2>交易中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('community/community_list');?>">功德社区</a></dd>
-            <dd><a href="<?php echo U('offer/sendoffer');?>">提供资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_offer');?>">提供资助</a></dd>
             <dd><a href="<?php echo U('offer/offerlist');?>">提供资助列表</a></dd>
-            <dd><a href="<?php echo U('accept/sendaccept');?>">接受资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_accept');?>">接受资助</a></dd>
             <dd><a href="<?php echo U('accept/acceptlist');?>">接受资助列表</a></dd>
         </dl>
     </li>
@@ -111,15 +111,7 @@
 </div>
 </div>
 <script type="text/javascript">
-    /*
-    $(document).ready(function(){
-        // first example
-        $("#browser").treeview(
-                { collapsed: true}
-        );
-    });
 
-*/
     var setting = {
         data: {
             simpleData: {
@@ -129,44 +121,6 @@
     };
 
    var zNodes =<?php echo ($tree); ?>;
-
-  //  var zNodes =[{id:2,pId:0,name:"2222"},{id:4,pId:2,name:"4444"},{id:5,pId:4,name:"5555"},{id:9,pId:2,name:"9999"}];
-
-
-/*
-    var zNodes =[
-        { id:1, pId:0, name:"父节点1 - 展开", open:true},
-        { id:11, pId:1, name:"父节点11 - 折叠"},
-        { id:111, pId:11, name:"叶子节点111"},
-        { id:112, pId:11, name:"叶子节点112"},
-        { id:113, pId:11, name:"叶子节点113"},
-        { id:114, pId:11, name:"叶子节点114"},
-        { id:12, pId:1, name:"父节点12 - 折叠"},
-        { id:121, pId:12, name:"叶子节点121"},
-        { id:122, pId:12, name:"叶子节点122"},
-        { id:123, pId:12, name:"叶子节点123"},
-        { id:124, pId:12, name:"叶子节点124"},
-        { id:13, pId:1, name:"父节点13 - 没有子节点", isParent:true},
-        { id:2, pId:0, name:"父节点2 - 折叠"},
-        { id:21, pId:2, name:"父节点21 - 展开", open:true},
-        { id:211, pId:21, name:"叶子节点211"},
-        { id:212, pId:21, name:"叶子节点212"},
-        { id:213, pId:21, name:"叶子节点213"},
-        { id:214, pId:21, name:"叶子节点214"},
-        { id:22, pId:2, name:"父节点22 - 折叠"},
-        { id:221, pId:22, name:"叶子节点221"},
-        { id:222, pId:22, name:"叶子节点222"},
-        { id:223, pId:22, name:"叶子节点223"},
-        { id:224, pId:22, name:"叶子节点224"},
-        { id:23, pId:2, name:"父节点23 - 折叠"},
-        { id:231, pId:23, name:"叶子节点231"},
-        { id:232, pId:23, name:"叶子节点232"},
-        { id:233, pId:23, name:"叶子节点233"},
-        { id:234, pId:23, name:"叶子节点234"},
-        { id:3, pId:0, name:"父节点3 - 没有子节点", isParent:true}
-    ];
-
-*/
 
     $(document).ready(function(){
         $.fn.zTree.init($("#treeDemo"), setting, zNodes);

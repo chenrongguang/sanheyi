@@ -57,18 +57,18 @@
     <li>
         <dl class="caidan">
             <dt><h2>财务管理</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
-            <dd><a href="<?php echo U('usercurrency/detail');?>">账户明细</a></dd>
-            <dd><a href="<?php echo U('usercurrency/out_detail');?>">支出记录</a></dd>
-            <dd><a href="<?php echo U('usercurrency/in_detail');?>">收入记录</a></dd>
+            <dd><a href="<?php echo U('Uc/detail');?>">账户明细</a></dd>
+            <dd><a href="<?php echo U('Uc/out_detail');?>">支出记录</a></dd>
+            <dd><a href="<?php echo U('Uc/in_detail');?>">收入记录</a></dd>
         </dl>
     </li>
     <li>
         <dl class="caidan">
             <dt><h2>交易中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('community/community_list');?>">功德社区</a></dd>
-            <dd><a href="<?php echo U('offer/sendoffer');?>">提供资助</a></dd>
-            <dd><a href="<?php echo U('offer/offlist');?>">提供资助列表</a></dd>
-            <dd><a href="<?php echo U('accept/sendaccept');?>">接受资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_offer');?>">提供资助</a></dd>
+            <dd><a href="<?php echo U('offer/offerlist');?>">提供资助列表</a></dd>
+            <dd><a href="<?php echo U('community/community_select_accept');?>">接受资助</a></dd>
             <dd><a href="<?php echo U('accept/acceptlist');?>">接受资助列表</a></dd>
         </dl>
     </li>
@@ -87,41 +87,53 @@
 </ul>
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="xiugaimima.html">修改密码</a></li>
+            <li><a href="<?php echo U('public/main');?>">主页</a>＞</li>
+            <li><a href="">修改密码</a></li>
         </ul>
         <br />
-        <ul class="san">
-            <li style="text-align:right;">旧登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">新登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">确认新登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">新二级密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">确认新二级密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;"></li>
-            <li><input type="submit" value="提交" /></li>
-        </ul>
-        <ul class="er">
-            <li>注：密码都必须是6-16位之间</li>
-        </ul>
+        <form method="post" action="<?php echo U('user/changepwdDo');?>" name="form" id="form">
+                <ul class="san">
+                    <li style="text-align:right;">旧登录密码：</li>
+                    <li><input class="kuang" type="password" name ='oldpwd' id="oldpwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">新登录密码：</li>
+                    <li><input class="kuang" type="password"  name ='pwd' id="pwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">确认新登录密码：</li>
+                    <li><input class="kuang" type="password"  name ='repwd' id="repwd"/></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">新二级密码：</li>
+                    <li><input class="kuang" type="password"  name ='high_pwd' id="high_pwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">确认新二级密码：</li>
+                    <li><input class="kuang" type="password"   name ='re_high_pwd' id="re_high_pwd"  /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;"></li>
+                    <li><input type="button" value="提交" onclick="sub(1)"  /></li>
+                </ul>
+                <ul class="er">
+                    <li>注：密码都必须是6-16位之间</li>
+                </ul>
+        </form>
     </div>
     <div class="foot">
     <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+
+</script>
+
 </body>
 </html>

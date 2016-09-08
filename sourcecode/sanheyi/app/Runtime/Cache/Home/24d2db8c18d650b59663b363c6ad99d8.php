@@ -86,9 +86,9 @@
         <dl class="caidan">
             <dt><h2>交易中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('community/community_list');?>">功德社区</a></dd>
-            <dd><a href="<?php echo U('offer/sendoffer');?>">提供资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_offer');?>">提供资助</a></dd>
             <dd><a href="<?php echo U('offer/offerlist');?>">提供资助列表</a></dd>
-            <dd><a href="<?php echo U('accept/sendaccept');?>">接受资助</a></dd>
+            <dd><a href="<?php echo U('community/community_select_accept');?>">接受资助</a></dd>
             <dd><a href="<?php echo U('accept/acceptlist');?>">接受资助列表</a></dd>
         </dl>
     </li>
@@ -108,27 +108,27 @@
     <div class="you">
         <div class="yi">
             <ul class="yi1">
-                <li>会员帐号：lyly888</li>
-                <li>会员名称：李跃</li>
-                <li>所属组：普通会员</li>
+                <li><?php echo ($person_info['name']); ?></li>
+                <li><?php echo ($person_info['family_name']); ?></li>
+                <li><?php echo ($person_info['group']); ?></li>
             </ul>
             <ul class="yi1">
-                <li>激活状态：激活</li>
-                <li>审核状态：通过</li>
-                <li>注册时间：2016-08-19 13:58:07</li>
+                <li><?php echo ($person_info['act_status']); ?></li>
+                <li><?php echo ($person_info['confirm_status']); ?></li>
+                <li><?php echo ($person_info['create_time']); ?></li>
             </ul>
         </div>
         <ul class="er">
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
             </li>
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
             </li>
             <li>
-                <div class="ertu"><img src="images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
                 <div class="erxiao"><h3>审核反馈</h3></div>
             </li>
         </ul>
@@ -140,12 +140,13 @@
             <li>出局钱包</li>
         </ul>
         <ul class="si">
-            <li style="border-left:1px solid #c2c2c2;"><a href="shanzhongzi.html">0</a></li>
-            <li><a href="shanxinbi.html">1</a></li>
-            <li>100</li>
-            <li><a href="">没有页面</a></li>
-            <li><a href="chujuqianbao.html">0</a></li>
+            <li><a href="<?php echo U('Uc/sendSZZ');?>"><?php echo ($user_currency['szz_num']); ?></a></li>
+            <li><a href="<?php echo U('Uc/sendSXB');?>"><?php echo ($user_currency['sxb_num']); ?></a></li>
+            <li><?php echo ($user_currency['sjb_num']); ?></li>
+            <li><a href="<?php echo U('Uc/manager_money');?>"><?php echo ($user_currency['glqb_num']); ?></a></li>
+            <li><a href="<?php echo U('community/community_select_accept');?>"><?php echo ($user_currency['cjqb_num']); ?></a></li>
         </ul>
+
         <ul class="wu">
             <li style="border-left:1px solid #c2c2c2;">ID</li>
             <li>类型</li>
@@ -155,48 +156,58 @@
             <li>详细信息</li>
             <li>匹配信息</li>
         </ul>
-        <ul class="liu">
-            <li style="border-left:1px solid #c2c2c2;">P72188085</li>
-            <li>提供资助</li>
-            <li>贫穷社区</li>
-            <li>2000</li>
-            <li>2016-08-20</li>
-            <li><a href="xiangxixinxi.html">已完成</a></li>
-            <li><a href="xiangxixinxi.html">已匹配</a></li>
-        </ul>
+        <?php if(is_array($offer_list)): $i = 0; $__LIST__ = $offer_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="liu">
+                <li><?php echo ($vo["offer_id"]); ?></li>
+                <li>提供资助</li>
+                <li><?php echo ($vo["cname"]); ?></li>
+                <li><?php echo ($vo["num"]); ?></li>
+                <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+                <li><?php if(($vo["confirm_status"]) == "0"): ?>未完成<?php endif; if(($vo["confirm_status"]) == "1"): ?>部分完成<?php endif; if(($vo["confirm_status"]) == "2"): ?>全部完成<?php endif; ?></li>
+                <li><?php if(($vo["match_status"]) == "1"): ?>部分匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; ?></li>
+            </ul><?php endforeach; endif; else: echo "" ;endif; ?>
         <ul class="qi">
             <li style="border-left:1px solid #c2c2c2;">ID</li>
             <li>类型</li>
             <li>金额</li>
             <li style="width:190px">提交时间</li>
             <li>详细信息</li>
+            <li>操作</li>
         </ul>
-        <ul class="ba">
-            <li style="border-left:1px solid #c2c2c2;">R68164662</li>
-            <li>接受资助</li>
-            <li>2600</li>
-            <li style="width:190px;">2016-08-29 07:07:25</li>
-            <li><span class="pipei">待匹配</span></li>
-        </ul>
-        <div class="gonggao">系统公告</div>
-        <ul class="neirong">
-            <li>ID6049</li>
-            <li><a href="">发布六则重磅消息</a></li>
-            <li>系统公告</li>
-            <li>2016-09-01 23:57:19</li>
-        </ul>
-        <ul class="neirong">
-            <li>ID6048</li>
-            <li><a href="">匹配调整通知</a></li>
-            <li>系统公告</li>
-            <li>2016-08-25 22:17:01</li>
-        </ul>
-        <div class="gengduo"><a href="gonggao.html">更多</a></div>
-    </div>
+        <?php if(is_array($accept_list)): $i = 0; $__LIST__ = $accept_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="ba">
+                <li><?php echo ($vo["accept_id"]); ?></li>
+                <li>接受资助</li>
+                <li><?php echo ($vo["total_num"]); ?></li>
+                <li style="width:200px;"><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+                <li><?php if(($vo["match_status"]) == "0"): ?>等待匹配<?php endif; if(($vo["match_status"]) == "1"): ?>部分匹配<?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<?php endif; ?></li>
+                <li><input type="button" value="查看" onclick="show_match_accept('<?php echo ($vo["accept_id"]); ?>')"></li>
+            </ul><?php endforeach; endif; else: echo "" ;endif; ?>
 
+        <div class="gonggao">系统公告</div>
+        <?php if(is_array($message_list)): $i = 0; $__LIST__ = $message_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="neirong">
+                <li><?php echo ($vo["message_id"]); ?></li>
+                <li style="width:350px;"><a target="_blank" href="<?php echo U('message/message_content',array('message_id'=>$vo['message_id']));?>"><?php echo ($vo["title"]); ?></a></li>
+                <li>系统公告</li>
+                <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+            </ul><?php endforeach; endif; else: echo "" ;endif; ?>
+        <div class="gengduo"><a href="<?php echo U('message/mess_sys_list');?>">更多</a></div>
+
+        </div>
     <div class="foot">
     <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+    function show_match_offer(offer_id){
+        alert(offer_id);
+    }
+
+    function  show_match_accept(accept_id){
+        alert(offer_id);
+    }
+
+</script>
+
 </body>
 </html>

@@ -33,39 +33,51 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li><a href="xiugaimima.html">修改密码</a></li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li><a href="">修改密码</a></li>
         </ul>
         <br />
-        <ul class="san">
-            <li style="text-align:right;">旧登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">新登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">确认新登录密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">新二级密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;">确认新二级密码：</li>
-            <li><input class="kuang" type="password" /></li>
-        </ul>
-        <ul class="san">
-            <li style="text-align:right;"></li>
-            <li><input type="submit" value="提交" /></li>
-        </ul>
-        <ul class="er">
-            <li>注：密码都必须是6-16位之间</li>
-        </ul>
+        <form method="post" action="{:U('user/changepwdDo')}" name="form" id="form">
+                <ul class="san">
+                    <li style="text-align:right;">旧登录密码：</li>
+                    <li><input class="kuang" type="password" name ='oldpwd' id="oldpwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">新登录密码：</li>
+                    <li><input class="kuang" type="password"  name ='pwd' id="pwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">确认新登录密码：</li>
+                    <li><input class="kuang" type="password"  name ='repwd' id="repwd"/></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">新二级密码：</li>
+                    <li><input class="kuang" type="password"  name ='high_pwd' id="high_pwd" /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;">确认新二级密码：</li>
+                    <li><input class="kuang" type="password"   name ='re_high_pwd' id="re_high_pwd"  /></li>
+                </ul>
+                <ul class="san">
+                    <li style="text-align:right;"></li>
+                    <li><input type="button" value="提交" onclick="sub(1)"  /></li>
+                </ul>
+                <ul class="er">
+                    <li>注：密码都必须是6-16位之间</li>
+                </ul>
+        </form>
     </div>
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+
+</script>
+
 </body>
 </html>

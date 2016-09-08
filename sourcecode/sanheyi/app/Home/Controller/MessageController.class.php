@@ -65,6 +65,7 @@ class MessageController extends BaseController  {
 
         $conditionData['use_yn'] = 'Y';
         $conditionData['type'] = 1;
+        $conditionData['to_user_id'] = $_SESSION['user']['user_id'];
 
         $model = M('message');
         $total = $model->field('message_id')->where($conditionData)->count();

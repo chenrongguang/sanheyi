@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>提供资助</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{float:left; margin-left:50px; margin-top:20px; border:2px solid red; width:655px;}
+        .er li{float:left; height:200px;}
+        .eryi{width:70%; background:#c2c2c2;}
+        .erer{width:30%; line-height:100px; text-align:center; font-size:40px; font-weight:bold;}
+        .red{color:red;}
+        .blue{color:#4f7ca9;}
+        .gre{color:#66cd00;}
+        .san{float:left; margin-left:50px; margin-top:20px; width:800px;}
+        .mt{margin-top:20px;}
+        .bt{border-top:1px solid red;}
+        .san li{float:left; width:300px; height:200px; line-height:100px; text-align:center; background:#c9cacb; font-size:40px; font-weight:bold; border:2px solid red; margin-right:50px;}
+        .san li a,.er li a{display:block; width:100%; height:100%;}
+        .lv{color:green;}
+        .beizhu{margin-left:50px; margin-top:10px; float:left; width:800px; height:40px; line-height:40px; text-align:center;}
+        .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+    </style>
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/tigongzizhu.js"></script>
 </head>
-<body>
 
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <div class="you">
+        <ul class="yi">
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li class="blue">请选择提供资助的地区：<span class="red">现已开放"贫穷社区"、"小康社区"和"富人社区"，<br />其他后期陆续开放，敬请关注。</span></li>
+        </ul>
+        <br />
+        <ul class="san">
+            <li><a href="{:U('offer/sendoffer',array('id'=>2))}">贫困<br />社区</a></li>
+            <li><a href="{:U('offer/sendoffer',array('id'=>3))}">小康<br />社区</a></li>
+        </ul>
+        <ul class="san">
+            <li><a href="{:U('offer/sendoffer',array('id'=>4))}">富人<br />社区</a></li>
+            <li><a href="">德善<br />社区</a></li>
+        </ul>
+        <ul class="er">
+            <li class="eryi"></li>
+            <li class="erer"><a href="">大德<br />社区</a></li>
+        </ul>
+    </div>
+    <include file ='Public:foot' />
+</div>
 </body>
 </html>

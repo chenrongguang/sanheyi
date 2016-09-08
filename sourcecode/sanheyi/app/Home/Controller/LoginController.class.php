@@ -86,8 +86,8 @@ class LoginController extends Controller  {
 
         $data = I("post.");
         $data['create_time'] = time();
-        $data['pwd'] =  md5($data['pwd']);
-        $data['high_pwd'] =  md5($data['pwd']);//默认密码和登陆密码一样
+        $data['pwd'] =  md5(I("post.pwd"));
+        $data['high_pwd'] =  md5(I("post.pwd"));//默认密码和登陆密码一样
         $result = M('user')->add($data);
         if($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值

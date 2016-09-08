@@ -40,7 +40,7 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
             <li class="blue">接受资助列表</li>
         </ul>
         <br />
@@ -49,18 +49,35 @@
             <li>类型</li>
             <li>金额</li>
             <li style="width:200px;">提交时间</li>
-            <li>详细信息</li>
+            <li>匹配信息</li>
+            <li>操作</li>
         </ul>
+        <volist name="list" id="vo">
         <ul class="san">
-            <li>164662</li>
+            <li>{$vo.accept_id}</li>
             <li>接受资助</li>
-            <li>2600</li>
-            <li style="width:200px;">2016-08-29 07:07:25</li>
-            <li>未匹配</li>
+            <li>{$vo.total_num}</li>
+            <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+            <li><input type="button" value="查看" onclick="show_match('{$vo.accept_id}')"></li>
         </ul>
-        <div class="beizhu">此处可放分页工具条</div>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="6">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
+
     </div>
     <include file ='Public:foot' />
 </div>
+<script type="text/javascript">
+    function show_match(accept_id){
+        alert(accept_id);
+    }
+</script>
 </body>
 </html>

@@ -31,10 +31,17 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="U('public/main')">主页</a>＞</li>
-            <li><a href="U('message/mess_check_list')">审核通知</a></li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li><a href="">审核通知</a></li>
         </ul>
         <br />
+        <ul class="san">
+            <li>编号</li>
+            <li style="width:350px;">公告标题</li>
+            <li>类型</li>
+            <li>时间</li>
+        </ul>
+
         <volist name="list" id="vo">
             <ul class="san">
                 <li>{$vo.message_id}</li>

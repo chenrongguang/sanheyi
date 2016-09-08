@@ -35,8 +35,8 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li class="blue">下级会员：(总数：0个 <span class="gre">激活</span>：0个 <span class="red">未激活</span>：0个)</li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li class="blue">下级会员：(总数：{$total}个 <span class="gre">激活</span>：{$total_act}个 <span class="red">未激活</span>：{$total_noact}个)</li>
         </ul>
         <br />
         <ul class="san">
@@ -47,16 +47,60 @@
             <li style="width:200px;">注册时间</li>
             <li>操作</li>
         </ul>
-        <ul class="san">
-            <li>111</li>
-            <li>222</li>
-            <li>12345678901</li>
-            <li>12334</li>
-            <li style="width:200px;">2016-02-21 13:51:30</li>
-            <li>操作</li>
-        </ul>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.name}</li>
+                <li>{$vo.family_name}</li>
+                <li>{$vo.mobile}</li>
+                <li><eq name='vo.act_status' value='0'>未激活</eq><eq name='vo.act_status' value='1'>已激活</eq></li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.act_status' value='0'><input type="button" value="激活" onclick="act_user('{$vo.user_id}');"></eq><input type="button" value="查看" onclick="show_user('{$vo.user_id}');"></li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="6">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
+
     </div>
     <include file ='Public:foot' />
 </div>
+<script type="text/javascript">
+
+    function  act_user(user_id){
+
+        var path = "{:U('user/ajxact_user')}";
+
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({act_user:user_id}),
+            async : false,
+            success : function(data){
+                //该名字可以用
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    location.href= data.return_data.url;
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+    function  show_user(user_id){
+        //alert(user_id);
+        //var url=eval("{:U('user/personinfo',array('user_id'=>" + user_id + "))}");
+        location.href='/home/user/personinfo/user_id/'+ user_id ;
+    }
+
+</script>
 </body>
 </html>

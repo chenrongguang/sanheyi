@@ -101,6 +101,7 @@
                  if(data.result=='SUCCESS'){
                     //location.href= data.return_data.url;
                  }else{
+                     $(this).val('');
                     alert(data.msg);
                  }
 
@@ -125,6 +126,7 @@
                     $('#p_id').val(data.return_data.p_id);
 
                 }else{
+                    $(this).val('');
                     alert(data.msg);
                 }
 

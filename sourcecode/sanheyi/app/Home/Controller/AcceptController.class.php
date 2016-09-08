@@ -28,7 +28,27 @@ class AcceptController extends BaseController  {
     }
 
     public function acceptlist(){
+
+        $conditionData['status'] = 1;
+        $conditionData['user_id'] = $_SESSION['user']['user_id'];
+
+        $model = M('order_accept');
+        $total = $model->field('accept_id')->where($conditionData)->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+
+        $paras['user_id']=$_SESSION['user']['user_id'];
+        $paras['page']=$Page;
+
+        $list=D('OrderAccept')->getList($paras);
+
+        $show = $Page->show();
+
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
         $this->display();
+
     }
 
 }

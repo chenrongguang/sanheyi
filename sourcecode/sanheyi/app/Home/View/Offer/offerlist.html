@@ -41,13 +41,13 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
             <li class="blue">提供资助列表</li>
         </ul>
         <br />
         <ul class="er">
-            <li><input class="ip1" type="button" value="查看未完成" /></li>
-            <li><input class="ip2" type="button" value="查看已完成" /></li>
+            <li><input class="ip1" type="button" value="查看未完成" onclick="show_uncomplete();" /></li>
+            <li><input class="ip2" type="button" value="查看已完成" onclick="show_complete();"/></li>
         </ul>
         <ul class="san">
             <li>ID</li>
@@ -57,21 +57,50 @@
             <li>提交时间</li>
             <li>付款信息</li>
             <li>匹配信息</li>
+            <li>完成状态</li>
             <li>操作</li>
         </ul>
-        <ul class="san">
-            <li>123456</li>
-            <li>接受资助</li>
-            <li>贫穷社区</li>
-            <li>2000</li>
-            <li>2016-5-20</li>
-            <li>已付款</li>
-            <li>已匹配</li>
-            <li>已完成</li>
-        </ul>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.offer_id}</li>
+                <li>提供资助</li>
+                <li>{$vo.cname}</li>
+                <li>{$vo.num}</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.pay_status' value='0'>未付款</eq><eq name='vo.pay_status' value='1'>部分付款</eq><eq name='vo.pay_status' value='2'>全部付款</eq></li>
+                <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
+                <li><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="9">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
+
         <div class="beizhu">注：此页面默认只显示未匹配或未完成的挂单，要查看已完成的挂单，请点击右上角的【查看已完成】按钮。</div>
     </div>
     <include file ='Public:foot' />
 </div>
+<script type="text/javascript">
+
+    function show_uncomplete(){
+        location.href="{:U('Offer/offerlist')}";
+    }
+
+    function show_complete(){
+        location.href="{:U('Offer/offerlist',array('confirm_status'=>2))}";
+    }
+
+    function show_match_offer(offer_id){
+        alert(offer_id);
+    }
+
+</script>
+
 </body>
 </html>
