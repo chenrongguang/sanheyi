@@ -114,20 +114,6 @@ class UcController extends BaseController
             $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0004', '你输入的二级密码不正确'));
         }
 
-        //判断接收人是否有善种子的记录 ,如果没有的话,先创建一条,数量为0
-        $where_to['user_id'] = $data['to_user_id'];
-        $where_to['currency_id'] = $currency_id; //善种子
-        $para['where'] = $where_to;
-        $result_to = D('user_currency')->getSingle($para);
-
-        if($result_to==false || $result_to == null){
-                $insert_to_data['user_id']=$data['to_user_id'];
-                $insert_to_data['currency_id']=$currency_id;
-                $insert_result= M('user_currency')->add($insert_to_data);
-                if(!$insert_result){
-                    $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0005', '处理失败'));
-                }
-        }
 
         //开启事务
         M()->startTrans();
@@ -193,8 +179,8 @@ class UcController extends BaseController
         //定义币种
         $currency_id=2;
 
-        //先判断自己的善种子数量,是否够的
-        //获取当前会员的善种子
+        //先判断自己的善心币数量,是否够的
+        //获取当前会员的善心币
         $where['user_id'] = $_SESSION['user']['user_id'];
         $where['currency_id'] = $currency_id; //善种子
         $para['where'] = $where;
@@ -220,25 +206,11 @@ class UcController extends BaseController
             $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0004', '你输入的二级密码不正确'));
         }
 
-        //判断接收人是否有善种子的记录 ,如果没有的话,先创建一条,数量为0
-        $where_to['user_id'] = $data['to_user_id'];
-        $where_to['currency_id'] = $currency_id; //善种子
-        $para['where'] = $where_to;
-        $result_to = D('user_currency')->getSingle($para);
-
-        if($result_to==false || $result_to == null){
-            $insert_to_data['user_id']=$data['to_user_id'];
-            $insert_to_data['currency_id']=$currency_id;
-            $insert_result= M('user_currency')->add($insert_to_data);
-            if(!$insert_result){
-                $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0005', '处理失败'));
-            }
-        }
 
         //开启事务
         M()->startTrans();
 
-        //减少本人的善种子数量
+        //减少本人的善数量
         $r[] = M('user_currency')
             ->where(array('user_id' => $_SESSION['user']['user_id'],'currency_id'=>$currency_id))
             ->setDec('num', $send_num);
@@ -255,7 +227,7 @@ class UcController extends BaseController
         $detail_data['remark']=$data['remark'];
         $r[] = M('user_currency_detail')->add($detail_data);
 
-        //增加接收人的善种子数量
+        //增加接收人的数量
         $r[] = M('user_currency')
             ->where(array('user_id' => $data['to_user_id'],'currency_id'=>$currency_id))
             ->setInc('num', $send_num);

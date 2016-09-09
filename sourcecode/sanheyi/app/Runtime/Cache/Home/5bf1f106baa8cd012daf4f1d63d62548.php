@@ -136,7 +136,7 @@
                 <li><input type="text" name="card_no" id="card_no" value="<?php echo ($show_data['card_no']); ?>"></li>
             </ul>
             <ul>
-               <li><input  id="btn_sub"  type="button" value="保存" onclick="sub(1)" /></li>
+               <li><input  id="btn_sub"  type="button" value="提交保存" onclick="sub(1)" /></li>
             </ul>
         </form>
     </div>

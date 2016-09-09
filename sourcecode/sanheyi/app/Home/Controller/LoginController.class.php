@@ -26,6 +26,7 @@ class LoginController extends Controller  {
         $map['name']=$username;
         $map['pwd']=$pwd;
         $map['use_yn']='Y';
+        $map['act_status']=1;//激活状态的人才可以登录
 
         $result= $model->where($map)->find();
         //登录成功，设置session
@@ -38,7 +39,7 @@ class LoginController extends Controller  {
         }
         //登录不成功
         else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','用户名和密码不匹配，请重试!'));
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','用户名和密码不匹配,或者未激活，请重试!'));
         }
 
 
@@ -128,6 +129,7 @@ class LoginController extends Controller  {
         $post = json_decode($content, true);
         $name=$post['p_name'];
         $where['name']=$name;
+        $where['act_status']=1;//必须是激活的才可用
        // $where['name']=I("post.p_name");
         $reult= M('user')->where($where)->find();
         //找到

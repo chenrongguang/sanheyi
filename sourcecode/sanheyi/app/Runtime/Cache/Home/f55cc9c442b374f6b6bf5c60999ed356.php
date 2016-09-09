@@ -133,6 +133,7 @@
             success : function(data){
                 //该名字可以用
                 if(data.result=='SUCCESS'){
+                    alert(data.msg);
                     location.href= data.return_data.url;
                 }else{
                     //该名字不可以用,已经有人注册了

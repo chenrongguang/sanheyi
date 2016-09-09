@@ -27,7 +27,7 @@ class UserController extends BaseController
     private $child_tree = '';
     private $currenty_id = '';
     private $ar_tree;
-    private $index=0;
+    private $index = 0;
 
 
     public function _initialize()
@@ -44,26 +44,25 @@ class UserController extends BaseController
     public function changepwdDo()
     {
         $where_check['user_id'] = $_SESSION['user']['user_id'];
-        $oldpwd=I('post.oldpwd');
-        $where_check['pwd']=md5($oldpwd);
-        $result_check=M('user')->where($where_check)->find();
+        $oldpwd = I('post.oldpwd');
+        $where_check['pwd'] = md5($oldpwd);
+        $result_check = M('user')->where($where_check)->find();
         //找不到
-        if($result_check == null || $result_check ==false){
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0003','旧密码错误,请重试!'));
+        if ($result_check == null || $result_check == false) {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0003', '旧密码错误,请重试!'));
         }
 
-        $data['pwd']=md5(I('post.pwd'));
-        $data['high_pwd']=md5(I('post.high_pwd'));
+        $data['pwd'] = md5(I('post.pwd'));
+        $data['high_pwd'] = md5(I('post.high_pwd'));
         $where['user_id'] = $_SESSION['user']['user_id'];
-        $result=M('user')->where($where)->save($data);
+        $result = M('user')->where($where)->save($data);
 
-        if($result) {
+        if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
-            $return_data['url']= U('user/changepwd');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
-        }
-        else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','保存失败，请重试!'));
+            $return_data['url'] = U('user/changepwd');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '保存失败，请重试!'));
         }
 
     }
@@ -73,12 +72,12 @@ class UserController extends BaseController
     public function personinfo()
     {
         //可能是查看下级会员的个人信息,如果是本人信息就从session取
-        $current_user=I('get.user_id');
-        if(empty($current_user)){
-            $current_user= $_SESSION['user']['user_id'];
+        $current_user = I('get.user_id');
+        if (empty($current_user)) {
+            $current_user = $_SESSION['user']['user_id'];
         }
 
-        $where['user_id'] =$current_user;
+        $where['user_id'] = $current_user;
         $para['where'] = $where;
         $result_self = D('user')->getSingle($para);
         $p_id = $result_self['p_id'];
@@ -130,7 +129,7 @@ class UserController extends BaseController
         $where['use_yn'] = 'Y';
         $paras['where'] = $where;
         $show_data = D('user')->getSingle($paras);
-        if($show_data!=false && $show_data !==null){
+        if ($show_data != false && $show_data !== null) {
             if ($show_data['confirm_status'] == 0) {
                 $show_data['confirm_status_name'] = '未审核';
             } else if ($show_data['confirm_status'] == 1) {
@@ -142,25 +141,24 @@ class UserController extends BaseController
             }
         }
 
-        $this->assign('show_data',$show_data);
+        $this->assign('show_data', $show_data);
 
         $this->display();
     }
 
     public function accountinfoDo()
     {
-        $data=I('post.');
+        $data = I('post.');
         $where['user_id'] = $_SESSION['user']['user_id'];
-        $data['confirm_status']=1;
-        $result=M('user')->where($where)->save($data);
+        $data['confirm_status'] = 1;
+        $result = M('user')->where($where)->save($data);
 
-        if($result) {
+        if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
-            $return_data['url']= U('user/accountinfo');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
-        }
-        else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','保存失败，请重试!'));
+            $return_data['url'] = U('user/accountinfo');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '保存失败，请重试!'));
         }
 
     }
@@ -172,7 +170,7 @@ class UserController extends BaseController
         $where['use_yn'] = 'Y';
         $paras['where'] = $where;
         $show_data = D('user')->getSingle($paras);
-        if($show_data!=false && $show_data !==null){
+        if ($show_data != false && $show_data !== null) {
             if ($show_data['confirm_status'] == 0) {
                 $show_data['confirm_status_name'] = '未审核';
             } else if ($show_data['confirm_status'] == 1) {
@@ -184,25 +182,24 @@ class UserController extends BaseController
             }
         }
 
-        $this->assign('show_data',$show_data);
+        $this->assign('show_data', $show_data);
 
         $this->display();
     }
 
     public function identityinfoDo()
     {
-        $data=I('post.');
-        $data['confirm_status']=1;
+        $data = I('post.');
+        $data['confirm_status'] = 1;
         $where['user_id'] = $_SESSION['user']['user_id'];
-        $result=M('user')->where($where)->save($data);
+        $result = M('user')->where($where)->save($data);
 
-        if($result) {
+        if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
-            $return_data['url']= U('user/identityinfo');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
-        }
-        else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','保存失败，请重试!'));
+            $return_data['url'] = U('user/identityinfo');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '保存失败，请重试!'));
         }
 
     }
@@ -218,10 +215,10 @@ class UserController extends BaseController
     //注册
     public function reg()
     {
-        $p_id=$_SESSION['user']['user_id'];
-        $p_name=$_SESSION['user']['name'];
-        $this->assign('p_id',$p_id);
-        $this->assign('p_name',$p_name);
+        $p_id = $_SESSION['user']['user_id'];
+        $p_name = $_SESSION['user']['name'];
+        $this->assign('p_id', $p_id);
+        $this->assign('p_name', $p_name);
         $this->display();
     }
 
@@ -230,16 +227,15 @@ class UserController extends BaseController
     {
         $data = I("post.");
         $data['create_time'] = time();
-        $data['pwd'] =  md5(I("post.pwd"));
-        $data['high_pwd'] =  md5(I("post.pwd"));//默认密码和登陆密码一样
+        $data['pwd'] = md5(I("post.pwd"));
+        $data['high_pwd'] = md5(I("post.pwd"));//默认密码和登陆密码一样
         $result = M('user')->add($data);
-        if($result) {
+        if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
-            $return_data['url']= U('user/reg');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
-        }
-        else{
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','保存失败，请重试!'));
+            $return_data['url'] = U('user/reg');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '保存失败，请重试!'));
         }
     }
 
@@ -290,9 +286,9 @@ class UserController extends BaseController
         //$show = $Page->showAjax("mainarea");
         $show = $Page->show();
 
-        $this->assign('total_act',$total_act);//总数量
-        $this->assign('total_noact',$total_noact);//总数量
-        $this->assign('total',$total);//总数量
+        $this->assign('total_act', $total_act);//总数量
+        $this->assign('total_noact', $total_noact);//总数量
+        $this->assign('total', $total);//总数量
         $this->assign('page', $show);
         $this->assign('list', $list);
 
@@ -304,7 +300,7 @@ class UserController extends BaseController
     {
         $content = file_get_contents('php://input');
         $post = json_decode($content, true);
-        $act_user=$post['act_user']; //要激活的会员id
+        $act_user = $post['act_user']; //要激活的会员id
 
         //获取当前会员的善种子
         $where['user_id'] = $_SESSION['user']['user_id'];
@@ -312,84 +308,97 @@ class UserController extends BaseController
         $para['where'] = $where;
         $result = D('user_currency')->getSingle($para);
         if ($result == false || $result == null) {
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','你的善种子数量不足,请购买!'));
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '你的善种子数量不足,请购买!'));
         }
-        $num=(int)$result['num'];
-        if($num<=0){
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0002','你的善种子数量不足,请购买!'));
+        $num = (int)$result['num'];
+        if ($num <= 0) {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '你的善种子数量不足,请购买!'));
         }
 
         //定义激活会员需要的种子数
-        $act_nedd_money=1;
+        $act_nedd_money = 1;
 
         //开启事务
         M()->startTrans();
 
         //扣除善种子总数
         $r[] = M('user_currency')
-            ->where(array('user_id' => $_SESSION['user']['user_id'],'currency_id'=>1))
+            ->where(array('user_id' => $_SESSION['user']['user_id'], 'currency_id' => 1))
             ->setDec('num', $act_nedd_money);
 
         //增加扣除善种子的明细
-        $detail_data['user_id']= $_SESSION['user']['user_id'];
-        $detail_data['currency_id']=1;
-        $detail_data['detail_type']=2;
-        $detail_data['detail_num']=$act_nedd_money*-1;
-        $detail_data['create_time']=time();
-        $detail_data['handle_type']='支出善种子';
-        $detail_data['remark']='激活会员';
+        $detail_data['user_id'] = $_SESSION['user']['user_id'];
+        $detail_data['currency_id'] = 1;
+        $detail_data['detail_type'] = 2;
+        $detail_data['detail_num'] = $act_nedd_money * -1;
+        $detail_data['create_time'] = time();
+        $detail_data['handle_type'] = '支出善种子';
+        $detail_data['remark'] = '激活会员';
         $r[] = M('user_currency_detail')->add($detail_data);
 
         //激活会员
-        $where_act['user_id']=$act_user;
-        $data_act['act_status']=1;
-        $data_act['act_time']=time();
-        $data_act['act_user']=$_SESSION['user']['user_id'];
-        $r[] =M('user')->where($where_act)->save($data_act);
+        $where_act['user_id'] = $act_user;
+        $data_act['act_status'] = 1;
+        $data_act['act_time'] = time();
+        $data_act['act_user'] = $_SESSION['user']['user_id'];
+        $r[] = M('user')->where($where_act)->save($data_act);
 
         if (!in_array(false, $r)) {
             M()->commit();
-            $return_data['url']= U('user/level_down_all');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
+            $this->make_user_currency_default($act_user);//激活之后生成该会员的默认货币记录
+            $return_data['url'] = U('user/level_down_all');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
 
         } else {
             M()->rollback();
-            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0003','激活失败,请重试!'));
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0003', '激活失败,请重试!'));
         }
 
     }
+
+//生成该会员的默认货币记录
+    private function  make_user_currency_default($act_user)
+    {
+        //生成5种货币
+        for ($currency_id = 1; $currency_id <= 5; $currency_id++) {
+            $insert_to_data['user_id'] = $act_user;
+            $insert_to_data['currency_id'] = $currency_id;
+            M('user_currency')->add($insert_to_data);
+        }
+    }
+
 
     //查看下级会员信息
     public function level_down_info()
     {
 
         $this->getlevel($_SESSION['user']['user_id']);
-        $temp=json_encode($this->ar_tree);
+        $temp = json_encode($this->ar_tree);
 
         $this->assign('tree', $temp);
         $this->display();
     }
 
-    private function  getlevel( $user_id){
+    private function  getlevel($user_id)
+    {
         $where['user_id'] = $user_id;
         $where['use_yn'] = 'Y';
         $paras['where'] = $where;
         $result = D('user')->getSingle($paras);
 
-        $temp['id']=$result['user_id'];
-        if($user_id==$_SESSION['user']['user_id']){
-            $temp['pId']=0;
+        $temp['id'] = $result['user_id'];
+        if ($user_id == $_SESSION['user']['user_id']) {
+            $temp['pId'] = 0;
+        } else {
+            $temp['pId'] = $result['p_id'];
         }
-        else{
-            $temp['pId']=$result['p_id'];
-        }
 
-        $temp['name']=$result['name']. ' ' . date('Y-m-d H:i:s', $result['create_time']);
-        $this->ar_tree[$this->index]=$temp;
-        $this->index+=1;
+        $temp['name'] = $result['name'] . ' ' . date('Y-m-d H:i:s', $result['create_time']);
+        $this->ar_tree[$this->index] = $temp;
+        $this->index += 1;
 
 
-        if($this->check_has_children($user_id)){
+        if ($this->check_has_children($user_id)) {
             $where1['p_id'] = $result['user_id'];
             $where1['use_yn'] = 'Y';
             $result1 = M('user')->where($where1)->order('create_time asc')->select();
@@ -400,7 +409,7 @@ class UserController extends BaseController
     }
 
 
-       //判断该会员是否有下级孩子
+    //判断该会员是否有下级孩子
     private function  check_has_children($p_id)
     {
         $where['p_id'] = $p_id;

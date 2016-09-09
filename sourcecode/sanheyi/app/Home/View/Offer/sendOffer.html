@@ -39,25 +39,28 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="shouye.html">主页</a>＞</li>
-            <li>您提供资助的社区：<span class="xin">贫穷社区</span></li>
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li>您提供资助的社区：<span class="xin">{$name}</span></li>
         </ul>
         <br />
         <ul class="er">
-            <form method="post">
+            <form method="post" action="{:U('offer/sendofferDo')}" name="form" id="form">
                 <li>
                     <div class="nei1">资助金额(元)：</div>
-                    <div class="nei2"><input type="text" class="inp1" /><span class="xin">*</span><span class="tishi">1000-3000 必须是100的整倍数</span></div>
+                    <div class="nei2"><input type="text" class="inp1" id="num" name="num" /><span class="xin">*</span><span class="tishi">1000-3000 必须是100的整倍数</span></div>
                 </li>
                 <li>
                     <div class="nei1">二级密码：</div>
-                    <div class="nei2"><input type="text" class="inp1" /><span class="xin">*</span><span class="tishi">二级密码默认是登录密码</span></div>
+                    <div class="nei2"><input type="password" class="inp1" id="high_pwd" name="high_pwd" /><span class="xin">*</span><span class="tishi">二级密码默认是登录密码</span></div>
                 </li>
                 <li>
                     <div class="nei1">剩余善心币</div>
-                    <div class="nei2">1个</div>
+                    <div class="nei2">{$my_SXB} </div>
+                    <input type="hidden" name="need_SXB" id="need_SXB" value="{$need_SXB}" />
                 </li>
-                <li><input type="submit" class="tijiao" value="提交资助" /></li>
+                <!--社区id-->
+                <input type="hidden" name="community_id" id="community_id" value="{$community_id}" />
+                <li><input   id="btn_sub"  type="button"  onclick="sub(1)"  class="tijiao" value="提交资助" /></li>
             </form>
         </ul>
         <dl class="san">
@@ -71,5 +74,14 @@
     </div>
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+</script>
+
 </body>
 </html>

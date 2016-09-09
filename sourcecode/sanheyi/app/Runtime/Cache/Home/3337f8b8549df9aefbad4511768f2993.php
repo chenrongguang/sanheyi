@@ -106,7 +106,10 @@
 
            <li><a href="<?php echo U('Uc/sendSXB');?>"><?php echo ($show_data['sxb_num']); ?></a></li>
            <li><?php echo ($show_data['sjb_num']); ?></li>
+            <!--
            <li><a href="<?php echo U('Uc/manager_money');?>"><?php echo ($show_data['glqb_num']); ?></a></li>
+           -->
+            <li><a href=""><?php echo ($show_data['glqb_num']); ?></a></li>
            <li><a href="<?php echo U('Accept/sendAccept');?>"><?php echo ($show_data['cjqb_num']); ?></a></li>
            <li style="width:200px;"><a href="<?php echo U('Uc/sendSZZ');?>">[转善种子]</a>&nbsp;&nbsp;<a href="<?php echo U('Uc/sendSXB');?>">[转善心币]</a></li>
 
