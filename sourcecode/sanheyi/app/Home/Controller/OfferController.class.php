@@ -115,7 +115,10 @@ class OfferController extends BaseController
         $data_offer['user_id']=$_SESSION['user']['user_id'];
         $data_offer['community_id']=$data['community_id'];
         $data_offer['num']=$data['num'];
-        $data_offer['remail_num']=$data['num'];
+        $data_offer['match_remain_num']=$data['num'];
+        $data_offer['pay_remain_num']=$data['num'];
+        $data_offer['confirm_remain_num']=$data['num'];
+
         $data_offer['create_time']=time();
 
         $data_offer['queue_time']=$data_offer['create_time'];

@@ -121,6 +121,53 @@ class UserController extends BaseController
         $this->display();
     }
 
+    //个人信息
+    public function relpersoninfo()
+    {
+        //可能是查看下级会员的个人信息,如果是本人信息就从session取
+        $current_user = I('get.user_id');
+        if (empty($current_user)) {
+            $current_user = $_SESSION['user']['user_id'];
+        }
+
+        $where['user_id'] = $current_user;
+        $para['where'] = $where;
+        $result_self = D('user')->getSingle($para);
+
+        $show_data['name'] = $result_self['name'];
+        $show_data['family_name'] = $result_self['family_name'];
+        $show_data['create_time'] = date('Y-m-d H:i:s', $result_self['create_time']);
+        $show_data['bank'] = $result_self['bank'];
+        $show_data['bank_no'] = $result_self['bank_no'];
+        $show_data['mobile'] = $result_self['mobile'];
+        $show_data['city'] = $result_self['city'];
+
+
+        if ($result_self['group'] == 0) {
+            $show_data['group'] = '普通会员';
+        } else {
+            $show_data['group'] = '特困会员';
+        }
+
+
+        if ($result_self['confirm_status'] == 0) {
+            $show_data['confirm_status'] = '未审核';
+        } else if ($result_self['confirm_status'] == 1) {
+            $show_data['confirm_status'] = '等待审核';
+        } else if ($result_self['confirm_status'] == 2) {
+            $show_data['confirm_status'] = '已审核';
+        } else if ($result_self['confirm_status'] == 3) {
+            $show_data['confirm_status'] = '审核失败';
+        }
+
+
+        $this->assign('show_data', $show_data);
+        $this->display();
+    }
+
+
+
+
 
 //帐号信息
     public function accountinfo()

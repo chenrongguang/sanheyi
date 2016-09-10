@@ -31,6 +31,7 @@ class AcceptController extends BaseController  {
 
                 //获取当前用户的出局钱包金额
                 $where_self['currency_id'] = 5; //
+                $where_self['user_id'] = $_SESSION['user']['user_id'];
                 $para['where'] = $where_self;
                 $result_self = D('user_currency')->getSingle($para);
                 if ($result_self !== false && $result_self !== null) {
@@ -88,6 +89,7 @@ class AcceptController extends BaseController  {
 
         //提供的金额不能大于出局钱包现有的金额
         $where_self['currency_id'] = 5; //
+        $where_self['user_id'] = $_SESSION['user']['user_id'];
         $para['where'] = $where_self;
         $result_self = D('user_currency')->getSingle($para);
         if ($result_self !== false && $result_self !== null) {
@@ -117,7 +119,9 @@ class AcceptController extends BaseController  {
         $data_accept['user_id']=$_SESSION['user']['user_id'];
         $data_accept['community_id']=$data['community_id'];
         $data_accept['total_num']=$data['num'];
-        $data_accept['remail_num']=$data['num'];
+        $data_accept['match_remain_num']=$data['num'];
+        $data_accept['pay_remain_num']=$data['num'];
+        $data_accept['confirm_remain_num']=$data['num'];
         $data_accept['create_time']=time();
         $data_accept['queue_time']=$data_accept['create_time'];
         $add_result= M('order_accept')->add($data_accept);

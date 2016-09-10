@@ -7,6 +7,12 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    public function test(){
+        $current_time=1473469787;
+        //echo strtotime("+5 hours");
+        echo  strtotime( "+".'15' ." day");
+    }
+
 
 
 }
