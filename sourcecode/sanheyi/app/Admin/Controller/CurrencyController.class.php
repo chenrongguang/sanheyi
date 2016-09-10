@@ -17,4 +17,18 @@ class CurrencyController extends BaseController  {
         parent::_initialize();
     }
 
+    //充值
+    public function  recharge(){
+        $this->display();
+    }
+
+    public function  rechargeDo(){
+        $this->display();
+    }
+
+    //充值记录
+    public function  rechargelist(){
+        $this->display();
+    }
+
 }

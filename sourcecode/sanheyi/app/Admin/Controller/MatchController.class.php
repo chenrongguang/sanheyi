@@ -8,13 +8,23 @@
  */
 
 namespace Admin\Controller;
+
 use Think\Controller;
 
-class MatchController extends BaseController  {
+class MatchController extends BaseController
+{
 
     public function _initialize()
     {
         parent::_initialize();
     }
+
+    public function matchlist()
+    {
+
+        $this->display();
+    }
+
+
 
 }

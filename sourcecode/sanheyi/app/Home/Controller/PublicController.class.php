@@ -198,7 +198,7 @@ class PublicController extends BaseController
         $this->display();
     }
 
-    public function menu()
+    public function left()
     {
         $this->display();
     }

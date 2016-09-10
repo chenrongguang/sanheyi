@@ -8,27 +8,42 @@
  */
 
 namespace Admin\Controller;
+
 use Think\Controller;
 
-class PublicController extends BaseController  {
+class PublicController extends BaseController
+{
 
     public function _initialize()
     {
         parent::_initialize();
     }
 
-    public  function  footer(){
-       $this->display();
-    }
-    public  function  header(){
+
+    public function  footer()
+    {
         $this->display();
     }
-    public  function menu(){
+
+    public function  header()
+    {
+        $this->display();
+    }
+
+    public function left()
+    {
+        $this->display();
+    }
+
+
+    public function main()
+    {
         $this->display();
     }
 
     //上传图片
-    public  function  uploadimg(){
+    public function  uploadimg()
+    {
 
         $upload = new \Think\Upload();
         $upType = C('UPLOADIFY_TYPE'); //允许上传的文件类型及大小定义等
@@ -46,7 +61,7 @@ class PublicController extends BaseController  {
             $info['Filedata']['view_url'] = C('UPLOAD_SERVER_URL') . $info['Filedata']['savepath'] . $info['Filedata']['savename']; //预览url
             $info['Filedata']['view_path'] = $info['Filedata']['view_url']; //预览路径
 
-            $mag = array('error' => false, 'message' => '上传成功',  'url' => $info['Filedata']['view_url']);
+            $mag = array('error' => false, 'message' => '上传成功', 'url' => $info['Filedata']['view_url']);
 
             $mag['error'] = 0;
         }

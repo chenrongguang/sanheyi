@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14328b33-4b20-4bb1-8cdc-44fe30b3682a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/relinfo.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/User/userinfo.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/AcceptController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/BaseController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/CommunityController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/CurrencyController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/IndexController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/LoginController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MatchController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/OfferController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/PublicController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/UserController.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Login/logout.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/AcceptController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/AcceptController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/IndexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/OfferController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/OfferController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UserController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UserController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderMatchModel.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderMatchModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Accept/acceptlist.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Accept/acceptlist.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/confirmmoney.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/confirmmoney.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/sendmoney.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/sendmoney.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Offer/offerlist.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Offer/offerlist.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/matchlist.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/offer_matchlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Login/login.html" afterPath="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_add.html" />
     </list>
     <ignored path="sanheyi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,35 +39,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MatchController.class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php">
+      <file leaf-file-name="MessageController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33247423">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="9.607142">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accept_matchlist.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/accept_matchlist.html">
+      <file leaf-file-name="mess_add.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.142857">
-              <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.61403507">
+              <caret line="104" column="19" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderMatchModel.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderMatchModel.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5">
-              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-              <folding>
-                <marker date="1473492106941" expanded="true" signature="248:683" placeholder="select A.*,D..t_order_match..." />
-                <marker date="1473492106941" expanded="true" signature="248:983" placeholder="select A.*,D..t_order_match..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -89,27 +79,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/UserModel.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/personinfo.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/pidlink.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UserCurrencyController.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/UserCurrency/detail.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/UserCurrencyModel.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/UserCurrencyDetailModel.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/in_detail.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/out_detail.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/Public/css/jquery.treeview.css" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/level_down_info.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderOfferModel.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MessageController.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderAcceptModel.class.php" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Public/left.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Message/mess_sys_list.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Community/community_list.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Message/mess_check_list.html" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Community/community_select_accept.html" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Community/community_select_offer.html" />
-        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Public/main.html" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Login/login.html" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/Public/js/common.js" />
@@ -140,6 +111,25 @@
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Model/OrderMatchModel.class.php" />
         <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/accept_matchlist.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Login/login.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/main.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/PublicController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/AcceptController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/OfferController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Match/matchlist.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MatchController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/left.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/CurrencyController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/UcController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Currency/recharge.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Currency/rechargelist.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/UserController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/LoginController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_list.html" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php" />
+        <option value="$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_add.html" />
       </list>
     </option>
   </component>
@@ -156,8 +146,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
-    <option name="y" value="7" />
+    <option name="x" value="-72" />
+    <option name="y" value="27" />
     <option name="width" value="1044" />
     <option name="height" value="699" />
   </component>
@@ -204,6 +194,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcecode" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -268,6 +272,88 @@
               <option name="myItemId" value="Public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcecode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcecode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcecode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sanheyi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -313,131 +399,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sourcecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sourcecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Match" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sourcecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sourcecode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sanheyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -447,7 +409,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fbman/football/sourcecode/footballman" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -460,11 +422,11 @@
       <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Home\View\Index" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Home\View\User" />
-      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Home\View\Match" />
-      <recent name="F:\project\sanheyi\sourcecode\sanheyi\Public\css\ztree" />
-      <recent name="F:\project\sanheyi\sourcecode\sanheyi\Public\js\home\ztree" />
-      <recent name="F:\project\sanheyi\sourcecode\sanheyi\Public\js" />
+      <recent name="F:\project\sanheyi\sourcecode\sanheyi\Public\admin\js" />
+      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Admin\View\Message" />
+      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Admin\Controller" />
+      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Admin\View\User" />
+      <recent name="F:\project\sanheyi\sourcecode\sanheyi\app\Admin\View\Accept" />
     </key>
   </component>
   <component name="RunManager">
@@ -905,15 +867,15 @@
       <workItem from="1473391093071" duration="532000" />
       <workItem from="1473397134732" duration="10771000" />
       <workItem from="1473415371230" duration="21000" />
-      <workItem from="1473428210196" duration="25504000" />
+      <workItem from="1473428210196" duration="37930000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141405000" />
+    <option name="totallyTimeSpent" value="153831000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="7" width="1044" height="699" extended-state="0" />
+    <frame x="-72" y="27" width="1044" height="699" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -925,14 +887,14 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14202334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20622568" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21136767" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20959148" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39253998" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1029,8 +991,18 @@
           <line>127</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php</url>
+          <line>116</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php</url>
+          <line>83</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="87" />
+      <option name="time" value="94" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -1043,235 +1015,11 @@
         <watch expression="$level_retult['level_'.$x.'_user_id']" />
         <watch expression=" $level_retult['level_'.$x.'_money']" />
         <watch expression="$level_retult['level_'.$x.'_user_id']" />
+        <watch expression="I(&quot;post.password&quot;)" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MessageController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.535714">
-          <caret line="42" column="25" selection-start-line="23" selection-start-column="6" selection-end-line="42" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.392857">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.071429">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Behavior/ParseTemplateBehavior.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.75">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Think/Template.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9285714">
-          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Think/View.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6785714">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Think/Hook.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.102493">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Public/left.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33566433">
-          <caret line="45" column="64" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Message/mess_check_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2027972">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Think/Controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.428571">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/ThinkPHP/Library/Think/App.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.428571">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/level_down_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4255814">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/changepwd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26233184">
-          <caret line="35" column="44" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12371134">
-          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Login/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0">
-          <caret line="44" column="81" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Public/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.678571">
-          <caret line="143" column="68" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/personinfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.1456954">
-          <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/out_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4877451">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/level_down_all.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2557545">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Login/reg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58567774">
-          <caret line="130" column="43" selection-start-line="130" selection-start-column="43" selection-end-line="130" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/Public/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.642858">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/reg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023715414">
-          <caret line="70" column="80" selection-start-line="70" selection-start-column="77" selection-end-line="70" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/Public/css/pagination.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/sendSZZ.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.037549406">
-          <caret line="60" column="73" selection-start-line="60" selection-start-column="73" selection-end-line="60" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/sendSXB.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.037549406">
-          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Uc/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52964425">
-          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/accountinfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.607142">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UcController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8883117">
-          <caret line="255" column="0" selection-start-line="246" selection-start-column="6" selection-end-line="255" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Offer/sendOffer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8207792">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Accept/sendAccept.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Message/mess_sys_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.035714">
@@ -1306,29 +1054,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/LoginController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.5296443">
-          <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/relpersoninfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.088932805">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UserController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6620553">
-          <caret line="142" column="50" selection-start-line="142" selection-start-column="50" selection-end-line="142" selection-end-column="50" />
-          <folding>
-            <element signature="e#9227#10613#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1415,18 +1145,292 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33247423">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Match/accept_matchlist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.142857">
+        <state vertical-scroll-proportion="0.5154639">
           <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MatchController.class.php">
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/foot.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33247423">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3427835">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/PublicController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1185567">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/UserController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2757732">
+          <caret line="337" column="30" selection-start-line="301" selection-start-column="3" selection-end-line="342" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/AcceptController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.464286">
+          <caret line="39" column="0" selection-start-line="19" selection-start-column="1" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/User/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/OfferController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6082474">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MatchController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.571428">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Match/matchlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/CurrencyController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.142858">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/UcController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.071429">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Currency/rechargelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Accept/acceptlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/User/userlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/UserController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19329897">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Currency/recharge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/LoginController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.3814435">
+          <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/left.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2540107">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/message_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Public/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59466666">
+          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Offer/offerlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64533335">
+          <caret line="98" column="9" selection-start-line="88" selection-start-column="0" selection-end-line="98" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.888">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Public/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3220339">
+          <caret line="130" column="99" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/LoginController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04842615">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/Login/reg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.5">
+          <caret line="95" column="23" selection-start-line="91" selection-start-column="7" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/MessageController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69007266">
+          <caret line="60" column="5" selection-start-line="45" selection-start-column="2" selection-end-line="60" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/Public/admin/js/ueditor/php/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36803874">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/View/User/accountinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59806293">
+          <caret line="106" column="9" selection-start-line="101" selection-start-column="7" selection-end-line="106" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Home/Controller/PublicController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19612591">
+          <caret line="192" column="25" selection-start-line="192" selection-start-column="25" selection-end-line="192" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13669065">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5871122">
+          <caret line="78" column="49" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/Controller/MessageController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.607142">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourcecode/sanheyi/app/Admin/View/Message/mess_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61403507">
+          <caret line="104" column="19" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
           <folding />
         </state>
       </provider>
