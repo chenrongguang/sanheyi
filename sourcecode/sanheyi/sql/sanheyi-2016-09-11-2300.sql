@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-09-10 15:46:21
+Date: 2016-09-11 22:42:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('1', 'admin', '管理员', 'e10adc3949ba59abbe56e057f20f883e', 'Y');
+INSERT INTO `t_admin` VALUES ('1', 'admin', '管理员', 'c4ca4238a0b923820dcc509a6f75849b', 'Y');
 
 -- ----------------------------
 -- Table structure for `t_community`
@@ -65,7 +65,7 @@ CREATE TABLE `t_community` (
 INSERT INTO `t_community` VALUES ('1', '特困社区', null, null, null, null, 'Y', '0', null, null, null, null, null, null, null, null, null, '0', null);
 INSERT INTO `t_community` VALUES ('2', '贫困社区', null, null, null, null, 'Y', '0', '0.3000', null, '1', '10', '1000.0000', '3000.0000', '100', '1', '7', '1', '1');
 INSERT INTO `t_community` VALUES ('3', '小康社区', null, null, null, null, 'Y', '5', '0.2000', '0.1500', '3', '15', '10000.0000', '30000.0000', '1000', '3', '9', '1', '2');
-INSERT INTO `t_community` VALUES ('4', '富人社区', null, null, null, null, 'Y', '0', '0.1000', null, '3', '15', '50000.0000', '100000.0000', '10000', '1', '30', '1', '3');
+INSERT INTO `t_community` VALUES ('4', '富人社区', null, null, null, null, 'Y', '0', '0.1000', null, '3', '15', '50000.0000', '300000.0000', '10000', '1', '30', '1', '3');
 INSERT INTO `t_community` VALUES ('5', '德善社区', null, null, null, null, 'Y', '0', '0.3000', null, null, null, null, null, null, null, null, '0', null);
 INSERT INTO `t_community` VALUES ('6', '大德社区', null, null, null, null, 'Y', '0', '0.3000', null, null, null, null, null, null, null, null, '0', null);
 
@@ -163,7 +163,7 @@ CREATE TABLE `t_currency` (
 -- ----------------------------
 INSERT INTO `t_currency` VALUES ('1', '善种子', 'Y');
 INSERT INTO `t_currency` VALUES ('2', '善心币', 'Y');
-INSERT INTO `t_currency` VALUES ('3', '善心币', 'Y');
+INSERT INTO `t_currency` VALUES ('3', '善金币', 'Y');
 INSERT INTO `t_currency` VALUES ('5', '出局钱包', 'Y');
 INSERT INTO `t_currency` VALUES ('4', '管理钱包', 'Y');
 
@@ -173,7 +173,7 @@ INSERT INTO `t_currency` VALUES ('4', '管理钱包', 'Y');
 DROP TABLE IF EXISTS `t_message`;
 CREATE TABLE `t_message` (
   `message_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` bigint(20) NOT NULL COMMENT '公告标题',
+  `title` varchar(200) NOT NULL COMMENT '公告标题',
   `content` varchar(4000) DEFAULT NULL COMMENT '公告内容',
   `type` smallint(6) NOT NULL DEFAULT '0' COMMENT '公告类型 ,0为系统公告,发送给所有人,1为审核公告,只发送给特定会员',
   `to_user_id` int(10) DEFAULT NULL COMMENT '发送给的特定会员id',
@@ -182,7 +182,7 @@ CREATE TABLE `t_message` (
   `use_yn` char(1) DEFAULT 'Y' COMMENT '是否可用,默认Y',
   PRIMARY KEY (`message_id`),
   KEY `ct` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='公告';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='公告';
 
 -- ----------------------------
 -- Records of t_message
@@ -194,13 +194,14 @@ INSERT INTO `t_message` VALUES ('4', '4', '444444', '1', '1', '1462545069', null
 INSERT INTO `t_message` VALUES ('5', '5', '555555', '0', null, '1462545069', null, 'Y');
 INSERT INTO `t_message` VALUES ('6', '6', '666666', '0', null, '1462545069', null, 'Y');
 INSERT INTO `t_message` VALUES ('7', '7', '77777', '1', '1', '1462545069', null, 'Y');
-INSERT INTO `t_message` VALUES ('8', '8', '88888', '0', null, '1462545069', null, 'Y');
-INSERT INTO `t_message` VALUES ('9', '9', '99999', '0', null, '1462545069', null, 'Y');
+INSERT INTO `t_message` VALUES ('8', '0', 'xxxxxvcvcvxcx\n', '0', null, '1462545069', null, 'Y');
+INSERT INTO `t_message` VALUES ('9', '9', '99999', '0', null, '1462545069', null, 'N');
 INSERT INTO `t_message` VALUES ('10', '10', '100000', '1', '1', '1462545069', null, 'Y');
-INSERT INTO `t_message` VALUES ('11', '11', '1111111', '0', null, '1462545069', null, 'Y');
+INSERT INTO `t_message` VALUES ('11', '999bghsgdfgsd', 'xxxxxcfdsfsadf\n', '0', null, '1462545069', null, 'Y');
 INSERT INTO `t_message` VALUES ('12', '12', '121212', '0', null, null, null, 'Y');
 INSERT INTO `t_message` VALUES ('13', '13', '1313', '0', null, null, null, 'Y');
 INSERT INTO `t_message` VALUES ('14', '14', '1414', '0', null, null, null, 'Y');
+INSERT INTO `t_message` VALUES ('15', 'jjjjjjj', 'xvxv1232131312\n', '0', null, '1473519523', '1', 'Y');
 
 -- ----------------------------
 -- Table structure for `t_order_accept`
@@ -276,12 +277,15 @@ CREATE TABLE `t_order_offer` (
   `max_match_time` int(11) DEFAULT NULL COMMENT '最晚必须匹配时间,创建时根据该社区的配置来计算并存储该时间',
   PRIMARY KEY (`offer_id`),
   KEY `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='提供资助表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='提供资助表';
 
 -- ----------------------------
 -- Records of t_order_offer
 -- ----------------------------
 INSERT INTO `t_order_offer` VALUES ('7', '1', '2', '2000.0000', '0.0000', '0.0000', '0.0000', '1473469787', '1', '2', '2', '2', '1473469787', '0', null);
+INSERT INTO `t_order_offer` VALUES ('8', '1', '3', '15000.0000', '15000.0000', '15000.0000', '15000.0000', '1473600139', '1', '0', '0', '0', '1473600139', '0', null);
+INSERT INTO `t_order_offer` VALUES ('9', '2', '4', '150000.0000', '150000.0000', '150000.0000', '150000.0000', '1473603231', '1', '0', '0', '0', '1473603216', '0', null);
+INSERT INTO `t_order_offer` VALUES ('10', '1', '4', '200000.0000', '200000.0000', '200000.0000', '200000.0000', '1473603556', '1', '0', '0', '0', '1473603221', '0', null);
 
 -- ----------------------------
 -- Table structure for `t_rebate`
@@ -302,6 +306,28 @@ CREATE TABLE `t_rebate` (
 -- Records of t_rebate
 -- ----------------------------
 INSERT INTO `t_rebate` VALUES ('1', '0.0800', '0.0600', '0.0500', '0.0400', '0.0300', '0.0200');
+
+-- ----------------------------
+-- Table structure for `t_recharge`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_recharge`;
+CREATE TABLE `t_recharge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '充值会员id',
+  `currency_id` int(11) NOT NULL COMMENT '币种',
+  `num` decimal(10,4) NOT NULL DEFAULT '0.0000' COMMENT '充值数量',
+  `create_time` int(11) DEFAULT NULL COMMENT '充值时间',
+  `create_user` int(11) DEFAULT NULL COMMENT '该记录操作人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='充值记录';
+
+-- ----------------------------
+-- Records of t_recharge
+-- ----------------------------
+INSERT INTO `t_recharge` VALUES ('1', '7', '1', '50.0000', '1473567541', '1');
+INSERT INTO `t_recharge` VALUES ('2', '6', '2', '100.0000', '1473567786', '1');
+INSERT INTO `t_recharge` VALUES ('3', '6', '3', '30.0000', '1473569290', '1');
+INSERT INTO `t_recharge` VALUES ('4', '6', '3', '333.0000', '1473569425', '1');
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -339,18 +365,19 @@ CREATE TABLE `t_user` (
   `last_ip` varchar(100) DEFAULT NULL COMMENT '上次登陆ip',
   `use_yn` char(1) DEFAULT 'Y' COMMENT '是否可用,封号,用该字段',
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `name` (`name`)
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `mobile` (`mobile`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', '1', 'c4ca4238a0b923820dcc509a6f75849b', 'c4ca4238a0b923820dcc509a6f75849b', '1', '1', '5', '1473144269', null, 'a', 'b', 'c', 'd', '琐琐碎碎', '非凡方法', 'g', '23423424', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c10141a1.jpg', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c13cb79a.jpg', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c16adf29.jpg', '0', '1', '1473343361', '1', '1', null, null, null, null, 'Y');
+INSERT INTO `t_user` VALUES ('1', '1', 'c4ca4238a0b923820dcc509a6f75849b', 'c4ca4238a0b923820dcc509a6f75849b', '13344', '15524683910', '5', '1473144269', null, 'cd', 'ef', 'gh', 'kl', '琐琐碎碎333', '非凡方法3333', 'g44444', '234234242222222', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c10141a1.jpg', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c13cb79a.jpg', 'http://local.sanheyi.com/Uploads/2016/09/08/57d15c16adf29.jpg', '0', '1', '1473343361', '1', '2', '1473561171', '1', null, null, 'Y');
 INSERT INTO `t_user` VALUES ('2', '2', 'c4ca4238a0b923820dcc509a6f75849b', 'c4ca4238a0b923820dcc509a6f75849b', '22', '12212', '1', '1473469702', null, null, null, null, null, null, null, null, null, null, null, null, '0', '1', '1473469735', '1', '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('3', '3333', 'c4ca4238a0b923820dcc509a6f75849b', 'c4ca4238a0b923820dcc509a6f75849b', 'c', '123', '-1', '1473144244', null, null, null, null, null, null, null, null, null, null, null, null, '0', '0', null, null, '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('4', '4444', 'c81e728d9d4c2f636f067f89cc14862c', '665f644e43731ff9db3d341da5c827e1', '2', '2', '1', '1473206305', null, null, null, null, null, null, null, null, null, null, null, null, '0', '1', '1473398180', '1', '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('5', '5555', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', '38026ed22fc1a91d92b5d2ef93540f20', '3', '3', '6', '1473206356', null, null, null, null, null, null, null, null, null, null, null, null, '0', '0', null, null, '0', null, null, null, null, 'Y');
-INSERT INTO `t_user` VALUES ('6', '6666', 'a87ff679a2f3e71d9181a67b7542122c', '011ecee7d295c066ae68d4396215c3d0', '4', '4', '7', '1473206499', null, null, null, null, null, null, null, null, null, null, null, null, '0', '0', null, null, '0', null, null, null, null, 'Y');
+INSERT INTO `t_user` VALUES ('6', '6666', 'a87ff679a2f3e71d9181a67b7542122c', '011ecee7d295c066ae68d4396215c3d0', '4', '4', '7', '1473206499', null, null, null, null, null, null, null, null, null, null, null, null, '0', '1', '1473343361', '1', '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('7', '7777', 'e4da3b7fbbce2345d7772b0674a318d5', '4e44f1ac85cd60e3caa56bfd4afb675e', '5', '5', '-1', '1473206547', null, null, null, null, null, null, null, null, null, null, null, null, '0', '1', '1473343361', '1', '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('8', '8888', 'c4ca4238a0b923820dcc509a6f75849b', '28c8edde3d61a0411511d3b1866f0636', '1', '1', '-1', '1473206595', null, null, null, null, null, null, null, null, null, null, null, null, '0', '0', null, null, '0', null, null, null, null, 'Y');
 INSERT INTO `t_user` VALUES ('9', '9999', 'bcbe3365e6ac95ea2c0343a2395834dd', 'be8fe4c12c4e43217c06098a2595a950', '22', '22', '1', '1473206612', null, null, null, null, null, null, null, null, null, null, null, null, '0', '1', '1473206612', null, '0', null, null, null, null, 'Y');
@@ -375,26 +402,26 @@ CREATE TABLE `t_user_currency` (
 -- Records of t_user_currency
 -- ----------------------------
 INSERT INTO `t_user_currency` VALUES ('1', '1', '1', '48.0000', '0.0000');
-INSERT INTO `t_user_currency` VALUES ('2', '1', '2', '88.0000', '0.0000');
+INSERT INTO `t_user_currency` VALUES ('2', '1', '2', '83.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('3', '1', '3', '200.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('4', '1', '4', '300.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('5', '1', '5', '80600.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('6', '6', '4', '38.0000', '0.0000');
-INSERT INTO `t_user_currency` VALUES ('7', '6', '2', '10.0000', '0.0000');
+INSERT INTO `t_user_currency` VALUES ('7', '6', '2', '110.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('8', '5', '1', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('9', '5', '2', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('10', '5', '3', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('11', '5', '4', '48.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('12', '5', '5', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('13', '2', '1', '0.0000', '0.0000');
-INSERT INTO `t_user_currency` VALUES ('14', '2', '2', '0.0000', '0.0000');
+INSERT INTO `t_user_currency` VALUES ('14', '2', '2', '497.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('15', '2', '3', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('16', '2', '4', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('17', '2', '5', '3000.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('18', '6', '1', '0.0000', '0.0000');
-INSERT INTO `t_user_currency` VALUES ('22', '6', '3', '0.0000', '0.0000');
+INSERT INTO `t_user_currency` VALUES ('22', '6', '3', '363.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('23', '6', '5', '0.0000', '0.0000');
-INSERT INTO `t_user_currency` VALUES ('24', '7', '1', '0.0000', '0.0000');
+INSERT INTO `t_user_currency` VALUES ('24', '7', '1', '50.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('25', '7', '2', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('26', '7', '3', '0.0000', '0.0000');
 INSERT INTO `t_user_currency` VALUES ('27', '7', '4', '30.0000', '0.0000');
@@ -417,7 +444,7 @@ CREATE TABLE `t_user_currency_detail` (
   `remark` varchar(11) DEFAULT NULL COMMENT '备注,这里边有:激活会员,提供资助,管理员充值 等',
   PRIMARY KEY (`detail_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='会员货币发生变化的明细表';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='会员货币发生变化的明细表';
 
 -- ----------------------------
 -- Records of t_user_currency_detail
@@ -442,3 +469,10 @@ INSERT INTO `t_user_currency_detail` VALUES ('20', '1', '5', '1', '600.0000', '0
 INSERT INTO `t_user_currency_detail` VALUES ('21', '5', '4', '1', '48.0000', '0', '管理员', '1473493024', '管理钱包收入', '下级确认收款返佣');
 INSERT INTO `t_user_currency_detail` VALUES ('22', '6', '4', '1', '36.0000', '0', '管理员', '1473493029', '管理钱包收入', '下级确认收款返佣');
 INSERT INTO `t_user_currency_detail` VALUES ('23', '7', '4', '1', '30.0000', '0', '管理员', '1473493034', '管理钱包收入', '下级确认收款返佣');
+INSERT INTO `t_user_currency_detail` VALUES ('24', '7', '1', '1', '50.0000', '0', '管理员', '1473567546', '管理员充值', '管理员充值');
+INSERT INTO `t_user_currency_detail` VALUES ('25', '6', '2', '1', '100.0000', '0', '管理员', '1473567790', '管理员充值', '管理员充值');
+INSERT INTO `t_user_currency_detail` VALUES ('26', '6', '3', '1', '30.0000', '0', '管理员', '1473569290', '管理员充值', '管理员充值');
+INSERT INTO `t_user_currency_detail` VALUES ('27', '6', '3', '1', '333.0000', '0', '管理员', '1473569425', '管理员充值', '管理员充值');
+INSERT INTO `t_user_currency_detail` VALUES ('28', '1', '2', '2', '-2.0000', '0', '管理员', '1473600139', '支出善心币', '提供资助');
+INSERT INTO `t_user_currency_detail` VALUES ('29', '2', '2', '2', '-3.0000', '0', '管理员', '1473603231', '支出善心币', '提供资助');
+INSERT INTO `t_user_currency_detail` VALUES ('30', '1', '2', '2', '-3.0000', '0', '管理员', '1473603556', '支出善心币', '提供资助');

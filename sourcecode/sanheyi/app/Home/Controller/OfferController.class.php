@@ -34,6 +34,7 @@ class OfferController extends BaseController
 
                 //获取当前用户的善心币数量
                 $where_self['currency_id'] = 2; //善心币
+                $where_self['user_id'] = $_SESSION['user']['user_id'];; //善心币
                 $para['where'] = $where_self;
                 $result_self = D('user_currency')->getSingle($para);
                 if ($result_self !== false && $result_self !== null) {

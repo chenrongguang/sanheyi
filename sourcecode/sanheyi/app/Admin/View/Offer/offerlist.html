@@ -1,33 +1,119 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="keywords" content="java培训 , .net培训 , php培训" />
-    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <meta name="keywords" content="java培训 , .net培训 , php培训"/>
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训"/>
     <title>提供资助列表</title>
     <style type="text/css">
-        .yi{margin-left:50px; float:left;}
-        .yi li{float:left;}
-        .er{float:right; margin-left:50px; margin-top:20px;}
-        .er li{ margin-right:20px; color:#09F; float:left;}
-        .ip1{ cursor:pointer; background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);background-repeat: repeat-x; border-color: #28a4c9;
-            box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
-            border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
-        .ip2{ cursor:pointer; background-image: linear-gradient(to bottom, #d9534f 0px, #c12e2a 100%);background-repeat: repeat-x;border-color: #b92c28;
-            box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
-            border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
-        .red{color:red;}
-        .blue{color:#4f7ca9;}
-        .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:800px;}
-        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
-        .lv{color:green;}
-        .beizhu{margin-left:100px; margin-top:10px; float:left;}
-        .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        .yi {
+            margin-left: 50px;
+            float: left;
+        }
+
+        .yi li {
+            float: left;
+        }
+
+        .er {
+            float: right;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        .er li {
+            margin-right: 20px;
+            color: #09F;
+            float: left;
+        }
+
+        .ip1 {
+            cursor: pointer;
+            background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);
+            background-repeat: repeat-x;
+            border-color: #28a4c9;
+            box-sizing: border-box;
+            font-size: 14px;
+            padding: 6px 12px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            color: #fff;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            border: none;
+        }
+
+        .ip2 {
+            cursor: pointer;
+            background-image: linear-gradient(to bottom, #d9534f 0px, #c12e2a 100%);
+            background-repeat: repeat-x;
+            border-color: #b92c28;
+            box-sizing: border-box;
+            font-size: 14px;
+            padding: 6px 12px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            color: #fff;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            border: none;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: #4f7ca9;
+        }
+
+        .gre {
+            color: #66cd00;
+        }
+
+        .san {
+            float: left;
+            margin-left: 50px;
+            width: 800px;
+        }
+
+        .san li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .lv {
+            color: green;
+        }
+
+        .beizhu {
+            margin-left: 100px;
+            margin-top: 10px;
+            float: left;
+        }
+
+        .kuang {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #c2c2c2;
+        }
     </style>
-    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
-    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css"/>
+    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css"/>
     <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/admin/js/common.js"></script>
     <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
@@ -37,37 +123,44 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
-    <include file ='Public:header' />
-    <include file ='Public:left' />
+    <include file='Public:header'/>
+    <include file='Public:left'/>
     <div class="you">
         <ul class="yi">
             <li><a href="{:U('public/main')}">主页</a>＞</li>
             <li class="blue">提供资助列表</li>
         </ul>
-        <br />
+        <br/>
         <ul class="er">
-          <li>社区:
-            <select id="ss_community">
-                <option value="0" selected>全部</option>
-                <option value="2">贫困社区</option>
-                <option value="3">小康社区</option>
-                <option value="4">富人社区</option>
-            </select>
-          </li>
+            <li>社区:
+                <select id="ss_community">
+                    <option value="-1" selected>全部</option>
+                    <option value="2">贫困社区</option>
+                    <option value="3">小康社区</option>
+                    <option value="4">富人社区</option>
+                </select>
+            </li>
             <li>匹配状态:
                 <select id="ss_match">
-                    <option value="0" >全部</option>
+                    <option value="-1">全部</option>
                     <option value="1" selected>未匹配</option>
                     <option value="2">已匹配</option>
                 </select>
             </li>
+            <li>
+                <input type="button" value="查询" id="btn_search" onclick="search();">
+                <input type="button" value="批量匹配" id="btn_batch_match" onclick="batch_match();">
+            </li>
         </ul>
         <ul class="san">
+            <li><input type="checkbox" class="checkAll" onclick="clickAll()" /></li>
             <li>ID</li>
             <li>类型</li>
             <li>社区</li>
+            <li>会员</li>
             <li>金额</li>
             <li>提交时间</li>
+            <li>排队时间</li>
             <li>付款信息</li>
             <li>匹配信息</li>
             <li>完成状态</li>
@@ -75,20 +168,46 @@
         </ul>
         <volist name="list" id="vo">
             <ul class="san">
+                <li><input type="checkbox"  class="checkOne" onclick="clickOne()" value="{$vo.offer_id}"/></li>
                 <li>{$vo.offer_id}</li>
                 <li>提供资助</li>
                 <li>{$vo.cname}</li>
+                <li>{$vo.user_name}</li>
                 <li>{$vo.num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <li><eq name='vo.pay_status' value='0'>未付款</eq><eq name='vo.pay_status' value='1'>部分付款</eq><eq name='vo.pay_status' value='2'>全部付款</eq></li>
-                <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
-                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li><eq name='vo.match_status' value='1'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq><eq name='vo.match_status' value='2'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq></li>
+                <li>{$vo.queue_time|date="Y-m-d H:i:s",###}</li>
+                <li>
+                    <eq name='vo.pay_status' value='0'>未付款</eq>
+                    <eq name='vo.pay_status' value='1'>部分付款</eq>
+                    <eq name='vo.pay_status' value='2'>全部付款</eq>
+                </li>
+                <li>
+                    <eq name='vo.match_status' value='0'>等待匹配</eq>
+                    <eq name='vo.match_status' value='1'>部分匹配</eq>
+                    <eq name='vo.match_status' value='2'>全部匹配</eq>
+                </li>
+                <li>
+                    <eq name='vo.confirm_status' value='0'>未完成</eq>
+                    <eq name='vo.confirm_status' value='1'>部分完成</eq>
+                    <eq name='vo.confirm_status' value='2'>全部完成</eq>
+                </li>
+                <li>
+                    <eq name='vo.match_status' value='0'>
+                        <input type="button" name="btn_to_first" onclick="to_que('{$vo.offer_id}',1);" value="排前">
+                        <input type="button" name="btn_to_last" onclick="to_que('{$vo.offer_id}',2);" value="排后">
+                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.offer_id}');" value="匹配">
+                    </eq>
+                    <eq name='vo.match_status' value='1'>
+                        <input type="button" name="btn_to_first" onclick="to_que('{$vo.offer_id}',1);" value="排前">
+                        <input type="button" name="btn_to_last" onclick="to_que('{$vo.offer_id}',2);" value="排后">
+                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.offer_id}');" value="匹配">
+                    </eq>
+                </li>
             </ul>
         </volist>
         <empty name="list">
             <tr>
-                <td colspan="9">目前没有相关信息</td>
+                <td colspan="12">目前没有相关信息</td>
             </tr>
         </empty>
         <notempty name="list">
@@ -96,16 +215,84 @@
         </notempty>
 
     </div>
-    <include file ='Public:foot' />
+    <include file='Public:foot'/>
 </div>
 <script type="text/javascript">
 
-    function show_uncomplete(){
-        location.href="{:U('Offer/offerlist')}";
+    $(document).ready(function () {
+        //设置进入页面之后的选中值
+        var community_id = "{$community_id}";
+        var match = "{$match}";
+        $('#ss_community').val(community_id)
+        $('#ss_match').val(match);
+    });
+
+    function search() {
+        //获取社区
+        var community_id = $('#ss_community').val();
+
+        var match = $('#ss_match').val();
+
+        $url = '/admin/Offer/offerlist/match/' + match + '/community_id/' + community_id;
+        location.href = $url;
+        //获取匹配状态
     }
 
-    function show_complete(){
-        location.href="{:U('Offer/offerlist',array('confirm_status'=>2))}";
+    //获取选中的checkbox的值
+    function  get_checked_offer(){
+        var ret='';
+        var offer_id=''
+        $('.checkOne:checked').each(function() {
+            offer_id = $(this).val();
+            if(ret==''){
+                ret=offer_id;
+            }else{
+                ret = ret +',' + offer_id;
+            }
+        });
+
+        return ret;
+    }
+
+    //批量开始匹配,如果用户选了已经完全匹配的记录,则后台处理自动跳过
+    function  batch_match(){
+        var offer_ids=get_checked_offer();
+        if(offer_ids==''){
+            alert('请先勾选需要匹配的记录');
+            return;
+        }
+
+    }
+
+    //排队到最前面,type 为1,表示要排到最前面,为2表示要排到最后面
+    function to_que(offer_id,type) {
+        var path = "{:U('offer/ajaxoffer_to_que')}";
+        var community_id = $('#ss_community').val();
+        var match = $('#ss_match').val();
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({offer_id:offer_id,type:type,community_id:community_id,match:match}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+
+                    //路径要拼上现在的查询状态
+                    //location.href= data.return_data.url+ '/' + match + '/community_id/' + community_id;;
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+    //开始匹配
+    function to_match(offer_id) {
+        alert(offer_id);
     }
 
 </script>
