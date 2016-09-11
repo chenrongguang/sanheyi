@@ -26,12 +26,12 @@
         .beizhu{margin-left:100px; margin-top:10px; float:left;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
     </style>
-    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
-    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
-    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
-    <script src="__PUBLIC__/js/common.js"></script>
-    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
-    <script src="__PUBLIC__/js/home/tigongzizhuliebiao.js"></script>
+    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/admin/js/common.js"></script>
+    <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/admin/js/home/tigongzizhuliebiao.js"></script>
 
 </head>
 
@@ -46,8 +46,21 @@
         </ul>
         <br />
         <ul class="er">
-            <li><input class="ip1" type="button" value="查看未完成" onclick="show_uncomplete();" /></li>
-            <li><input class="ip2" type="button" value="查看已完成" onclick="show_complete();"/></li>
+          <li>社区:
+            <select id="ss_community">
+                <option value="0" selected>全部</option>
+                <option value="2">贫困社区</option>
+                <option value="3">小康社区</option>
+                <option value="4">富人社区</option>
+            </select>
+          </li>
+            <li>匹配状态:
+                <select id="ss_match">
+                    <option value="0" >全部</option>
+                    <option value="1" selected>未匹配</option>
+                    <option value="2">已匹配</option>
+                </select>
+            </li>
         </ul>
         <ul class="san">
             <li>ID</li>
@@ -82,7 +95,6 @@
             <div class="beizhu">{$page}</div>
         </notempty>
 
-        <div class="beizhu">注：此页面默认只显示未匹配或未完成的挂单，要查看已完成的挂单，请点击右上角的【查看已完成】按钮。</div>
     </div>
     <include file ='Public:foot' />
 </div>

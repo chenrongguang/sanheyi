@@ -24,7 +24,6 @@ class UcController extends BaseController
     public function in_detail()
     {
         $conditionData['detail_type'] = 1;
-        $conditionData['user_id'] = $_SESSION['user']['user_id'];
 
         $model = M('user_currency_detail');
         $total = $model->field('detail_id')->where($conditionData)->count();
@@ -32,10 +31,9 @@ class UcController extends BaseController
         $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
 
         $paras['detail_type'] = 1;
-        $paras['user_id'] = $_SESSION['user']['user_id'];
         $paras['page'] = $Page;
 
-        $list = D('UserCurrencyDetail')->getList($paras);
+        $list = D('Home/UserCurrencyDetail')->getList($paras);
 
         $show = $Page->show();
 
@@ -49,7 +47,6 @@ class UcController extends BaseController
     public function out_detail()
     {
         $conditionData['detail_type'] = 2;
-        $conditionData['user_id'] = $_SESSION['user']['user_id'];
 
         $model = M('user_currency_detail');
         $total = $model->field('detail_id')->where($conditionData)->count();
@@ -57,10 +54,9 @@ class UcController extends BaseController
         $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
 
         $paras['detail_type'] = 2;
-        $paras['user_id'] = $_SESSION['user']['user_id'];
         $paras['page'] = $Page;
 
-        $list = D('UserCurrencyDetail')->getList($paras);
+        $list = D('Home/UserCurrencyDetail')->getList($paras);
 
         $show = $Page->show();
 

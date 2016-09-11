@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>会员列表</title>
+    <title>支出记录</title>
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
@@ -14,10 +14,10 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:700px;}
+        .san{float:left; margin-left:50px; width:800px;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
-        .beizhu{margin-left:50px; margin-top:10px; float:left;}
+        .beizhu{margin-left:50px; margin-top:10px; float:left; width:800px; height:40px; line-height:40px; text-align:center;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
     </style>
     <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
@@ -25,7 +25,7 @@
     <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/admin/js/common.js"></script>
     <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
-    <script src="__PUBLIC__/admin/js/home/jihuohuiyuan.js"></script>
+    <script src="__PUBLIC__/admin/js/home/zhichujilu.js"></script>
 
 </head>
 
@@ -35,52 +35,40 @@
     <include file ='Public:left' />
     <div class="you">
         <ul class="yi">
-            <li><a href="{:U('public/main')}">主页</a>＞</li>
-            <li class="blue"> 会员列表</li>
+            <li><a href="U('public/main')">主页</a>＞</li>
+            <li class="blue">支出记录</li>
         </ul>
         <br />
         <ul class="san">
-            <li>登录账号</li>
-            <li>姓名</li>
-            <li>电话</li>
-            <li>状态</li>
-            <li style="width:200px;">注册时间</li>
-            <li style="width:200px;">审核状态</li>
-            <li>操作</li>
+            <li>操作备注</li>
+            <li>会员帐号</li>
+            <li>币种类型</li>
+            <li>支出</li>
+            <li>接受账号</li>
+            <li style="width:200px;">备注</li>
+            <li style="width:200px;">时间</li>
         </ul>
         <volist name="list" id="vo">
             <ul class="san">
+                <li>{$vo.handle_type}</li>
+                <li>{$vo.user_name}</li>
                 <li>{$vo.name}</li>
-                <li>{$vo.family_name}</li>
-                <li>{$vo.mobile}</li>
-                <li><eq name='vo.act_status' value='0'>未激活</eq><eq name='vo.act_status' value='1'>已激活</eq></li>
-                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <li>
-                    <eq name='vo.confirm_status' value='0'>未审核</eq>
-                    <eq name='vo.confirm_status' value='1'>审核中</eq>
-                    <eq name='vo.confirm_status' value='2'>已审核</eq>
-                </li>
-                <li>
-                    <a  href="{:U('user/userinfo',array('user_id'=>$vo['user_id'],'handle_type'=>'0'))}">查看</a>
-                    <a  href="{:U('user/userinfo',array('user_id'=>$vo['user_id'],'handle_type'=>'1'))}">修改</a>
-                    <eq name='vo.confirm_status' value='1'>
-                        <a  href="{:U('user/userinfo',array('user_id'=>$vo['user_id'],'handle_type'=>'2'))}">审核</a>
-                    </eq>
-                </li>
+                <li>{$vo.detail_num}</li>
+                <li>{$vo.rel_user}</li>
+                <li style="width:200px;">{$vo.remark}</li>
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
             </ul>
         </volist>
         <empty name="list">
             <tr>
-                <td colspan="7">目前没有相关信息</td>
+                <td colspan="6">目前没有相关信息</td>
             </tr>
         </empty>
         <notempty name="list">
             <div class="beizhu">{$page}</div>
         </notempty>
-
     </div>
     <include file ='Public:foot' />
 </div>
-
 </body>
 </html>

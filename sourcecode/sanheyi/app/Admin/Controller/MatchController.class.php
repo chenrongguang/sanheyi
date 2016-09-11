@@ -22,9 +22,22 @@ class MatchController extends BaseController
     public function matchlist()
     {
 
+        $model = M('order_match');
+        $total = $model->field('match_id')->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+
+        $paras['page'] = $Page;
+
+        $list = D('Home/OrderMatch')->getList($paras);
+
+        $show = $Page->show();
+
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
         $this->display();
+
     }
-
-
 
 }

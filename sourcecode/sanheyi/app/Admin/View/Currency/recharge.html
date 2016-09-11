@@ -1,10 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>管理员充值</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{margin-left:50px; float:left; margin-top:20px;}
+        .er li{width:600px; height:30px; line-height:30px; border-bottom:1px solid #c2c2c2;}
+        .nei1{width:20%; height:30px; line-height:30px; float:left; text-align:center;}
+        .nei2{width:80%; height:30px; line-height:30px; float:left;}
+        .xin{color:red; margin-left:5px;}
+        .tishi{color:red; margin-left:10px;}
+        .inp{float:left;}
+        .jian{width:20px; height:20px; float:left; margin-top:5px; margin-right:5px; cursor:pointer;}
+        .inp2{width:30px; text-align:center; float:left; margin-top:3px;}
+        .jia{width:20px; height:20px; float:left; margin-top:5px; margin-left:5px; cursor:pointer;}
+        .tijiao{margin:0 auto; display:block;}
+        .di{color:red;}
+        .er li a{margin-right:30px;}
+        .san{float:left; width:500px; margin-left:50px; margin-top:20px;}
+        .san span{color:red;}
+    </style>
+    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/admin/js/common.js"></script>
+    <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/admin/js/home/zizhu.js"></script>
 </head>
+
 <body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <div class="you">
+        <ul class="yi">
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li>管理员充值</li>
+        </ul>
+        <br />
+        <ul class="er">
+            <form method="post" action="{:U('currency/rechargeDo')}" name="form" id="form">
+                <li>
+                    <div class="nei1">会员帐号：</div>
+                    <input type="text" name="name" id="name"  />
+                </li>
+                <li>
+                    <div class="nei1">充值币种：</div>
+                    <input type="hidden" name="currency_id" id="currency_id"  />
+                    <select id="ss_currency">
+                        <option value="1" selected> 善种子</option>
+                        <option value="2" >善心币</option>
+                        <option value="3" >善金币</option>
+                    </select>
+                </li>
+
+                <li>
+                    <div class="nei1">充值数量：</div>
+                    <div class="nei2"><input type="text" class="inp1" id="num" name="num" /><span class="xin">*</span></div>
+                </li>
+
+
+                <!--社区id-->
+                <input type="hidden" name="user_id" id="user_id"  />
+                <li><input   id="btn_sub"  type="button"  onclick="sub(1)"  class="tijiao" value="提交充值" /></li>
+            </form>
+        </ul>
+
+    </div>
+    <include file ='Public:foot' />
+</div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+
+
+        if($('#user_id').val()==''){
+            alert('请输入会员名');
+            return  false;
+        }
+        //检测没问题之后
+        //将下拉选中值,赋给隐藏域
+        $('#currency_id').val($('#ss_currency').val());
+        //alert( $('#currency_id').val());
+        return true;
+
+    }
+
+
+    //检查会员是否正确存在
+    $('#name').bind('blur', function(){
+        var name =$(this).val();
+        var path = "{:U('login/ajaxCheckname')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({name:name}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                    $('#user_id').val(data.return_data.user_id);
+
+                }else{
+                    alert(data.msg);
+                    $('#user_id').val('');
+                    //$('#p_name').focus();
+                }
+
+            }
+        });
+
+    });
+
+</script>
 
 </body>
 </html>

@@ -59,7 +59,7 @@
                 <input class="tj" type="button" value="登录" onclick="sub()" />
                 <ul class="lianjie">
                     <li><a href="<?php echo U('Login/reg');?>">快速注册</a></li>
-                    <!--<li><a href="<?php echo U('Login/findpwd');?>">找回密码</a></li>-->
+                    <li><a href="<?php echo U('Login/findpwd');?>">找回密码</a></li>
                 </ul>
             </div>
         </form>

@@ -37,29 +37,106 @@
     <div class="denglu">
         <h1>找回密码</h1>
         <div class="tishi"></div>
-        <form method="post">
+        <form method="post"  method="post"  action="{:U('Login/findpwdDo')}" name="form" id="form">
             <div class="username">
                 <div class="qian">注册手机：</div>
-                <input class="inp" type="text" placeholder="11位手机号码" />
+                <input class="inp" type="text" name="mobile" id="mobile" placeholder="11位手机号码" />
                 <span class="zhong">*</span>
-                <span class="hou"><input type="button" value="获取验证码" /></span>
+                <span class="hou"><input type="button" value="获取验证码" onclick="sendcode();" /></span>
             </div>
             <div class="two">
                 <div class="qian">手机验证码：</div>
-                <input class="inp" type="password" placeholder="手机接收到的6位验证码" />
+                <input class="inp" type="text" name="code" id="code" placeholder="手机接收到的验证码" />
                 <span class="zhong">*</span>
             </div>
+            <!--
             <div class="two">
                 <div class="qian">图形验证码：</div>
                 <input class="inp" type="password" placeholder="右边的图形验证码" />
                 <span class="zhong">*</span>
                 <span class="hou">此处放验证码</span>
             </div>
+            -->
             <div class="two">
-                <input class="tijiao" type="submit" value="找回密码" />
+                <input class="tijiao"  value="找回密码" type="button" value="提交注册" onclick="sub(1)" />
             </div>
+            <div class="beizhu">注：找回密码成功之后,该帐号的登陆密码和二级密码都被更新为该手机号,请立刻登陆并更改密码</div>
         </form>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    var mobile_validae=false;
+    //检查手机号是否可用
+    $('#mobile').bind('blur', function(){
+        var mobile =$(this).val();
+        var path = "{:U('login/ajaxCheckmobile_ok')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({mobile:mobile}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                    mobile_validae=true;
+                }else{
+                    //$(this).val('');
+                    mobile_validae=false;
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    });
+
+    function validate_handle(){
+        //todo
+
+        if(mobile_validae==false){
+            alert('请输入有效的手机号');
+            return false;
+        }
+
+        return true;
+
+    }
+
+    //发送手机验证码
+    function  sendcode(){
+
+        if(mobile_validae==false){
+            alert('请输入有效的手机号');
+            return false;
+        }
+
+        var mobile =$('#mobile').val();
+        var path = "{:U('login/ajxsendphonecode')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({mobile:mobile}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                     alert('验证码已经发送,请查收');
+                }else{
+                    //$(this).val('');
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+
+    }
+
+</script>
+
 </body>
 </html>

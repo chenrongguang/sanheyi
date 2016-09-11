@@ -68,4 +68,28 @@ class LoginController extends Controller  {
         $Verify->entry();
     }
 
+
+    //检测该人是否存在,存在返回user_id
+    public  function ajaxCheckname(){
+
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $name=$post['name'];
+        $where['name']=$name;
+        $where['act_status']=1;//必须是激活的才可用
+        // $where['name']=I("post.p_name");
+        $reult= M('user')->where($where)->find();
+        //找到
+        if($reult!==false && $reult!==null){
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
+            $return_data['user_id']=$reult[user_id];
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
+
+        }
+        else{
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL','0001','该用户不存在!'));
+        }
+    }
+
+
 }

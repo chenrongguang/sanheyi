@@ -101,7 +101,7 @@
                  if(data.result=='SUCCESS'){
                     //location.href= data.return_data.url;
                  }else{
-                     $(this).val('');
+                     //$(this).val('');
                     alert(data.msg);
                  }
 
@@ -109,6 +109,31 @@
         });
 
     });
+
+
+    //检查手机号是否可用
+    $('#mobile').bind('blur', function(){
+        var mobile =$(this).val();
+        var path = "{:U('login/ajaxCheckmobile')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({mobile:mobile}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                }else{
+                    //$(this).val('');
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    });
+
 
     //检查推荐人是否正确存在
     $('#p_name').bind('blur', function(){
