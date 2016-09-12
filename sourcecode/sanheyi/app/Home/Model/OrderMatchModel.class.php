@@ -347,6 +347,7 @@ where  A.status=1";
             $data_match['accept_id'] = $accept_id;
             $data_match['match_num'] = $match_num;
             $data_match['match_time'] = time();
+            $data_match['max_pay_time'] =$this->calc_max_pay_time($community_id); //计算出最晚付款时间
             $r[] = M('order_match')->add($data_match);
 
             //更新相应的offer表的字段状态
@@ -386,6 +387,18 @@ where  A.status=1";
         return $result_final;
 
     }
+
+    //计算出最后确认收款时间
+    private function  calc_max_pay_time($community_id){
+        $where['community_id']=$community_id;
+        $com_result=M('community')->where($where)->find();
+        $max_day=$com_result['pay_day_max'];
+
+        return  strtotime( "+".$max_day ." day");
+
+    }
+
+
 
     //寻找合适匹配的接收资助记录
     private function find_accept_record($community_id, $user_id, $offer_match_remain_num)
@@ -538,6 +551,7 @@ where  A.status=1";
             $data_match['accept_id'] = $paras['accept_id'];
             $data_match['match_num'] = $match_num;
             $data_match['match_time'] = time();
+            $data_match['max_pay_time'] =$this->calc_max_pay_time($community_id); //计算出最晚付款时间
             $r[] = M('order_match')->add($data_match);
 
 
