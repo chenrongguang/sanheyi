@@ -20,12 +20,42 @@ class AcceptController extends BaseController  {
     //批量匹配
     public function  run_match_mult_Do(){
 
-    }
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $accept_ids = $post['accept_ids'];
 
+        $arr = explode(',', $accept_ids);
+
+        foreach ($arr as $k => $val) {
+            $accept_id = $val;
+            $paras['accept_id'] = $accept_id;
+
+            //返回的是数组 ,里边包括code和info,code为0表示成功,为1表示失败
+            D('Home/OrderMatch')->match_from_accept_to_offer($paras); //不管返回了成功还是失败,都要继续进行
+
+        }
+
+        //都返回处理成功
+        $return_data['url'] = U('accept/acceptlist', array('community_id' => $post['community_id'], 'match' => $post['match']));
+        $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '批量匹配成功', $return_data));
+
+    }
 
     //单个匹配
     public function  run_match_single_Do(){
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $accept_id = $post['accept_id'];
+        $paras['accept_id'] = $accept_id;
 
+        //返回的是数组 ,里边包括code和info,code为0表示成功,为1表示失败
+        $result = D('Home/OrderMatch')->match_from_accept_to_offer($paras);
+        if ($result['code'] == 0) {
+            $return_data['url'] = U('accept/acceptlist', array('community_id' => $post['community_id'], 'match' => $post['match']));
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '匹配成功', $return_data));
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', $result['info']));
+        }
     }
 
 
@@ -88,7 +118,7 @@ class AcceptController extends BaseController  {
     }
 
     //提供资助的排队
-    public function ajaxoffer_to_que(){
+    public function ajaxaccept_to_que(){
 
         $content = file_get_contents('php://input');
         $post = json_decode($content, true);

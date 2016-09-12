@@ -195,12 +195,12 @@
                     <eq name='vo.match_status' value='0'>
                         <input type="button" name="btn_to_first" onclick="to_que('{$vo.offer_id}',1);" value="排前">
                         <input type="button" name="btn_to_last" onclick="to_que('{$vo.offer_id}',2);" value="排后">
-                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.offer_id}');" value="匹配">
+                        <input type="button" name="btn_to_match" onclick="single_match('{$vo.offer_id}');" value="匹配">
                     </eq>
                     <eq name='vo.match_status' value='1'>
                         <input type="button" name="btn_to_first" onclick="to_que('{$vo.offer_id}',1);" value="排前">
                         <input type="button" name="btn_to_last" onclick="to_que('{$vo.offer_id}',2);" value="排后">
-                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.offer_id}');" value="匹配">
+                        <input type="button" name="btn_to_match" onclick="single_match('{$vo.offer_id}');" value="匹配">
                     </eq>
                 </li>
             </ul>
@@ -262,6 +262,28 @@
             return;
         }
 
+        var path = "{:U('offer/run_match_mult_Do')}";
+        var community_id = $('#ss_community').val();
+        var match = $('#ss_match').val();
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({offer_ids:offer_ids,community_id:community_id,match:match}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+
+
     }
 
     //排队到最前面,type 为1,表示要排到最前面,为2表示要排到最后面
@@ -291,8 +313,28 @@
     }
 
     //开始匹配
-    function to_match(offer_id) {
-        alert(offer_id);
+    function single_match(offer_id) {
+        var path = "{:U('offer/run_match_single_Do')}";
+        var community_id = $('#ss_community').val();
+        var match = $('#ss_match').val();
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({offer_id:offer_id,community_id:community_id,match:match}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    //路径要拼上现在的查询状态
+                    //location.href= data.return_data.url+ '/' + match + '/community_id/' + community_id;;
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
     }
 
 </script>

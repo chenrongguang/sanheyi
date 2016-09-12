@@ -117,24 +117,24 @@ where  A.status=1";
         $r[] = M('user_currency_detail')->add($detail_data);
 
         //计算各级返佣金，并插入到各个上级的货币总数 ， 以及增加对应货币的财务明细表
-        $level_currency_id=4; //定义货币类型为管理钱包
+        $level_currency_id = 4; //定义货币类型为管理钱包
         $level_retult = $this->calc_level_get_money($offer_get_money, $offer_result['user_id']);
 
         //总共6代返佣
         for ($x = 1; $x <= 6; $x++) {
             //如果该数组下标不为空
-            if(!empty($level_retult['level_'.$x.'_user_id'])){
+            if (!empty($level_retult['level_' . $x . '_user_id'])) {
 
                 $r[] = M('user_currency')
-                    ->where(array('user_id' => $level_retult['level_'.$x.'_user_id'], 'currency_id' => $level_currency_id))
-                    ->setInc('num', $level_retult['level_'.$x.'_money']);
+                    ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $level_currency_id))
+                    ->setInc('num', $level_retult['level_' . $x . '_money']);
 
                 //增加offer人对应的货币明细记录
 
-                $detail_data_level['user_id'] = $level_retult['level_'.$x.'_user_id'];
-                $detail_data_level['currency_id'] =  $level_currency_id;
+                $detail_data_level['user_id'] = $level_retult['level_' . $x . '_user_id'];
+                $detail_data_level['currency_id'] = $level_currency_id;
                 $detail_data_level['detail_type'] = 1;
-                $detail_data_level['detail_num'] = $level_retult['level_'.$x.'_money'];
+                $detail_data_level['detail_num'] = $level_retult['level_' . $x . '_money'];
                 $detail_data_level['create_time'] = time();
                 $detail_data_level['handle_type'] = '管理钱包收入';
                 $detail_data_level['remark'] = '下级确认收款返佣';
@@ -144,10 +144,10 @@ where  A.status=1";
 
         //判读是否对该提供资助的人进行封号处理
         //为1表示要进行封号处理
-        if( $data['lock_accept_user']==1){
-            $update_user_data['use_yn']='N';
+        if ($data['lock_accept_user'] == 1) {
+            $update_user_data['use_yn'] = 'N';
             $r[] = M('user')
-                ->where(array('user_id' =>  $accept_result['user_id']))
+                ->where(array('user_id' => $accept_result['user_id']))
                 ->save($update_user_data);
         }
 
@@ -165,73 +165,67 @@ where  A.status=1";
     //计算各级返佣金额
     private function  calc_level_get_money($offer_get_money, $user_id)
     {
-        $final_result[]=null;
-        $result_rebate=M('rebate')->find();
+        $final_result[] = null;
+        $result_rebate = M('rebate')->find();
 
-        $where_level['user_id']=$user_id;
+        $where_level['user_id'] = $user_id;
 
         //level-1
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_1_user_id']=$result_level['p_id'];
-            $final_result['level_1_money']=$offer_get_money * $result_rebate['level_1_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_1_user_id'] = $result_level['p_id'];
+            $final_result['level_1_money'] = $offer_get_money * $result_rebate['level_1_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
         //level-2
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_2_user_id']=$result_level['p_id'];
-            $final_result['level_2_money']=$offer_get_money * $result_rebate['level_2_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_2_user_id'] = $result_level['p_id'];
+            $final_result['level_2_money'] = $offer_get_money * $result_rebate['level_2_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
 
         //level-3
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_3_user_id']=$result_level['p_id'];
-            $final_result['level_3_money']=$offer_get_money * $result_rebate['level_3_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_3_user_id'] = $result_level['p_id'];
+            $final_result['level_3_money'] = $offer_get_money * $result_rebate['level_3_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
 
         //level-4
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_4_user_id']=$result_level['p_id'];
-            $final_result['level_4_money']=$offer_get_money * $result_rebate['level_4_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_4_user_id'] = $result_level['p_id'];
+            $final_result['level_4_money'] = $offer_get_money * $result_rebate['level_4_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
 
         //level-5
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_5_user_id']=$result_level['p_id'];
-            $final_result['level_5_money']=$offer_get_money * $result_rebate['level_5_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_5_user_id'] = $result_level['p_id'];
+            $final_result['level_5_money'] = $offer_get_money * $result_rebate['level_5_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
 
         //level-6
-        $result_level= M('user')->where($where_level)->field('p_id')->find();
-        if($result_level!==null && $result_level !==false && $result_level['p_id']>0){
-            $final_result['level_6_user_id']=$result_level['p_id'];
-            $final_result['level_6_money']=$offer_get_money * $result_rebate['level_6_rate'] ;
-            $where_level['user_id']=$result_level['p_id'];
-        }
-        else{
+        $result_level = M('user')->where($where_level)->field('p_id')->find();
+        if ($result_level !== null && $result_level !== false && $result_level['p_id'] > 0) {
+            $final_result['level_6_user_id'] = $result_level['p_id'];
+            $final_result['level_6_money'] = $offer_get_money * $result_rebate['level_6_rate'];
+            $where_level['user_id'] = $result_level['p_id'];
+        } else {
             return $final_result;
         }
 
@@ -273,6 +267,317 @@ where  A.status=1";
 
         return $get_money;
     }
+
+    //开始匹配 ,从提供资助去匹配接收资助
+    public function  match_from_offer_to_accept($paras)
+    {
+        //默认返回
+        $result_final['code'] = 1;//失败
+        $result_final['info'] = '处理失败';
+        //首先再次检测该匹配的状态,如果全部匹配,则返回操作失败
+        $where_offer['offer_id'] = $paras['offer_id'];
+        $where_offer['status'] = 1;
+        $where_offer['match_status'] = array('NEQ', 2);
+        $where_offer['pay_status'] = array('NEQ', 2);//这条件最好也加上,不能是完全付款的
+        $where_offer['confirm_status'] = array('NEQ', 2);//这条件最好也加上,不能是完全确认的
+        $result_offer = M('order_offer')->where($where_offer)->find();
+        if ($result_offer == false || $result_offer == null) {
+            return $result_final;
+        }
+
+        $offer_match_remain_num = $result_offer['match_remain_num']; //该提供资助需要匹配的金额
+        $community_id = $result_offer['community_id'];//社区
+        $user_id = $result_offer['user_id'];//提供资助的会员 ,后续不能匹配自己的接收资助
+
+        $result_accept = $this->find_accept_record($community_id, $user_id, $offer_match_remain_num); //寻找
+        //查找失败
+        if ($result_accept == false) {
+            $result_final['code'] = 2;//失败
+            $result_final['info'] = '未找到合适的接收资助进行匹配';
+            return $result_final;
+        }
+
+        $handle_flag = true; //处理结果标志
+        //循环找到的需要处理的接收资助,进行匹配
+        foreach ($result_accept as $k => $val) {
+            $accept_id = $val['accept_id'];
+            $accept_match_remain_num = $val['match_remain_num']; //该接收资助目前剩余的可匹配金额
+
+            //本次匹配金额
+            //$match_num = 0;
+            //如果需要匹配的金额大于等于该接受资助能提供的金额
+            //那么, 匹配金额 就是接收资助的剩余匹配金额
+            //否则,匹配金额就是提供资助的剩余未匹配金额
+            if ($offer_match_remain_num >= $accept_match_remain_num) {
+                $match_num = $accept_match_remain_num;
+            } else {
+                $match_num = $offer_match_remain_num;
+            }
+
+            //剩余匹配金额
+            //计算新的offer表的剩余匹配金额
+            $offer_new_match_remain_num=$offer_match_remain_num-$match_num;
+
+            //重新赋值给该offer的最新剩余金额,因为下次循环要用到该值啊
+            $offer_match_remain_num =$offer_new_match_remain_num;
+
+            //重新计算匹配状态
+            if($offer_new_match_remain_num==0){
+                $offer_match_status=2;
+            }
+            else{
+                $offer_match_status=1;
+            }
+
+            //计算新的accept表的剩余匹配金额
+            $accept_new_match_remain_num=$accept_match_remain_num-$match_num;
+            //重新计算匹配状态
+            if($accept_new_match_remain_num==0){
+                $accept_match_status=2;
+            }
+            else{
+                $accept_match_status=1;
+            }
+
+            //开启事务
+            M()->startTrans();
+
+            //给match表增加记录
+            $data_match['offer_id'] = $paras['offer_id'];
+            $data_match['accept_id'] = $accept_id;
+            $data_match['match_num'] = $match_num;
+            $data_match['match_time'] = time();
+            $r[] = M('order_match')->add($data_match);
+
+            //更新相应的offer表的字段状态
+            $update_offer_where['offer_id']=$paras['offer_id'];
+            $update_offer_data['match_remain_num']=$offer_new_match_remain_num;
+            $update_offer_data['match_status']=$offer_match_status;
+            $r[] = M('order_offer')
+                ->where($update_offer_where)
+                ->save($update_offer_data);
+
+
+            //更新相应的accept表的字段状态
+            $update_accept_where['accept_id']=$accept_id;
+            $update_accept_data['match_remain_num']=$accept_new_match_remain_num;
+            $update_accept_data['match_status']=$accept_match_status;
+            $r[] = M('order_accept')
+                ->where($update_accept_where)
+                ->save($update_accept_data);
+
+            if (!in_array(false, $r)) {
+                M()->commit();
+                $handle_flag = true;
+
+            } else {
+                M()->rollback();
+                $handle_flag = false;
+                break; //如果失败了,退出循环
+            }
+
+        }
+
+
+        if ($handle_flag == true) {
+            $result_final['code'] = 0;//失败
+            $result_final['info'] = '匹配处理成功';
+        }
+        return $result_final;
+
+    }
+
+    //寻找合适匹配的接收资助记录
+    private function find_accept_record($community_id, $user_id, $offer_match_remain_num)
+    {
+        $where_find_accept['community_id'] = $community_id;
+        $where_find_accept['user_id'] = array('NEQ', $user_id);
+        $where_find_accept['match_status'] = array('NEQ', 2);
+        $where_find_accept['confirm_status'] = array('NEQ', 2);//这条件最好也加上,不能是完全确认的
+        $orderby = 'queue_time asc';
+        //把所有符合条件的都找出来
+        $result_accept = M('order_accept')->where($where_find_accept)->order($orderby)->select();
+        if ($result_accept == null || $result_accept == false) {
+            return false;
+        }
+
+        //最终要返回的合适要匹配的accept数组
+        $result_final[] = null;
+
+        $accept_num = 0;
+        foreach ($result_accept as $k => $val) {
+            //如果这些多个接收资助的钱,累加,当累加的金额等于大于该提供资助的钱时,就退出循环,后面的就不需要了
+            if ($accept_num < $offer_match_remain_num) {
+                //$result_final[$k]['accept_id']=$val['accept_id'];
+                $result_final[$k] = $val;
+                $accept_num = $accept_num + $val['match_remain_num'];
+            } else {
+                break;
+            }
+
+        }
+
+        return $result_final;//返回数组
+    }
+
+
+    //寻找合适匹配的提供资助记录
+    private function find_offer_record($community_id, $user_id, $accept_match_remain_num)
+    {
+        $where_find_offer['community_id'] = $community_id;
+        $where_find_offer['user_id'] = array('NEQ', $user_id);
+        $where_find_offer['match_status'] = array('NEQ', 2);
+        $where_find_offer['confirm_status'] = array('NEQ', 2);//这条件最好也加上,不能是完全确认的
+        $orderby = 'queue_time asc';
+        //把所有符合条件的都找出来
+        $result_offer = M('order_offer')->where($where_find_offer)->order($orderby)->select();
+        if ($result_offer == null || $result_offer == false) {
+            return false;
+        }
+
+        //最终要返回的合适要匹配的accept数组
+        $result_final[] = null;
+
+        $offer_num = 0;
+        foreach ($result_offer as $k => $val) {
+            //如果这些多个接收资助的钱,累加,当累加的金额等于大于该提供资助的钱时,就退出循环,后面的就不需要了
+            if ($offer_num < $accept_match_remain_num) {
+                //$result_final[$k]['accept_id']=$val['accept_id'];
+                $result_final[$k] = $val;
+                $offer_num = $offer_num + $val['match_remain_num'];
+            } else {
+                break;
+            }
+
+        }
+
+        return $result_final;//返回数组
+    }
+
+
+
+    //开始匹配 ,从接收资助去匹配提供资助
+    public function  match_from_accept_to_offer($paras)
+    {
+        //默认返回
+        $result_final['code'] = 1;//失败
+        $result_final['info'] = '处理失败';
+        //首先再次检测该匹配的状态,如果全部匹配,则返回操作失败
+        $where_accept['accept_id'] = $paras['accept_id'];
+        $where_accept['status'] = 1;
+        $where_accept['match_status'] = array('NEQ', 2);
+        $where_accept['confirm_status'] = array('NEQ', 2);//这条件最好也加上,不能是完全确认的
+        $result_accept = M('order_accept')->where($where_accept)->find();
+        if ($result_accept == false || $result_accept == null) {
+            return $result_final;
+        }
+
+        $accept_match_remain_num = $result_accept['match_remain_num']; //该接收资助需要匹配的金额
+        $community_id = $result_accept['community_id'];//社区
+        $user_id = $result_accept['user_id'];//接收资助的会员 ,后续不能匹配自己的提供资助
+
+        $result_offer = $this->find_offer_record($community_id, $user_id, $accept_match_remain_num); //寻找
+
+
+        //查找失败
+        if ($result_offer == false) {
+            $result_final['code'] = 2;//失败
+            $result_final['info'] = '未找到合适的提供资助进行匹配';
+            return $result_final;
+        }
+
+        $handle_flag = true; //处理结果标志
+        //循环找到的需要处理的接收资助,进行匹配
+        foreach ($result_offer as $k => $val) {
+            $offer_id = $val['offer_id'];
+            $offer_match_remain_num = $val['match_remain_num']; //该提供资助目前剩余的可匹配金额
+
+            //本次匹配金额
+            //如果需要匹配的金额大于等于该提供资助能提供的金额
+            //那么, 匹配金额 就是提供资助的剩余匹配金额
+            //否则,匹配金额就是接收资助的剩余未匹配金额
+            if ( $accept_match_remain_num >=$offer_match_remain_num ) {
+                $match_num = $offer_match_remain_num;
+            } else {
+                $match_num = $accept_match_remain_num;
+            }
+
+            //剩余匹配金额
+
+            //计算新的accept表的剩余匹配金额
+            $accept_new_match_remain_num=$accept_match_remain_num-$match_num;
+
+            //重新赋值给该offer的最新剩余金额,因为下次循环要用到该值啊
+            $accept_match_remain_num =$accept_new_match_remain_num;
+
+            //重新计算匹配状态
+            if($accept_new_match_remain_num==0){
+                $accept_match_status=2;
+            }
+            else{
+                $accept_match_status=1;
+            }
+
+            //计算新的offer表的剩余匹配金额
+            $offer_new_match_remain_num=$offer_match_remain_num-$match_num;
+
+            //重新计算匹配状态
+            if($offer_new_match_remain_num==0){
+                $offer_match_status=2;
+            }
+            else{
+                $offer_match_status=1;
+            }
+
+
+            //开启事务
+            M()->startTrans();
+
+            //给match表增加记录
+            $data_match['offer_id'] = $offer_id;
+            $data_match['accept_id'] = $paras['accept_id'];
+            $data_match['match_num'] = $match_num;
+            $data_match['match_time'] = time();
+            $r[] = M('order_match')->add($data_match);
+
+
+            //更新相应的accept表的字段状态
+            $update_accept_where['accept_id']=$paras['accept_id'];
+            $update_accept_data['match_remain_num']=$accept_new_match_remain_num;
+            $update_accept_data['match_status']=$accept_match_status;
+            $r[] = M('order_accept')
+                ->where($update_accept_where)
+                ->save($update_accept_data);
+
+            //更新相应的offer表的字段状态
+            $update_offer_where['offer_id']=$offer_id;
+            $update_offer_data['match_remain_num']=$offer_new_match_remain_num;
+            $update_offer_data['match_status']=$offer_match_status;
+            $r[] = M('order_offer')
+                ->where($update_offer_where)
+                ->save($update_offer_data);
+
+            if (!in_array(false, $r)) {
+                M()->commit();
+                $handle_flag = true;
+
+            } else {
+                M()->rollback();
+                $handle_flag = false;
+                break; //如果失败了,退出循环
+            }
+
+        }
+
+
+        if ($handle_flag == true) {
+            $result_final['code'] = 0;//失败
+            $result_final['info'] = '匹配处理成功';
+        }
+        return $result_final;
+
+    }
+
 
 }
 

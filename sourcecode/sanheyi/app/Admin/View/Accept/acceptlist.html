@@ -172,7 +172,7 @@
                 <li>接收资助</li>
                 <li>{$vo.cname}</li>
                 <li>{$vo.user_name}</li>
-                <li>{$vo.num}</li>
+                <li>{$vo.total_num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
                 <li>{$vo.queue_time|date="Y-m-d H:i:s",###}</li>
                 <li>
@@ -189,12 +189,12 @@
                     <eq name='vo.match_status' value='0'>
                         <input type="button" name="btn_to_first" onclick="to_que('{$vo.accept_id}',1);" value="排前">
                         <input type="button" name="btn_to_last" onclick="to_que('{$vo.accept_id}',2);" value="排后">
-                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.accept_id}');" value="匹配">
+                        <input type="button" name="btn_to_match" onclick="single_match('{$vo.accept_id}');" value="匹配">
                     </eq>
                     <eq name='vo.match_status' value='1'>
                         <input type="button" name="btn_to_first" onclick="to_que('{$vo.accept_id}',1);" value="排前">
                         <input type="button" name="btn_to_last" onclick="to_que('{$vo.accept_id}',2);" value="排后">
-                        <input type="button" name="btn_to_match" onclick="to_match('{$vo.accept_id}');" value="匹配">
+                        <input type="button" name="btn_to_match" onclick="single_match('{$vo.accept_id}');" value="匹配">
                     </eq>
                 </li>
             </ul>
@@ -256,6 +256,26 @@
             return;
         }
 
+        var path = "{:U('accept/run_match_mult_Do')}";
+        var community_id = $('#ss_community').val();
+        var match = $('#ss_match').val();
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({accept_ids:accept_ids,community_id:community_id,match:match}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
     }
 
     //排队到最前面,type 为1,表示要排到最前面,为2表示要排到最后面
@@ -266,7 +286,7 @@
         $.ajax({
             type : "post",
             url : path,
-            data : JSON.stringify({accept_id:accept_id,type:type,community_id:community_id,match:match}),
+            data : JSON.stringify({accept_id:accept_id,community_id:community_id,match:match}),
             async : false,
             success : function(data){
                 //return_handle(data);
@@ -285,8 +305,28 @@
     }
 
     //开始匹配
-    function to_match(accept_id) {
-        alert(accept_id);
+    function single_match(accept_id) {
+        var path = "{:U('accept/run_match_single_Do')}";
+        var community_id = $('#ss_community').val();
+        var match = $('#ss_match').val();
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({accept_id:accept_id,community_id:community_id,match:match}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    //路径要拼上现在的查询状态
+                    //location.href= data.return_data.url+ '/' + match + '/community_id/' + community_id;;
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
     }
 
 </script>
