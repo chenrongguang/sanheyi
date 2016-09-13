@@ -29,6 +29,10 @@ class UserCurrencyDetailModel extends Model
             $sql = $sql . " and A.user_id='" . $paras['user_id'] . "'";
         }
 
+        if (!empty($paras['currency_id'])) {
+            $sql = $sql . " and A.currency_id='" . $paras['currency_id'] . "'";
+        }
+
         $sql = $sql . " order by A.create_time desc ";
 
         if (!empty($paras['page'])) {

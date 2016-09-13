@@ -13,11 +13,5 @@ admin
 日志:
 提交给前端之后,
 home端/view文件的变更记录:
-1.修改首页连接地址不对的问题
-\app\Home\View\Uc\in_detail.html
-2.开放找回密码功能
-\app\Home\View\Login\login.html
-\app\Home\View\Login\findpwd.html
-3.注册时手机号就行唯一性验证
-\app\Home\View\Login\reg.html
-\app\Home\View\User\reg.html
+
+

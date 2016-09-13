@@ -260,6 +260,25 @@ class UcController extends BaseController
     //管理钱包，即奖金
     public function manager_money()
     {
+        $conditionData['user_id'] = $_SESSION['user']['user_id'];
+        $conditionData['currency_id'] = 4;
+
+        $model = M('user_currency_detail');
+        $total = $model->field('detail_id')->where($conditionData)->count();
+
+        $Page = new \Common\Util\Pagebar($total, $_GET['page_size']);
+
+        $paras['user_id'] = $_SESSION['user']['user_id'];
+        $paras['currency_id'] = 4;
+        $paras['page'] = $Page;
+
+        $list = D('UserCurrencyDetail')->getList($paras);
+
+        $show = $Page->show();
+
+        $this->assign('page', $show);
+        $this->assign('list', $list);
+
         $this->display();
     }
 
