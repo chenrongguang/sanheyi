@@ -8,6 +8,10 @@ http://local.sanheyii.com/admin/login/login.html
 admin
 
 
+任务调试：
+http://local.sanheyi.com/cli.php/task/task_expire_pay
+http://local.sanheyi.com/cli.php/task/task_expire_confirm
+
 注意点:
 
 日志:
