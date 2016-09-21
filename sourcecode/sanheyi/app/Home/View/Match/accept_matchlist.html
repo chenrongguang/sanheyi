@@ -68,9 +68,9 @@
                 <li>
                     <eq name='vo.confirm_status' value='0'>未完成&nbsp;
                         <eq name='vo.pay_status' value='1'>
+						    <a href="{:U('match/confirmmoney',array('match_id'=>$vo['match_id']))}">去确认收款</a>
                             <input type="hidden"  id ="max_confirm_time" value ="vo.max_confirm_time">
                             <div>确认收款倒计时</div>
-                            &nbsp;<a href="{:U('match/confirmmoney',array('match_id'=>$vo['match_id']))}">去确认收款</a>
                         </eq>
                     </eq>
                     <eq name='vo.confirm_status' value='1'>已完成 &nbsp;<a href="{:U('match/confirmmoney',array('match_id'=>$vo['match_id']))}"></a> </eq>

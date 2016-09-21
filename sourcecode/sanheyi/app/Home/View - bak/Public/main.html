@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>注册会员后台</title>
+    <style type="text/css">
+        .yi{width:900px; height:100px; float:left; margin-top:30px; margin-left:50px; border-bottom:1px solid #c2c2c2;}
+        .yi1{float:left; margin-top:10px; margin-left:30px;}
+        .yi1 li{width:250px; height:30px; line-height:30px; text-align:left; float:left;}
+        .er{float:left; margin-top:50px; margin-left:200px;}
+        .er li{width:170px; height:130px; float:left; margin-right:50px; position:relative; z-index:0;}
+        .ertu{width:170px; height:130px; float:left; position:relative; z-index:1;}
+        .erxiao{width:170px; height:30px; line-height:30px; text-align:center; position:absolute; z-index:2; left:0; bottom:0; background:#c9cacb;}
+        .san{float:left; margin-top:30px; margin-left:130px;}
+        .san li{float:left; width:150px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .si{float:left; margin-left:130px;}
+        .si li{float:left; width:150px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
+        .wu{float:left; margin-top:30px; margin-left:130px;}
+        .wu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .liu{float:left; margin-left:130px;}
+        .liu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
+        .qi{float:left; margin-top:30px; margin-left:130px;}
+        .qi li{float:left; width:140px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .ba{float:left; margin-left:130px;}
+        .ba li{float:left; width:140px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
+        .pipei{color:red;}
+        .gonggao{margin-left:90px; margin-top:20px; width:700px; float:left;}
+        .neirong{float:left; margin-top:20px; margin-left:120px;}
+        .neirong li{float:left; text-align:left; width:180px; height:30px; line-height:30px;}
+        .gengduo{width:200px; height:30px; line-height:30px; text-align:right; float:right;}
+        .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
+        .beian{margin-top:80px;}
+        }
+        @media screen and (max-width:1520px){
+        }
+    </style>
+
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/shouye.js"></script>
+
+</head>
+
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <div class="you">
+        <div class="yi">
+            <ul class="yi1">
+                <li>{$person_info['name']}</li>
+                <li>{$person_info['family_name']}</li>
+                <li>{$person_info['group']}</li>
+            </ul>
+            <ul class="yi1">
+                <li>{$person_info['act_status']}</li>
+                <li>{$person_info['confirm_status']}</li>
+                <li>{$person_info['create_time']}</li>
+            </ul>
+        </div>
+        <ul class="er">
+            <li>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
+                <div class="erxiao"><h3>布施积德</h3></div>
+            </li>
+            <li>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
+                <div class="erxiao"><h3>感恩受助</h3></div>
+            </li>
+            <li>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
+                <div class="erxiao"><h3>审核反馈</h3></div>
+            </li>
+        </ul>
+        <ul class="san">
+            <li style="border-left:1px solid #c2c2c2;">善种子</li>
+            <li>善心币</li>
+            <li>善金币</li>
+            <li>管理钱包</li>
+            <li>出局钱包</li>
+        </ul>
+        <ul class="si">
+            <li><a href="{:U('Uc/sendSZZ')}">{$user_currency['szz_num']}</a></li>
+            <li><a href="{:U('Uc/sendSXB')}">{$user_currency['sxb_num']}</a></li>
+            <li>{$user_currency['sjb_num']}</li>
+            <li><a href="{:U('Uc/manager_money')}">{$user_currency['glqb_num']}</a></li>
+            <li><a href="{:U('community/community_select_accept')}">{$user_currency['cjqb_num']}</a></li>
+        </ul>
+
+        <ul class="wu">
+            <li style="border-left:1px solid #c2c2c2;">ID</li>
+            <li>类型</li>
+            <li>社区</li>
+            <li>金额</li>
+            <li>提交时间</li>
+            <li>详细信息</li>
+            <li>匹配信息</li>
+        </ul>
+        <volist name="offer_list" id="vo">
+            <ul class="liu">
+                <li>{$vo.offer_id}</li>
+                <li>提供资助</li>
+                <li>{$vo.cname}</li>
+                <li>{$vo.num}</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
+                <li><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+            </ul>
+        </volist>
+        <ul class="qi">
+            <li style="border-left:1px solid #c2c2c2;">ID</li>
+            <li>类型</li>
+            <li>金额</li>
+            <li style="width:190px">提交时间</li>
+            <li>详细信息</li>
+            <li>操作</li>
+        </ul>
+        <volist name="accept_list" id="vo">
+            <ul class="ba">
+                <li>{$vo.accept_id}</li>
+                <li>接受资助</li>
+                <li>{$vo.total_num}</li>
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+                <li><input type="button" value="查看" onclick="show_match_accept('{$vo.accept_id}')"></li>
+            </ul>
+        </volist>
+
+        <div class="gonggao">系统公告</div>
+        <volist name="message_list" id="vo">
+            <ul class="neirong">
+                <li>{$vo.message_id}</li>
+                <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
+                <li>系统公告</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+            </ul>
+        </volist>
+        <div class="gengduo"><a href="{:U('message/mess_sys_list')}">更多</a></div>
+
+        </div>
+    <include file ='Public:foot' />
+</div>
+
+<script type="text/javascript">
+
+    function show_match_offer(offer_id){
+        alert(offer_id);
+    }
+
+    function  show_match_accept(accept_id){
+        alert(offer_id);
+    }
+
+</script>
+
+</body>
+</html>

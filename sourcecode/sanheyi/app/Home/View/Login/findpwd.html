@@ -8,8 +8,10 @@
     <title>找回密码</title>
     <style type="text/css">
         @media screen and (max-width:1920px){
-            .beijing{width:100%; margin:0 auto; position:relative;}
-            .denglu{width:500px; height:600px; position:absolute;}
+		    *{margin:0; padding:0;}
+            .beijing{width:1000px; margin:0 auto; position:relative; z-index:0;}
+			.beijing img{width:100%; position:relative; z-index:1;}
+            .denglu{width:500px; height:600px; position:absolute; z-index:2;}
             .dl{position:absolute; top:3%; left:60%;}
             a{color:blue;}
             .tishi{color:red; float:right; line-height:50px; width:500px; height:50px; text-align:right;}
@@ -33,6 +35,7 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <img src="__PUBLIC__/images/beijing.jpg">
     <div class="dl">已经有了账号？<br />请直接<a href="{:U('login/login')}">登录</a></div>
     <div class="denglu">
         <h1>找回密码</h1>

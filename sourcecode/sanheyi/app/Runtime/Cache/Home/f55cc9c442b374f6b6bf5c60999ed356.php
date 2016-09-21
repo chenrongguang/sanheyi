@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>激活会员</title>
+    <title>下级会员</title>
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
@@ -15,10 +15,37 @@
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
         .san{float:left; margin-left:50px; width:700px;}
-        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
+        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center; border-bottom:1px solid #c2c2c2;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        /*页码*/
+        .yema {
+        	width: 700px;
+			height: 53px;
+		    
+			position: absolute;
+			top: 695px;
+			left: 653px;  
+			text-align: center;	
+        }
+        .yema a {
+        	padding: 4px 7px;
+		    margin: 0 5px;
+			display: inline-block;
+			color: #008cba;
+			border: 1px solid #f2f2f2;
+			border-radius: 5px;
+        }
+        .yema a:hover {
+        	  background: #f8f5f5;
+        }
+        .yema .shuzi {
+        	  background-color: #008cba;
+			  color: #fff;
+			  border-radius: 5px;
+			  border: 1px solid #008cba;
+        }
     </style>
     <link href="/Public/css/home.css" rel="stylesheet" type="text/css" />
     <link href="/Public/css/Style.css" rel="stylesheet" type="text/css" />
@@ -46,6 +73,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -53,7 +81,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -106,9 +135,18 @@
                 <li><?php echo ($vo["family_name"]); ?></li>
                 <li><?php echo ($vo["mobile"]); ?></li>
                 <li><?php if(($vo["act_status"]) == "0"): ?>未激活<?php endif; if(($vo["act_status"]) == "1"): ?>已激活<?php endif; ?></li>
-                <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+                <li style="width:200px;"><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
                 <li><?php if(($vo["act_status"]) == "0"): ?><input type="button" value="激活" onclick="act_user('<?php echo ($vo["user_id"]); ?>');"><?php endif; ?><input type="button" value="查看" onclick="show_user('<?php echo ($vo["user_id"]); ?>');"></li>
-            </ul><?php endforeach; endif; else: echo "" ;endif; ?>
+            </ul>
+            <!--页码-->
+            <div class="yema">
+            	<a href="">首页</a>
+            	<a href="">上一页</a>
+            	<span class='shuzi'>1</span>
+            	<a href="">下一页</a>
+            	<a href="">末页</a>
+            	<span>共一条记录</span>
+            </div><?php endforeach; endif; else: echo "" ;endif; ?>
         <?php if(empty($list)): ?><tr>
                 <td colspan="6">目前没有相关信息</td>
             </tr><?php endif; ?>
@@ -116,7 +154,7 @@
 
     </div>
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 <script type="text/javascript">

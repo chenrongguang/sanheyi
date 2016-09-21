@@ -14,11 +14,39 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:800px;}
+        .san{float:left; margin-left:50px; width:800px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left; width:800px; height:40px; line-height:40px; text-align:center;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        
+        /*页码*/
+        .shouruzhichuyema {
+        	width: 700px;
+			height: 53px;
+		    
+			position: absolute;
+			top: 564px;
+			left: 653px;  
+			text-align: center;	
+        }
+        .shouruzhichuyema a {
+        	padding: 4px 7px;
+		    margin: 0 5px;
+			display: inline-block;
+			color: #008cba;
+			border: 1px solid #f2f2f2;
+			border-radius: 5px;
+        }
+        .shouruzhichuyema a:hover {
+        	  background: #f8f5f5;
+        }
+        .shouruzhichuyema .shuzi {
+        	  background-color: #008cba;
+			  color: #fff;
+			  border-radius: 5px;
+			  border: 1px solid #008cba;
+        }
     </style>
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
@@ -55,6 +83,15 @@
                 <li style="width:200px;">{$vo.remark}</li>
                 <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
             </ul>
+            <!--页码-->
+             <div class="shouruzhichuyema">
+            	<a href="">首页</a>
+            	<a href="">上一页</a>
+            	<span class='shuzi'>1</span>
+            	<a href="">下一页</a>
+            	<a href="">末页</a>
+            	<span>共一条记录</span>
+            </div>
         </volist>
         <empty name="list">
             <tr>

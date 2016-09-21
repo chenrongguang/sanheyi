@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>提供资助</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{margin-left:50px; float:left; margin-top:20px;}
+        .er li{width:600px; height:30px; line-height:30px; border-bottom:1px solid #c2c2c2;}
+        .nei1{width:20%; height:30px; line-height:30px; float:left; text-align:center;}
+        .nei2{width:80%; height:30px; line-height:30px; float:left;}
+        .xin{color:red; margin-left:5px;}
+        .tishi{color:red; margin-left:10px;}
+        .inp{float:left;}
+        .jian{width:20px; height:20px; float:left; margin-top:5px; margin-right:5px; cursor:pointer;}
+        .inp2{width:30px; text-align:center; float:left; margin-top:3px;}
+        .jia{width:20px; height:20px; float:left; margin-top:5px; margin-left:5px; cursor:pointer;}
+        .tijiao{margin:0 auto; display:block;}
+        .di{color:red;}
+        .er li a{margin-right:30px;}
+        .san{float:left; width:500px; margin-left:50px; margin-top:20px;}
+        .san span{color:red;}
+    </style>
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/zizhu.js"></script>
+</head>
+
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <div class="you">
+        <ul class="yi">
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li>您提供资助的社区：<span class="xin">{$name}</span></li>
+        </ul>
+        <br />
+        <ul class="er">
+            <form method="post" action="{:U('offer/sendofferDo')}" name="form" id="form">
+                <li>
+                    <div class="nei1">资助金额(元)：</div>
+                    <div class="nei2"><input type="text" class="inp1" id="num" name="num" /><span class="xin">*</span><span class="tishi">1000-3000 必须是100的整倍数</span></div>
+                </li>
+                <li>
+                    <div class="nei1">二级密码：</div>
+                    <div class="nei2"><input type="password" class="inp1" id="high_pwd" name="high_pwd" /><span class="xin">*</span><span class="tishi">二级密码默认是登录密码</span></div>
+                </li>
+                <li>
+                    <div class="nei1">剩余善心币</div>
+                    <div class="nei2">{$my_SXB} </div>
+                    <input type="hidden" name="need_SXB" id="need_SXB" value="{$need_SXB}" />
+                </li>
+                <!--社区id-->
+                <input type="hidden" name="community_id" id="community_id" value="{$community_id}" />
+                <li><input   id="btn_sub"  type="button"  onclick="sub(1)"  class="tijiao" value="提交资助" /></li>
+            </form>
+        </ul>
+        <dl class="san">
+            <dt>提示：</dt>
+            <dd>1）贫穷区成功提供资助一次需扣除1个善心币，排队期间不打款；</dd>
+            <dd>2）小康区成功提供资助一次需扣除2个善心币，排队期间不打款；</dd>
+            <dd>3）富人区成功提供资助一次需扣除3个善心币，排队期间不打款；</dd>
+            <dd>4）若您的账户没有善心币可向服务中心购买;</dd>
+            <dd>5）初次注册的时候，二级密码默认是登录密码，可以自行修改，【修改二级密码】</dd>
+        </dl>
+    </div>
+    <include file ='Public:foot' />
+</div>
+
+<script type="text/javascript">
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+</script>
+
+</body>
+</html>

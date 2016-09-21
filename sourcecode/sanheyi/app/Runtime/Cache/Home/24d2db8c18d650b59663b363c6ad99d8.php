@@ -17,18 +17,24 @@
         .san{float:left; margin-top:30px; margin-left:130px;}
         .san li{float:left; width:150px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .si{float:left; margin-left:130px;}
-        .si li{float:left; width:150px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
+        .si li{float:left; width:149px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        /*新加的ul*/
+       	.xinjia{float:left; margin-left:130px;}
+        .xinjia li{float:left; width:104px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        /*新加的ul2*/
+       	.xinjia2{float:left; margin-left:130px;}
+        .xinjia2 li{float:left; width:141px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
         .wu{float:left; margin-top:30px; margin-left:130px;}
-        .wu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .wu li{float:left; width:105px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .liu{float:left; margin-left:130px;}
         .liu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
         .qi{float:left; margin-top:30px; margin-left:130px;}
-        .qi li{float:left; width:140px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .qi li{float:left; width:143px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .ba{float:left; margin-left:130px;}
         .ba li{float:left; width:140px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
         .pipei{color:red;}
         .gonggao{margin-left:90px; margin-top:20px; width:700px; float:left;}
-        .neirong{float:left; margin-top:20px; margin-left:120px;}
+        .neirong{float:left; margin-top:5px; margin-left:120px;}
         .neirong li{float:left; text-align:left; width:180px; height:30px; line-height:30px;}
         .gengduo{width:200px; height:30px; line-height:30px; text-align:right; float:right;}
         .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
@@ -64,6 +70,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -71,7 +78,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -154,7 +162,17 @@
             <li>金额</li>
             <li>提交时间</li>
             <li>详细信息</li>
-            <li>匹配信息</li>
+            <li style="width:120px;">匹配信息</li>
+        </ul>
+        <!--后加的边框-->
+         <ul class="xinjia">
+            <li><a href="">1111</a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li style="width:120px;"><a href=""></a></li>
         </ul>
         <?php if(is_array($offer_list)): $i = 0; $__LIST__ = $offer_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="liu">
                 <li><?php echo ($vo["offer_id"]); ?></li>
@@ -163,15 +181,25 @@
                 <li><?php echo ($vo["num"]); ?></li>
                 <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
                 <li><?php if(($vo["confirm_status"]) == "0"): ?>未完成<?php endif; if(($vo["confirm_status"]) == "1"): ?>部分完成<?php endif; if(($vo["confirm_status"]) == "2"): ?>全部完成<?php endif; ?></li>
-                <li><?php if(($vo["match_status"]) == "1"): ?>部分匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; ?></li>
+                <li style="width:120px;"><?php if(($vo["match_status"]) == "1"): ?>部分匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; ?></li>
             </ul><?php endforeach; endif; else: echo "" ;endif; ?>
         <ul class="qi">
-            <li style="border-left:1px solid #c2c2c2;">ID</li>
+            <li style="border-left:1px solid #c2c2c2; width:50px;">ID</li>
             <li>类型</li>
             <li>金额</li>
             <li style="width:190px">提交时间</li>
             <li>详细信息</li>
-            <li>操作</li>
+            <li style="width:80px;">操作</li>
+        </ul>
+         <!--后加的边框2-->
+         <ul class="xinjia2">
+            <li style="width: 50px;"><a href="">222</a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li  style="width: 190px;"><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li style="width: 80px;"><a href=""></a></li>
+            
         </ul>
         <?php if(is_array($accept_list)): $i = 0; $__LIST__ = $accept_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="ba">
                 <li><?php echo ($vo["accept_id"]); ?></li>
@@ -184,16 +212,16 @@
 
         <div class="gonggao">系统公告</div>
         <?php if(is_array($message_list)): $i = 0; $__LIST__ = $message_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><ul class="neirong">
-                <li><?php echo ($vo["message_id"]); ?></li>
+                <li style="width:80px;"><?php echo ($vo["message_id"]); ?></li>
                 <li style="width:350px;"><a target="_blank" href="<?php echo U('message/message_content',array('message_id'=>$vo['message_id']));?>"><?php echo ($vo["title"]); ?></a></li>
-                <li>系统公告</li>
+                <li style="width:130px;">系统公告</li>
                 <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
             </ul><?php endforeach; endif; else: echo "" ;endif; ?>
         <div class="gengduo"><a href="<?php echo U('message/mess_sys_list');?>">更多</a></div>
 
         </div>
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 

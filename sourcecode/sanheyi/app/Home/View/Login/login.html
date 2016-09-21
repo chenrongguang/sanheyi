@@ -9,9 +9,10 @@
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         @media screen and (max-width:1920px){
-            .beijing{width:100%; margin:0 auto; position:relative;}
-            .denglu{width:500px; height:300px; position:absolute; border:1px solid #c2c2c2;
-                border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;}
+            .beijing{width:1000px; margin:0 auto; position:relative; z-index:0;}
+			.beijing img{width:100%; position:relative; z-index:1;}
+            .denglu{width:500px; height:250px; position:absolute;top:100px; left: 100px; border:1px solid #c2c2c2;  z-index:2;
+                border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;background-color: rgba(255,255,255,0.8);}
             .username{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:50px;;}
             .password{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:15px;}
             .yanzheng{width:400px; height:40px; margin:0 auto; margin-top:15px;}
@@ -20,7 +21,7 @@
             .tubiao img{width:50%; height:50%; margin-top:11px;}
             .shuru{width:88%; height:100%; padding-left:6px; float:right; border:1px solid #c2c2c2;
                 border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px;}
-            .yan{width:20%; margin-left:10%; margin-top:2%; float:left;}
+            .yan{width:20%; margin-left:10%; margin-top:2%; float:left;width: 131px;height: 23px;border: 1px solid #333;}
             .shuzi{width:30%; margin-top:2%; float:left;}
             .tj{margin-left:10%; float:left; cursor:pointer; background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);background-repeat: repeat-x; border-color: #28a4c9;
                 box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
@@ -41,6 +42,7 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+	<img id="im" src="__PUBLIC__/images/beijing.jpg">
     <div class="denglu">
         <form method="post" action="{:U('login/loginDo')}" name="form" id="form">
             <div class="username">

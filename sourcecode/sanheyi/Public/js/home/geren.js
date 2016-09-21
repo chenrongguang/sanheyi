@@ -1,9 +1,9 @@
 $(function()
 {
 	//以下为样式设计
-	$(".beijing").css('height',$(window).height());
-	$(".denglu").css('top',$(window).height()*0.3);
-	$(".denglu").css('left',($(window).width()-$(".denglu").width())/2);
+	//$(".beijing").css('height',$(window).height());
+	$(".denglu").css('top',341);
+	$(".denglu").css('left',249);
 	
 	//以下为输入框得到焦点时边框变色效果
 	$(".shuru").focus(function(){

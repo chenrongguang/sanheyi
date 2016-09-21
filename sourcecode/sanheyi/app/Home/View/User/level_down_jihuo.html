@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>下级会员</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{float:left; margin-left:50px; margin-top:20px;}
+        .er li{width:700px; color:#09F;}
+        .red{color:red;}
+        .blue{color:#4f7ca9;}
+        .gre{color:#66cd00;}
+        .san{float:left; margin-left:50px; width:700px;}
+        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center; border-bottom:1px solid #c2c2c2;}
+        .lv{color:green;}
+        .beizhu{margin-left:50px; margin-top:10px; float:left;}
+        .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+       
+    </style>
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/jihuohuiyuan.js"></script>
+
+</head>
+
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    
+    <include file ='Public:foot' />
+</div>
+<script type="text/javascript">
+
+    function  act_user(user_id){
+
+        var path = "{:U('user/ajxact_user')}";
+
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({act_user:user_id}),
+            async : false,
+            success : function(data){
+                //该名字可以用
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    location.href= data.return_data.url;
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+    function  show_user(user_id){
+        //alert(user_id);
+        //var url=eval("{:U('user/personinfo',array('user_id'=>" + user_id + "))}");
+        location.href='/home/user/personinfo/user_id/'+ user_id ;
+    }
+
+</script>
+</body>
+</html>

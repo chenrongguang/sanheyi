@@ -1,43 +1,47 @@
-<ul class="nav">
-    <li>
-        <dl class="caidan">
-            <dt><h2><a href="{:U('public/main')}">首页</a></h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-        </dl>
-    </li>
-    <li>
-        <dl class="caidan">
-            <dt><h2>会员管理</h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-            <dd><a href="{:U('user/userlist')}">会员列表</a></dd>
-        </dl>
-    </li>
-    <li>
-        <dl class="caidan">
-            <dt><h2>交易中心</h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-            <dd><a href="{:U('offer/offerlist')}">提供资助</a></dd>
-            <dd><a href="{:U('accept/acceptlist')}">接收资助</a></dd>
-            <dd><a href="{:U('match/matchlist')}">匹配列表</a></dd>
-        </dl>
-    </li>
-    <li>
-        <dl class="caidan">
-            <dt><h2>财务管理</h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-            <dd><a href="{:U('currency/recharge')}">管理员充值</a></dd>
-            <dd><a href="{:U('currency/rechargelist')}">充值记录</a></dd>
-            <dd><a href="{:U('Uc/out_detail')}">支出记录</a></dd>
-            <dd><a href="{:U('Uc/in_detail')}">收入记录</a></dd>
-        </dl>
-    </li>
-
-    <li>
-        <dl class="caidan">
-            <dt><h2>系统公告</h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-            <dd><a href="{:U('message/mess_add')}">新增公告</a></dd>
-            <dd><a href="{:U('message/mess_list')}">公告列表</a></dd>
-        </dl>
-    </li>
-    <li>
-        <dl class="caidan">
-            <dt><h2><a href="{:U('login/logoutDo')}">退出系统</a></h2><div class="tubiao"><img src="__PUBLIC__/admin/images/3.png" /></div></dt>
-        </dl>
-    </li>
-</ul>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="__PUBLIC__/qyadmin/css/Style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/qyadmin/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/qyadmin/js/menu.js"></script>
+</head>
+<body id="left">
+<div class="left">
+       <div id="firstpane" class="menu_list">
+      <h3 class="menu_head current">首页</h3>
+      <div style="display:block" class="menu_body"> 
+	      <a href="{:U('public/index')}" target="mainFrame">优化管理</a>
+      </div>
+      <h3 class="menu_head">会员管理</h3>
+      <div style="display:none" class="menu_body"> 
+      	  <a href="{:U('user/userlist')}" target="mainFrame">· 会员列表</a>
+      </div>
+      <h3 class="menu_head">交易中心</h3>
+      <div style="display:none" class="menu_body"> 
+      	  <a href="{:U('offer/offerlist')}" target="mainFrame">·提供资助</a>
+      	  <a href="{:U('accept/acceptlist')}" target="mainFrame">·接收资助</a>
+		  <a href="{:U('match/matchlist')}" target="mainFrame">·匹配列表</a>
+      </div>
+      <h3 class="menu_head">财务管理</h3>
+     <div style="display:none" class="menu_body">
+	      <a href="{:U('currency/recharge')}" target="mainFrame">· 管理员充值</a> 
+	      <a href="{:U('currency/rechargelist')}" target="mainFrame">· 充值记录</a>
+		  <a href="{:U('Uc/out_detail')}" target="mainFrame">· 支出记录</a>
+		  <a href="{:U('Uc/in_detail')}" target="mainFrame">· 收入记录</a>
+      </div>
+      
+      <h3 class="menu_head">系统公告</h3>
+      <div style="display:none" class="menu_body"> 
+      	  <a href="{:U('message/mess_add')}" target="mainFrame">·新增公告</a> 
+      	  <a href="{:U('message/mess_list')}" target="mainFrame">·公告列表</a> 
+      </div>
+      <h3 class="menu_head">退出系统</h3>
+      <div style="display:none" class="menu_body"> 
+      	  <a href="{:U('login/logoutDo')}" target="mainFrame">·退出系统</a> 
+      </div>
+    </div>
+</div>
+</body>
+</html>

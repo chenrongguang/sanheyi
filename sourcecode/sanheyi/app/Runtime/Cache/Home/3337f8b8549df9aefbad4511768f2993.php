@@ -14,7 +14,7 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:700px;}
+        .san{float:left; margin-left:50px; width:700px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
@@ -45,6 +45,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -52,7 +53,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -105,15 +107,18 @@
            <li><a href="<?php echo U('Uc/sendSZZ');?>"><?php echo ($show_data['szz_num']); ?></a></li>
 
            <li><a href="<?php echo U('Uc/sendSXB');?>"><?php echo ($show_data['sxb_num']); ?></a></li>
-           <li><?php echo ($show_data['sjb_num']); ?></li>
+           
+           
            <li><a href="<?php echo U('Uc/manager_money');?>"><?php echo ($show_data['glqb_num']); ?></a></li>
+           
+            <li><a href=""><?php echo ($show_data['glqb_num']); ?></a></li>
            <li><a href="<?php echo U('Accept/sendAccept');?>"><?php echo ($show_data['cjqb_num']); ?></a></li>
            <li style="width:200px;"><a href="<?php echo U('Uc/sendSZZ');?>">[转善种子]</a>&nbsp;&nbsp;<a href="<?php echo U('Uc/sendSXB');?>">[转善心币]</a></li>
 
         </ul>
     </div>
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 </body>

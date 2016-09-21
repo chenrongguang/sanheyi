@@ -17,18 +17,24 @@
         .san{float:left; margin-top:30px; margin-left:130px;}
         .san li{float:left; width:150px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .si{float:left; margin-left:130px;}
-        .si li{float:left; width:150px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
+        .si li{float:left; width:149px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        /*新加的ul*/
+       	.xinjia{float:left; margin-left:130px;}
+        .xinjia li{float:left; width:104px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        /*新加的ul2*/
+       	.xinjia2{float:left; margin-left:130px;}
+        .xinjia2 li{float:left; width:141px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
         .wu{float:left; margin-top:30px; margin-left:130px;}
-        .wu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .wu li{float:left; width:105px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .liu{float:left; margin-left:130px;}
         .liu li{float:left; width:107px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
         .qi{float:left; margin-top:30px; margin-left:130px;}
-        .qi li{float:left; width:140px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
+        .qi li{float:left; width:143px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .ba{float:left; margin-left:130px;}
         .ba li{float:left; width:140px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;}
         .pipei{color:red;}
         .gonggao{margin-left:90px; margin-top:20px; width:700px; float:left;}
-        .neirong{float:left; margin-top:20px; margin-left:120px;}
+        .neirong{float:left; margin-top:5px; margin-left:120px;}
         .neirong li{float:left; text-align:left; width:180px; height:30px; line-height:30px;}
         .gengduo{width:200px; height:30px; line-height:30px; text-align:right; float:right;}
         .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
@@ -100,7 +106,17 @@
             <li>金额</li>
             <li>提交时间</li>
             <li>详细信息</li>
-            <li>匹配信息</li>
+            <li style="width:120px;">匹配信息</li>
+        </ul>
+        <!--后加的边框-->
+         <ul class="xinjia">
+            <li><a href="">1111</a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li style="width:120px;"><a href=""></a></li>
         </ul>
         <volist name="offer_list" id="vo">
             <ul class="liu">
@@ -110,16 +126,26 @@
                 <li>{$vo.num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
                 <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+                <li style="width:120px;"><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
             </ul>
         </volist>
         <ul class="qi">
-            <li style="border-left:1px solid #c2c2c2;">ID</li>
+            <li style="border-left:1px solid #c2c2c2; width:50px;">ID</li>
             <li>类型</li>
             <li>金额</li>
             <li style="width:190px">提交时间</li>
             <li>详细信息</li>
-            <li>操作</li>
+            <li style="width:80px;">操作</li>
+        </ul>
+         <!--后加的边框2-->
+         <ul class="xinjia2">
+            <li style="width: 50px;"><a href="">222</a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li  style="width: 190px;"><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li style="width: 80px;"><a href=""></a></li>
+            
         </ul>
         <volist name="accept_list" id="vo">
             <ul class="ba">
@@ -135,9 +161,9 @@
         <div class="gonggao">系统公告</div>
         <volist name="message_list" id="vo">
             <ul class="neirong">
-                <li>{$vo.message_id}</li>
+                <li style="width:80px;">{$vo.message_id}</li>
                 <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
-                <li>系统公告</li>
+                <li style="width:130px;">系统公告</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
             </ul>
         </volist>

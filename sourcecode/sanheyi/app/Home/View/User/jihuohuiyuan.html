@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>会员注册</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{float:left; margin-left:50px; margin-top:20px;}
+        .er li{width:700px; color:red; font-weight:bold;}
+        .red{color:red;}
+        .san{float:left; margin-left:0; width:700px;}
+        .san li{float:left; width:300px; height:40px; line-height:40px; text-align:center; margin-top:10px;}
+        .lv{color:green;}
+        .beizhu{margin-left:50px; margin-top:10px; float:left;}
+        .kuang{width:249px; height:30px; border:1px solid #c2c2c2; padding-left:4px;}
+        
+        /*接受资助的样式开始*/
+       /*最外层DIV*/
+        .col-1 {
+        	position: absolute;
+		    border: 1px solid #c4d5df;
+			zoom: 1;
+			width: 732px;
+			height: 245px;
+			
+			top: 209px;
+			left: 710px;
+        }
+        
+        .col-1 .title {
+        	color: #386ea8;
+ 			padding: 5px 10px 3px;
+ 			font-size: 15px;
+        }
+        /*内容器开始*/
+       .col-1 .content {
+       		padding: 0px 10px 10px;
+       }
+       
+      /*表单验证开始*/
+     .col-1 .shengyu {
+     	margin: 0 30px;
+     }
+     
+     /*下边线*/
+    .xiabianxian {
+    	border-bottom: 1px solid #ccc;
+    	margin: 5px 0;
+    	
+    }
+    /*红星*/
+   .col-1 .xing {
+   		color: red;
+   		padding: 5px 0;
+   }
+   /*空字符*/
+  	.kong {
+  		margin: 0 60px;
+  	}
+     
+    </style>
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+    
+    <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" /><!--接受资助的css 样式-->
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/huiyuanzhuce.js"></script>
+
+</head>
+
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <!--接受 资助块开始-->
+    <div class="col-1">
+    	<h5 class="title">
+    		主页>请填写接受资助资金：
+    		<a href=""></a>
+    	</h5>
+    	<div class="content">
+    		<form method="post" action="" id="myform">
+    			<div class="xiabianxian">
+    				<span class="shengyu">剩余出局钱包</span>
+    				<span>0</span>
+    			</div>
+    			<!--出局金额-->
+    			<div class="xiabianxian">
+    				<span class="shengyu">出局金额</span>
+    				<input type="text" name="" id="" value="" />
+    				<font class="xing">*</font>
+    				<span>必须是大于等于500，并且是100的整倍数</span>
+    			</div>
+    			
+    			<!--二级密码-->
+    			<div class="xiabianxian">
+    				<span class="shengyu">二级密码</span>
+    				<input type="password" name="" id="" value="" />
+    				<font class="xing">*</font>
+    				<span>未设置二级密码的请先【设置二级密码】</span>
+    			</div>
+    			
+    			<!--接受资助-->
+    			<div class="xiabianxian">
+    				<span class="kong">&nbsp;</span>
+    				<input type="submit" name="dosubmit" value="接受资助" disabled="disabled">
+    			</div>
+    			
+    			<!--提示-->
+    			<div>
+    				提示:
+    				<br />
+    				<span>(1)只能提交<font class="xing">一次</font>接受资助</span>
+    				<br />
+    				<span>(2)<font  class="xing">请勿把小康区的接受资助拆分小金额提交，系统会延时处理；</font></span>
+    				<br />
+    				<span>(3)金额单位是元；</span>
+    			</div>
+    		</form>
+    	</div>
+    </div>
+    
+    <!--接受 资助块结束-->
+    <include file ='Public:foot' />
+</div>
+<script type="text/javascript">
+
+    //检查名字是否可用
+    $('#name').bind('blur', function(){
+        var name =$(this).val();
+        var path = "{:U('login/ajaxCheckName')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({name:name}),
+            async : false,
+            success : function(data){
+                //该名字可以用
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    //$('#name').val('');
+                    alert(data.msg);
+                    $('#name').focus();
+
+                }
+
+            }
+        });
+    });
+
+
+    //检查手机号是否可用
+    $('#mobile').bind('blur', function(){
+        var mobile =$(this).val();
+        var path = "{:U('login/ajaxCheckmobile')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({mobile:mobile}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    //location.href= data.return_data.url;
+                }else{
+                    //$(this).val('');
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    });
+
+
+    function validate_handle(){
+        //todo
+        return true;
+
+    }
+ </script>
+</body>
+</html>

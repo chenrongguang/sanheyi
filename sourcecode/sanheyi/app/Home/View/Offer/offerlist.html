@@ -20,7 +20,7 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:800px;}
+        .san{float:left; margin-left:50px; width:800px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
         .beizhu{margin-left:100px; margin-top:10px; float:left;}
@@ -50,7 +50,7 @@
             <li><input class="ip2" type="button" value="查看已完成" onclick="show_complete();"/></li>
         </ul>
         <ul class="san">
-            <li>ID</li>
+            <li style="width:50px;">ID</li>
             <li>类型</li>
             <li>社区</li>
             <li>金额</li>
@@ -58,19 +58,19 @@
             <li>付款信息</li>
             <li>匹配信息</li>
             <li>完成状态</li>
-            <li>操作</li>
+            <li style="width:50px;">操作</li>
         </ul>
         <volist name="list" id="vo">
             <ul class="san">
-                <li>{$vo.offer_id}</li>
+                <li style="width:50px;">{$vo.offer_id}</li>
                 <li>提供资助</li>
                 <li>{$vo.cname}</li>
                 <li>{$vo.num}</li>
-                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li>{$vo.create_time|date="Y-m-d",###}</li>
                 <li><eq name='vo.pay_status' value='0'>未付款</eq><eq name='vo.pay_status' value='1'>部分付款</eq><eq name='vo.pay_status' value='2'>全部付款</eq></li>
                 <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
                 <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li><eq name='vo.match_status' value='1'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq><eq name='vo.match_status' value='2'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq></li>
+                <li style="width:50px;"><eq name='vo.match_status' value='1'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq><eq name='vo.match_status' value='2'>&nbsp;<a href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">查看</a></eq></li>
             </ul>
         </volist>
         <empty name="list">

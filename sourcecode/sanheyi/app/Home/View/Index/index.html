@@ -9,9 +9,12 @@
 
     <style type="text/css">
         @media screen and (max-width:1920px){
-            .beijing{width:100%; margin:0 auto; position:relative;}
-            .denglu{width:30%; background:#fff; position:absolute; border:1px solid #c2c2c2;
-                border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;}
+            .beijing{width:1000px; margin:0 auto; position:relative; z-index:0;}
+			.beijing img{width:100%; position:relative; z-index:1;}
+            .denglu{width:500px; height:170px; position:absolute; border:1px solid #c2c2c2; z-index:2;
+                border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;background-color: rgba(255,255,255,0.8);
+  }
+  			
             .geren{ position:absolute; left:30%; top:40%; cursor:pointer; background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);background-repeat: repeat-x; border-color: #28a4c9;
                 box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
                 border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
@@ -24,7 +27,15 @@
             .geren{left:25%;}
             .qiye{right:25%;}
         }
+        #ligaidong {
+        	position: absolute;
+        	top: 341px;
+        	left: 249px;
+        	!important;
+        }
     </style>
+    <!--公共样式-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
 
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
@@ -34,7 +45,8 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
-    <div class="denglu">
+	<img id="im" src="__PUBLIC__/images/beijing.jpg">
+    <div class="denglu" id= 'ligaidong'>
         <input class="geren" type="button" onclick="javascript:location.href='/home/login/login'"; value="个人登录" />
         <input class="qiye" type="button" onclick="javascript:location.href='';" value="企业登录" />
     </div>

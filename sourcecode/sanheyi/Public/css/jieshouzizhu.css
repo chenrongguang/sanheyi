@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+/*最外层DIN样式*/
+.col-1 {
+	position: relative;
+    border: 1px solid #c4d5df;
+	zoom: 1;
+}

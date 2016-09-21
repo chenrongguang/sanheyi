@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="java培训 , .net培训 , php培训" />
+    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
+    <title>公告通知</title>
+    <style type="text/css">
+        .yi{margin-left:50px; float:left;}
+        .yi li{float:left;}
+        .er{float:left; margin-left:50px; margin-top:20px;}
+        .er li{width:700px;}
+        .red{color:red;}
+        .san{float:left; margin-left:50px;}
+        .san li{float:left; width:150px; height:40px; line-height:40px; text-align:center; font-size:14px;}
+        .lv{color:green;}
+        .beizhu{margin-left:50px; margin-top:10px; float:left;}
+    </style>
+
+    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/pagination.css" rel="stylesheet" type="text/css" />
+
+    <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/admin/js/common.js"></script>
+    <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/admin/js/home/gonggao.js"></script>
+</head>
+
+<body>
+<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
+    <include file ='Public:header' />
+    <include file ='Public:left' />
+    <div class="you">
+        <ul class="yi">
+            <li><a href="{:U('public/main')}">主页</a>＞</li>
+            <li><a href="">公告通知</a></li>
+        </ul>
+        <br />
+        <ul class="san">
+            <li>编号</li>
+            <li style="width:350px;">公告标题</li>
+            <li>类型</li>
+            <li>时间</li>
+            <li>操作</li>
+        </ul>
+        <volist name="list" id="vo">
+            <ul class="san">
+                <li>{$vo.message_id}</li>
+                <li style="width:350px;"><a target="_blank" href="{:U('message/message_content',array('message_id'=>$vo['message_id']))}">{$vo.title}</a></li>
+                <li>系统公告</li>
+                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li><a target="_blank" href="{:U('message/mess_add',array('message_id'=>$vo['message_id']))}">编辑</a>
+                    <input type="button" id="btn_del" value="删除" onclick="mess_del('{$vo.message_id}');" />
+                </li>
+            </ul>
+        </volist>
+        <empty name="list">
+            <tr>
+                <td colspan="5">目前没有相关信息</td>
+            </tr>
+        </empty>
+        <notempty name="list">
+            <div class="beizhu">{$page}</div>
+        </notempty>
+
+    </div>
+    <include file ='Public:foot' />
+</div>
+
+<script type="text/javascript">
+
+    function mess_del(mess_id){
+        var path = "{:U('message/ajaxmessdel')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({messid:mess_id}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

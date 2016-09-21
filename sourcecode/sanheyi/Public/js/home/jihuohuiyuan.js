@@ -5,11 +5,13 @@ $(function()
 	{
 		$(".caidan").css('background','#c9cacb');
 		$(this).parent(".caidan").css('background','#ddddde');
-		$(this).find("img").attr('src','images/4.png');
-		$(".caidan dt img").not($(this).find("img")).attr('src','images/3.png');
+		$(this).find("img").attr('src','/Public/images/4.png');
+		$(".caidan dt img").not($(this).find("img")).attr('src','/Public/images/3.png');
 		$(this).parent(".caidan").find("dd").slideToggle();
 		$(".caidan dd").not($(this).parent(".caidan").find("dd")).slideUp();
 	})
+	$(".caidan").eq(2).find("dd").css('display','block');
+	$(".caidan").eq(2).find("dd").eq(1).css('background','#ececec');
 	
 	//以下为加减数量
 	$(".jia").click(function()

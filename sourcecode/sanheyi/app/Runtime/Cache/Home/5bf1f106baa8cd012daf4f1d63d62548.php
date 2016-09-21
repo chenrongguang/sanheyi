@@ -17,6 +17,15 @@
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        /*新加一个红色的重点符号*/
+       .san font {
+       		color: red;
+       		margin-left: -55px;
+       		position: relative;
+       		top: 18px;
+       }
+      
+      
     </style>
     <link href="/Public/css/home.css" rel="stylesheet" type="text/css" />
     <link href="/Public/css/Style.css" rel="stylesheet" type="text/css" />
@@ -44,6 +53,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -51,7 +61,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -98,18 +109,23 @@
             <ul class="san">
                 <li style="text-align:right;">手机号码：</li>
                 <li><input type="text" name="mobile" id="mobile" value="<?php echo ($show_data['mobile']); ?>"></li>
+                <font>*</font>
             </ul>
+           
             <ul class="san">
                 <li style="text-align:right;">收货地址：</li>
                 <li><input type="text" name="address" id="address" value="<?php echo ($show_data['address']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">电子邮箱：</li>
                 <li><input type="text" name="email" id="email" value="<?php echo ($show_data['email']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">居住城市：</li>
                 <li><input type="text" name="city" id="city" value="<?php echo ($show_data['city']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">支付宝账号：</li>
@@ -122,18 +138,22 @@
             <ul class="san">
                 <li style="text-align:right;">开户银行：</li>
                 <li><input type="text" name="bank" id="bank" value="<?php echo ($show_data['bank']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">银行帐号：</li>
                 <li><input type="text" name="bank_no" id="bank_no" value="<?php echo ($show_data['bank_no']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">身份证姓名：</li>
                 <li><input type="text" name="family_name" id="family_name" value="<?php echo ($show_data['family_name']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul class="san">
                 <li style="text-align:right;">身份证号码：</li>
                 <li><input type="text" name="card_no" id="card_no" value="<?php echo ($show_data['card_no']); ?>"></li>
+                 <font>*</font>
             </ul>
             <ul>
                <li><input  id="btn_sub"  type="button" value="提交保存" onclick="sub(1)" /></li>
@@ -142,13 +162,14 @@
     </div>
 
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 
 <script type="text/javascript">
     function validate_handle(){
         //todo
+        //不同社区的钱不一样的
         return true;
 
     }
@@ -164,6 +185,5 @@
     });
 
 </script>
-
 </body>
 </html>

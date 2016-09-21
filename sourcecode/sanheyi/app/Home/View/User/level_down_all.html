@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>激活会员</title>
+    <title>下级会员</title>
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
@@ -15,10 +15,37 @@
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
         .san{float:left; margin-left:50px; width:700px;}
-        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
+        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center; border-bottom:1px solid #c2c2c2;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
         .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        /*页码*/
+        .yema {
+        	width: 700px;
+			height: 53px;
+		    
+			position: absolute;
+			top: 695px;
+			left: 653px;  
+			text-align: center;	
+        }
+        .yema a {
+        	padding: 4px 7px;
+		    margin: 0 5px;
+			display: inline-block;
+			color: #008cba;
+			border: 1px solid #f2f2f2;
+			border-radius: 5px;
+        }
+        .yema a:hover {
+        	  background: #f8f5f5;
+        }
+        .yema .shuzi {
+        	  background-color: #008cba;
+			  color: #fff;
+			  border-radius: 5px;
+			  border: 1px solid #008cba;
+        }
     </style>
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
@@ -53,9 +80,18 @@
                 <li>{$vo.family_name}</li>
                 <li>{$vo.mobile}</li>
                 <li><eq name='vo.act_status' value='0'>未激活</eq><eq name='vo.act_status' value='1'>已激活</eq></li>
-                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
                 <li><eq name='vo.act_status' value='0'><input type="button" value="激活" onclick="act_user('{$vo.user_id}');"></eq><input type="button" value="查看" onclick="show_user('{$vo.user_id}');"></li>
             </ul>
+            <!--页码-->
+            <div class="yema">
+            	<a href="">首页</a>
+            	<a href="">上一页</a>
+            	<span class='shuzi'>1</span>
+            	<a href="">下一页</a>
+            	<a href="">末页</a>
+            	<span>共一条记录</span>
+            </div>
         </volist>
         <empty name="list">
             <tr>

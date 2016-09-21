@@ -20,4 +20,5 @@ body {font-family:"微软雅黑";}
 select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent; border:none;
 padding-right:5px;}
 /*---------------------------------------------------------------------------------------------------------------------------------------------------*/
+li{overflow:hidden;}
 

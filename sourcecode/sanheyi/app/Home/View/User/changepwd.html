@@ -6,6 +6,9 @@
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
     <title>修改密码</title>
+    
+	
+	
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
@@ -16,7 +19,15 @@
         .san li{float:left; width:300px; height:40px; line-height:40px; text-align:center; margin-top:10px;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
-        .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
+        .kuang{width:249px; height:30px; border:1px solid #c2c2c2; padding-left:4px;}
+        
+        /*新加一个红色的重点符号*/
+       .san font {
+       		color: red;
+       		margin-left: -14px;
+       		position: relative;
+       		top: 18px;
+       }
     </style>
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
@@ -37,26 +48,31 @@
             <li><a href="">修改密码</a></li>
         </ul>
         <br />
-        <form method="post" action="{:U('user/changepwdDo')}" name="form" id="form">
+        <form method="post" action="{:U('user/changepwdDo')}" name="form" id="form" onsubmit="return checkForm();">
                 <ul class="san">
                     <li style="text-align:right;">旧登录密码：</li>
                     <li><input class="kuang" type="password" name ='oldpwd' id="oldpwd" /></li>
+                    <font>*</font>
                 </ul>
                 <ul class="san">
                     <li style="text-align:right;">新登录密码：</li>
                     <li><input class="kuang" type="password"  name ='pwd' id="pwd" /></li>
+                    <font>*</font>
                 </ul>
                 <ul class="san">
                     <li style="text-align:right;">确认新登录密码：</li>
                     <li><input class="kuang" type="password"  name ='repwd' id="repwd"/></li>
+                    <font>*</font>
                 </ul>
                 <ul class="san">
                     <li style="text-align:right;">新二级密码：</li>
                     <li><input class="kuang" type="password"  name ='high_pwd' id="high_pwd" /></li>
+                    <font>*</font>
                 </ul>
                 <ul class="san">
                     <li style="text-align:right;">确认新二级密码：</li>
                     <li><input class="kuang" type="password"   name ='re_high_pwd' id="re_high_pwd"  /></li>
+                    <font>*</font>
                 </ul>
                 <ul class="san">
                     <li style="text-align:right;"></li>
@@ -78,6 +94,9 @@
     }
 
 </script>
+
+<!--表单验证-->
+
 
 </body>
 </html>

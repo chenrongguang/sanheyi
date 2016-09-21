@@ -14,7 +14,7 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:700px;}
+        .san{float:left; margin-left:50px; width:700px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
@@ -51,8 +51,11 @@
            <li><a href="{:U('Uc/sendSZZ')}">{$show_data['szz_num']}</a></li>
 
            <li><a href="{:U('Uc/sendSXB')}">{$show_data['sxb_num']}</a></li>
-           <li>{$show_data['sjb_num']}</li>
+           
+           
            <li><a href="{:U('Uc/manager_money')}">{$show_data['glqb_num']}</a></li>
+           
+            <li><a href="">{$show_data['glqb_num']}</a></li>
            <li><a href="{:U('Accept/sendAccept')}">{$show_data['cjqb_num']}</a></li>
            <li style="width:200px;"><a href="{:U('Uc/sendSZZ')}">[转善种子]</a>&nbsp;&nbsp;<a href="{:U('Uc/sendSXB')}">[转善心币]</a></li>
 

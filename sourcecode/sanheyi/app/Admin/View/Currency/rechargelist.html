@@ -1,27 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="keywords" content="java培训 , .net培训 , php培训" />
-    <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
     <title>充值列表</title>
-    <style type="text/css">
-        .yi{margin-left:50px; float:left;}
-        .yi li{float:left;}
-        .er{float:left; margin-left:50px; margin-top:20px;}
-        .er li{width:700px; color:#09F;}
-        .red{color:red;}
-        .blue{color:#4f7ca9;}
-        .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:700px;}
-        .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
-        .lv{color:green;}
-        .beizhu{margin-left:50px; margin-top:10px; float:left;}
-        .kuang{width:100%; height:100%; border:1px solid #c2c2c2;}
-    </style>
-    <link href="__PUBLIC__/admin/css/home.css" rel="stylesheet" type="text/css" />
-    <link href="__PUBLIC__/admin/css/Style.css" rel="stylesheet" type="text/css" />
+   <link href="__PUBLIC__/qyadmin/css/style.css" rel="stylesheet" type="text/css"/>
     <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/admin/js/common.js"></script>
     <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
@@ -29,42 +10,37 @@
 
 </head>
 
-<body>
-<div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
-    <include file ='Public:header' />
-    <include file ='Public:left' />
-    <div class="you">
-        <ul class="yi">
-            <li><a href="{:U('public/main')}">主页</a>＞</li>
-            <li class="blue"> 充值列表</li>
-        </ul>
-        <br />
-        <ul class="san">
-            <li>会员账号</li>
-            <li>币种</li>
-            <li>数量</li>
-            <li style="width:200px;">充值时间</li>
-        </ul>
+<body id="main">
+<div class="main">
+    <div class="nav"><em></em>当前位置: <a href="{:U('public/main')}" target="mainFrame">后台首页</a>  >  充值列表</div>
+    <div class="mk">
+         <div class="xtgl">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="hxtabbor">
+  <tr>
+            <th width="11%" scope="col">会员账号</th>
+            <th width="11%" scope="col">币种</th>
+            <th width="11%" scope="col">数量</th>
+            <th width="11%" scope="col">充值时间</th>
+        </tr>
         <volist name="list" id="vo">
-            <ul class="san">
-                <li>{$vo.name}</li>
-                <li>{$vo.cname}</li>
-                <li>{$vo.num}</li>
-                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-            </ul>
+            <tr>
+                <TD  align="center" >{$vo.name}</TD>
+                <TD  align="center" >{$vo.cname}</TD>
+                <TD  align="center" >{$vo.num}</TD>
+                <TD  align="center" >{$vo.create_time|date="Y-m-d H:i:s",###}</TD>
+            </tr>
+        </volist>
         </volist>
         <empty name="list">
             <tr>
                 <td colspan="4">目前没有相关信息</td>
             </tr>
         </empty>
-        <notempty name="list">
+        
+</table>
+		<notempty name="list">
             <div class="beizhu">{$page}</div>
         </notempty>
-
-    </div>
-    <include file ='Public:foot' />
-</div>
-
-</body>
-</html>
+</div></div></div>
+</BODY></HTML>

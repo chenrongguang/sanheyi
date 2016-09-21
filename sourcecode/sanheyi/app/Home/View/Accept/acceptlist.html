@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>提供资助列表</title>
+    <title>资助列表</title>
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
@@ -20,7 +20,7 @@
         .red{color:red;}
         .blue{color:#4f7ca9;}
         .gre{color:#66cd00;}
-        .san{float:left; margin-left:50px; width:800px;}
+        .san{float:left; margin-left:50px; width:800px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:100px; height:30px; line-height:30px; margin-top:10px; text-align:center;}
         .lv{color:green;}
         .beizhu{margin-left:100px; margin-top:10px; float:left;}
@@ -31,7 +31,7 @@
     <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
-    <script src="__PUBLIC__/js/home/tigongzizhuliebiao.js"></script>
+    <script src="__PUBLIC__/js/home/jieshouzizhuliebiao.js"></script>
 </head>
 
 <body>
@@ -63,9 +63,9 @@
         </ul>
         </volist>
         <empty name="list">
-            <tr>
-                <td colspan="6">目前没有相关信息</td>
-            </tr>
+            <ul class="san">
+                <li style="width:200px;">目前没有相关信息</li>
+            </ul>
         </empty>
         <notempty name="list">
             <div class="beizhu">{$page}</div>

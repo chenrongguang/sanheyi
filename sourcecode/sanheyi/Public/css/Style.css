@@ -21,15 +21,16 @@ select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: 
     padding-right:5px;}
 /*---------------------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (max-width:1920px){
-    .beijing{width:1200px; height:1000px; margin:0 auto;}
-    .head{width:1200px; height:200px; background:red; float:left;}
+    .beijing{width:1200px; height:1000px; margin:0 auto; background:url(/Public/images/left.jpg) no-repeat scroll left 200px;}
+    .head{width:1200px; height:200px; float:left; background:url(/Public/images/header.jpg) no-repeat scroll center center; background-size:100%;}
+	.head img{width:100%;}
     .nav{width:200px; float:left; margin-left:50px; margin-top:30px;}
     .nav li{width:200px; cursor:pointer;}
     .tubiao{width:5px; height:8px; position:absolute; top:37px; right:10px;}
     .caidan{background:#c9cacb;}
     .caidan dt{width:200px; height:80px; line-height:80px; text-align:center; position:relative;}
     .caidan dd{width:200px; display:none; line-height:40px; text-align:center;}
-    .caidan a{color:#000;}
+    .caidan a{color:#626262;font-size: 16px;font-family: 'Microsoft Yahei';}
     .caidan dd:hover{background:#ececec;}
     .you{width:900px; float:left; margin-top:30px;}
 /*-------------------------------------以上为导航栏样式-----------------------------------------------------------------*/

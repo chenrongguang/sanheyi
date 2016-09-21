@@ -33,7 +33,8 @@ class LoginController extends Controller  {
             $_SESSION['admin']['id']=$result['id'];
             $_SESSION['admin']['name']=$result['name'];
             //$return_data['url']= '/home/index/';
-            $return_data['url']= U('public/main');
+            //$return_data['url']= U('public/main');
+            $return_data['url']= U('public/index');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
         }
         //登录不成功

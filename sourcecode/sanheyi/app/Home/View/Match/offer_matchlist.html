@@ -51,7 +51,7 @@
             <li>匹配金额</li>
             <li>匹配时间</li>
             <li>接收资助人</li>
-            <li>付款信息</li>
+            <li style='width:300px'>付款信息</li>
             <li>完成状态</li>
         </ul>
         <volist name="list" id="vo">
@@ -60,8 +60,8 @@
                 <li>{$vo.match_num}</li>
                 <li>{$vo.match_time|date="Y-m-d H:i:s",###}</li>
                 <li>{$vo.accept_name} <a target="_blank" href="{:U('user/relpersoninfo',array('user_id'=>$vo['accept_user_id']))}">查看</a></li>
-                <li>
-                    <eq name='vo.pay_status' value='0'>未付款&nbsp;&nbsp;&nbsp;<input type="hidden"  id ="max_pay_time" value ="vo.max_pay_time"><div>付款倒计时</div>&nbsp;<a href="{:U('match/sendmoney',array('match_id'=>$vo['match_id']))}">现在打款</a></eq>
+                <li style='width:300px'>
+                    <eq name='vo.pay_status' value='0'>未付款  <a href="{:U('match/sendmoney',array('match_id'=>$vo['match_id']))}">现在打款</a><input type="hidden"  id ="max_pay_time" value ="vo.max_pay_time"><div>付款倒计时</div></eq>
                     <eq name='vo.pay_status' value='1'>已付款 &nbsp;&nbsp;<a href="{:U('match/sendmoney',array('match_id'=>$vo['match_id']))}">查看付款信息</a></eq>
                 </li>
                 <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>已完成</eq></li>
