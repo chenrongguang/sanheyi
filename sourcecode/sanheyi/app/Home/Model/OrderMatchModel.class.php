@@ -103,7 +103,7 @@ where  A.status=1";
         $currency_id = 5; //定义货币类型
         $r[] = M('user_currency')
             ->where(array('user_id' => $offer_result['user_id'], 'currency_id' => $currency_id))
-            ->setInc('num', $offer_get_money);
+            ->setInc('num', $offer_get_money + $match_result['match_num']);
 
         //增加offer人对应的货币明细记录
 
