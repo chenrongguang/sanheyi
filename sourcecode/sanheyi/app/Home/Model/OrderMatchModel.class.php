@@ -116,6 +116,8 @@ where  A.status=1";
         $detail_data['remark'] = '出局确认收款';
         $r[] = M('user_currency_detail')->add($detail_data);
 
+
+
         //计算各级返佣金，并插入到各个上级的货币总数 ， 以及增加对应货币的财务明细表
         $level_currency_id = 4; //定义货币类型为管理钱包
         $level_retult = $this->calc_level_get_money($offer_get_money, $offer_result['user_id']);

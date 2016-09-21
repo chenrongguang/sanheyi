@@ -50,6 +50,7 @@
             <li>金额</li>
             <li style="width:200px;">提交时间</li>
             <li>匹配信息</li>
+            <li>完成状态</li>
             <li>操作</li>
         </ul>
         <volist name="list" id="vo">
@@ -59,6 +60,7 @@
             <li>{$vo.total_num}</li>
             <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
             <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+            <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
             <li><eq name='vo.match_status' value='1'>&nbsp;&nbsp;<a href="{:U('match/accept_matchlist',array('accept_id'=>$vo['accept_id']))}">查看</a></eq><eq name='vo.match_status' value='2'>&nbsp;<a href="{:U('match/accept_matchlist',array('accept_id'=>$vo['accept_id']))}">查看</a></eq></li>
         </ul>
         </volist>

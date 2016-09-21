@@ -123,7 +123,7 @@ class LoginController extends Controller
         if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
             $return_data['url'] = U('login/login');
-            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '注册成功', $return_data));
         } else {
             $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0002', '保存失败，请重试!'));
         }

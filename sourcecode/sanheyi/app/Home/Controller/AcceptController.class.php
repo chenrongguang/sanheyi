@@ -114,6 +114,27 @@ class AcceptController extends BaseController  {
         }
 
         //以上都没问题,那么可以开始存储了
+        //需要扣除出局钱包的金额
+
+        $currency_id = 5; //定义货币类型
+        $r[] = M('user_currency')
+            ->where(array('user_id' => $_SESSION['user']['user_id'], 'currency_id' => $currency_id))
+            ->setDec('num', $data['num']);
+
+        //增加accept人对应的货币明细记录
+
+        $detail_data['user_id'] = $_SESSION['user']['user_id'];
+        $detail_data['currency_id'] = $currency_id;
+        $detail_data['detail_type'] = 2;
+        $detail_data['detail_num'] =  $data['num'];
+        $detail_data['create_time'] = time();
+        $detail_data['handle_type'] = '出局钱包支出';
+        $detail_data['remark'] = '接收资助';
+        $r[] = M('user_currency_detail')->add($detail_data);
+
+
+        //增加货币明细
+
 
         //生成accept记录
         $data_accept['user_id']=$_SESSION['user']['user_id'];
@@ -124,9 +145,9 @@ class AcceptController extends BaseController  {
         $data_accept['confirm_remain_num']=$data['num'];
         $data_accept['create_time']=time();
         $data_accept['queue_time']=$data_accept['create_time'];
-        $add_result= M('order_accept')->add($data_accept);
+        $r[] = M('order_accept')->add($data_accept);
 
-        if ($add_result) {
+        if (!in_array(false, $r)) {
             $return_data['url']= U('accept/acceptlist');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
         } else {
