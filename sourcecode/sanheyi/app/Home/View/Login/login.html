@@ -53,9 +53,11 @@
                 <div class="tubiao"><img src="__PUBLIC__/images/2.png" /></div>
                 <input class="shuru" type="password" name="password" placeholder="密码" />
             </div>
-            <div class="yanzheng" style="display: none">
-                <input class="yan" type="text" />
-                <div class="shuzi">此处放验证码</div>
+            <div class="yanzheng">
+                    验证码:
+                    <input class="loginValue" name="captcha" id="captcha">
+                    <img id="captchaimg" src="{:U('Login/showVerify')}" style="width:60px;height:40px">
+                    <a href="#" onclick="$('#captchaimg').attr('src', '{:U(\'Login/showVerify\')}?t='+Math.random())">看不清？</a></li>
             </div>
             <div class="tijiao">
                 <input class="tj" type="button" value="登录" onclick="sub()" />

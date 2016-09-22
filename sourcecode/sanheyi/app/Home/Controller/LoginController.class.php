@@ -28,6 +28,13 @@ class LoginController extends Controller
         $pwd = md5(I("post.password"));
         $username = I("post.username");
 
+
+        $verify = new Verify();
+        if(!$verify->check($_POST['captcha'])){
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '验证码输入错误'));
+        }
+
+
         $map['name'] = $username;
         $map['pwd'] = $pwd;
         $map['use_yn'] = 'Y';

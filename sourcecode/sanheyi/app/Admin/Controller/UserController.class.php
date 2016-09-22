@@ -124,11 +124,23 @@ class UserController extends BaseController
         }
         //审核
         else if ($handle_type==2){
+
             $where['user_id'] = $data['user_id'];
             $confirm_data['confirm_status'] = 2;
             $confirm_data['confirm_time'] = time();
             $confirm_data['confirm_user'] =$_SESSION['admin']['id'];
             $result = M('user')->where($where)->save($confirm_data);
+
+            //给会员发送审核通知
+
+            $data['title'] = "审核通知";
+            $data['type'] = 1; //1表示审核通知
+            $data['to_user_id'] =  $data['user_id']; //给审核的会员
+            $data['content'] = "你的资料已经审核通过";
+            $data['create_user'] = $_SESSION['admin']['id'];
+            $data['create_time'] = strtotime(date("Y-m-d H:i:s",time()));
+            $result_add = M('message')->add($data);
+
         }
 
         if ($result) {
