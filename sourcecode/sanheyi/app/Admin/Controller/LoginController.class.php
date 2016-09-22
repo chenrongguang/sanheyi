@@ -46,10 +46,12 @@ class LoginController extends Controller  {
     }
     //登出操作
     public  function logoutDo(){
-        unset($_SESSION['user']);
+        unset($_SESSION['admin']);
         //$this->display('login');
         //redirect('/home/login/login');
         redirect(U('login/login'));
+        //header("Location: http://www.163.com");
+       // exit;
     }
 
     /**

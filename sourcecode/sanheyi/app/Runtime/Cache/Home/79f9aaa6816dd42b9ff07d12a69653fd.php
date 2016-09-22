@@ -12,15 +12,20 @@
         .er{float:left; margin-left:50px; margin-top:20px;}
         .er li{width:700px;}
         .red{color:red;}
-        .san{float:left; margin-left:50px;}
+        .san{float:left; margin-left:50px; border-bottom:1px solid #c2c2c2;}
         .san li{float:left; width:150px; height:40px; line-height:40px; text-align:center; font-size:14px;}
         .lv{color:green;}
         .beizhu{margin-left:50px; margin-top:10px; float:left;}
+		.pagination-page-list{width:50px; height:50px; line-height:50px;}
+		.combobox{width:50px; height:50px;}
+		.pagination{width:800px; height:50px; line-height:50px;}
+		.pagination ul{ height:50px; line-height:50px; float:left; margin-left:120px;}
+		.pagination ul li{float:left; height:50px; line-height:50px;}
+		.pagination-info{width:300px; height:50px; line-height:50px; float:left; margin-left:30px;}
     </style>
 
     <link href="/Public/css/home.css" rel="stylesheet" type="text/css" />
     <link href="/Public/css/Style.css" rel="stylesheet" type="text/css" />
-    <link href="/Public/css/pagination.css" rel="stylesheet" type="text/css" />
 
     <script src="/Public/js/jquery-3.0.0.min.js"></script>
     <script src="/Public/js/common.js"></script>
@@ -45,6 +50,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -52,7 +58,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -111,7 +118,7 @@
 
     </div>
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 </body>

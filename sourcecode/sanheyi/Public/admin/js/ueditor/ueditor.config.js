@@ -36,7 +36,6 @@
         , toolbars: [[
             'source', '|','bold', 'italic', 'underline', 'strikethrough', '|', 'forecolor', 'backcolor', 'paragraph', 'fontsize', '|',
             'link', '|',
-            'simpleupload', 'insertimage', 'emotion', 'insertvideo', '|',
             'horizontal', 'date', 'time', '|',
             'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols'
         ]]

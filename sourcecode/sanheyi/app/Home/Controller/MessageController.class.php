@@ -53,7 +53,10 @@ class MessageController extends BaseController  {
         $result=M('message')->where($where)->find();
 
         if($result!=false && $result!==null){
-            $content=$result['content'];
+            //$content=$result['content'];
+            $content=str_replace(array("\r\n", "\r", "\n"), '<br>', $result['content']);
+           // $content=str_replace(array("\r\n","\r"), '<br>', $result['content']);
+           // $content=str_replace(array( "\n"), ' ', $content);
         }
         $this->assign('content',$content);
 

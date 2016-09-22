@@ -39,9 +39,14 @@
       </div>
       <h3 class="menu_head">退出系统</h3>
       <div style="display:none" class="menu_body"> 
-      	  <a href="{:U('login/logoutDo')}" target="mainFrame">·退出系统</a> 
+      	  <a href="{:U('login/logoutDo')}" onclick="logout()" >·退出系统</a>
       </div>
     </div>
 </div>
+<script type="text/javascript">
+    function logout() {
+        top.location.href = '/admin/login/login';
+    }
+</script>
 </body>
 </html>

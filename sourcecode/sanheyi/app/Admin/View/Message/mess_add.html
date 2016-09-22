@@ -8,9 +8,19 @@
     <script src="__PUBLIC__/admin/js/common.js"></script>
     <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/admin/js/home/zhanghuxinxi.js"></script>
+    <!--
 <script charset="utf-8" src="__PUBLIC__/qyadmin/kindeditor-4.1.10/kindeditor.js"></script>
 <script charset="utf-8" src="__PUBLIC__/qyadmin/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <script charset="utf-8" src="__PUBLIC__/qyadmin/kindeditor-4.1.10/plugins/code/anchor.js"></script>
+-->
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/js/ueditor/ueditor.config.js?id=1"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/js/ueditor/ueditor.all.min.js"> </script>
+
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <!--
 <script>
 		KindEditor.ready(function(K) {
 			var editor1 = K.create('textarea[name="content"]', {
@@ -40,6 +50,7 @@
 			return true;
 		}
 	</script>
+	-->
 
 </head>
 <BODY id="main">
@@ -55,14 +66,19 @@
             </tr>
             <tr><td width="15%" align="right" valign="top">内容</td>
                 <td>
+
+                        <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+                    <!--
 					<textarea name="content" class="hxtextarea" style="width:80%; height:100px;">{$show_data['content']}</textarea>
+                    -->
                 </td>
             </tr>
            <tr>
                 <td></td>
                <td>
                 <input  type="hidden" id="message_id" name="message_id" value="{$show_data['message_id']}"/>
-                <input  id="btn_sub"  type="button" class="hxbtn" value="提交保存" onclick="sub(1)" />
+                   <input  type="hidden" id="content" name="content" value="{$show_data['content']}"/>
+                   <input  id="btn_sub"  type="button" class="hxbtn" value="提交保存" onclick="sub(1)" />
             </td>
             </tr>
     </table>
@@ -82,6 +98,7 @@
     function getContent() {
         //arr.push(UE.getEditor('editor').getContent());
 
+        //$('#content').val(UE.getEditor('editor').getContentTxt());
         $('#content').val(UE.getEditor('editor').getPlainTxt());
         //alert($('#content').val())
     }
@@ -106,8 +123,9 @@
     $(document).ready(function(){
         //不为空,表示是编辑
         var message_id="{$show_data['message_id']}";
+        var ct="{$show_data['content']}";
         if(message_id!=''){
-            setContent("{$show_data['content']}");
+            setContent(ct);
         }
 
     });

@@ -53,7 +53,10 @@ class MessageController extends BaseController  {
         $result=M('message')->where($where)->find();
 
         if($result!=false && $result!==null){
-            $content=$result['content'];
+            //$content=$result['content'];
+            $content=str_replace(array("\r\n", "\r", "\n"), '<br>', $result['content']);
+           // $content=str_replace(array("\r\n","\r"), '<br>', $result['content']);
+            //$content=str_replace(array( "\n"), ' ', $content);
         }
         $this->assign('content',$content);
 
@@ -71,6 +74,7 @@ class MessageController extends BaseController  {
             $conditionData['message_id'] = $id;
             $result= $model->where($conditionData)->find();
             if ($result!=false && $result !=null){
+                $result['content']=str_replace(array("\r\n", "\r", "\n"), '<br>', $result['content']);
                 $this->assign('show_data', $result);
             }
         }
@@ -87,7 +91,8 @@ class MessageController extends BaseController  {
         //新增
         if(empty($post_data['message_id'])){
             $data['title'] = I("post.title");
-            $data['content'] = I("post.content");
+           // $data['content'] = str_replace(array("\r\n", "\r", "\n"), '\\r\\n',  I("post.content"));
+            $data['content'] =  I("post.content");
             $data['create_user'] = $_SESSION['admin']['id'];
             $data['create_time'] = strtotime(date("Y-m-d H:i:s",time()));
             $result = $model->add($data);
@@ -95,8 +100,9 @@ class MessageController extends BaseController  {
         else{
             //编辑
             $data['title'] = I("post.title");
-            $data['content'] = I("post.content");
-            $where['message_id']= $post_data['message_id'];
+           // $data['content'] =str_replace(array("\r\n", "\r", "\n"), '\\r\\n',  I("post.content"));
+            $data['content'] =  I("post.content");
+            $where['message_id']=  $post_data['message_id'];
             $result = $model->where($where)->save($data);
 
         }

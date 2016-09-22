@@ -43,7 +43,8 @@
             <th width="8%" scope="col">类型</th>
             <th width="8%" scope="col">社区</th>
             <th width="11%" scope="col">会员</th>
-            <th width="8%" scope="col">金额</th>
+            <th width="4%" scope="col">总金额</th>
+            <th width="4%" scope="col">剩余匹配金额</th>
             <th width="11%" scope="col">提交时间</th>
             <th width="11%" scope="col">排队时间</th>
             <th width="8%" scope="col">付款信息</th>
@@ -60,6 +61,7 @@
                 <TD  align="center" >{$vo.cname}</TD>
                 <TD  align="center" >{$vo.user_name}</TD>
                 <TD  align="center" >{$vo.num}</TD>
+                <TD  align="center" >{$vo.match_remain_num}</TD>
                 <TD  align="center" >{$vo.create_time|date="Y-m-d H:i:s",###}</TD>
                 <TD  align="center" >{$vo.queue_time|date="Y-m-d H:i:s",###}</TD>
                 <TD  align="center" >

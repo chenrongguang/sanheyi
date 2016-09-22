@@ -2,6 +2,9 @@
 <HTML><HEAD>
 <META http-equiv=Content-Type content="text/html; charset=utf-8">
 <link href="__PUBLIC__/qyadmin/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/admin/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/admin/js/common.js"></script>
+    <script src="__PUBLIC__/admin/js/jquery.form.min.js"></script>
 </HEAD>
 <script type="text/javascript">
 </script>
@@ -10,13 +13,40 @@
     <div class="nav"><em></em>当前位置: <a href="main.php" target="mainFrame">后台首页</a>  >  会员列表</div>
     <div class="mk">
          <div class="xtgl">
+             <ul class="er">
+                 <li>审核状态:
+                     <select id="ss_confirmstatus">
+                         <option value="-1" selected>全部</option>
+                         <option value="99">未审核</option>
+                         <option value="1">等待审核</option>
+                         <option value="2">已审核</option>
+                     </select>
+                 </li>
+                 <li>封号状态:
+                     <select id="ss_useyn">
+                         <option value="-1">全部</option>
+                         <option value="Y" selected>正常</option>
+                         <option value="N">已封号</option>
+                     </select>
+                 </li>
+                 <li>关键字搜索:
+                     <input type="text" id="keyword" name="keyword"value="" class="writeText" placeholder="会员名/姓名/手机号">
+                 </li>
+                 <li>
+                     <input type="button" value="查询" id="btn_search" onclick="search();">
+                 </li>
+             </ul>
+         </div>
+
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="hxtabbor">
   <tr>
     <th width="11%" scope="col">登录账号</th>
     <th width="10%" scope="col">姓名</th>
     <th width="10%" scope="col">电话</th>
-    <th width="19%" scope="col">状态</th>
+    <th width="10%" scope="col">状态</th>
     <th width="10%" scope="col">注册时间</th>
+      <th width="9%" scope="col">解/封号</th>
 	<th width="10%" scope="col">审核状态</th>
 	<th width="10%" scope="col">操作</th>
   </tr>
@@ -29,6 +59,10 @@
 		<td align="center">
 			{$vo.create_time|date="Y-m-d H:i:s",###}
 		</td>
+        <td align="center">
+            <eq name='vo.use_yn' value='Y'> <input type="button" id="btn_n" value="封号" onclick="handle_yn('{$vo.user_id}','N');" /></eq>
+            <eq name='vo.use_yn' value='N'><input type="button" id="btn_y" value="解封" onclick="handle_yn('{$vo.user_id}','Y');" /></eq>
+        </td>
 		<td align="center">
 			<eq name='vo.confirm_status' value='0'>未审核</eq>
                     <eq name='vo.confirm_status' value='1'>审核中</eq>
@@ -45,7 +79,7 @@
 </volist>
         <empty name="list">
             <tr>
-                <td colspan="7">目前没有相关信息</td>
+                <td colspan="8">目前没有相关信息</td>
             </tr>
         </empty>
         
@@ -54,4 +88,55 @@
             <div class="beizhu">{$page}</div>
         </notempty>
 </div></div></div>
+
+<script type="text/javascript">
+    function handle_yn(user_id,type){
+        if(confirm('你确定要进行解封号处理么?')==false){
+            return ;
+        }
+
+        var path = "{:U('User/ajaxhandleyn')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({user_id:user_id,type:type}),
+            async : false,
+            success : function(data){
+                //return_handle(data);
+                if(data.result=='SUCCESS'){
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+    $(document).ready(function () {
+        //设置进入页面之后的选中值
+        var ss_confirmstatus = "{$confirm_status}";
+        var ss_useyn = "{$use_yn}";
+        var keyword = "{$keyword}";
+        $('#ss_confirmstatus').val(ss_confirmstatus)
+        $('#ss_useyn').val(ss_useyn);
+        $('#keyword').val(keyword);
+    });
+
+    function search() {
+        //获取社区
+        var confirm_status = $('#ss_confirmstatus').val();
+
+        var use_yn = $('#ss_useyn').val();
+        var keyword = $('#keyword').val();
+
+        $url = '/admin/User/userlist/confirm_status/' + confirm_status + '/use_yn/' + use_yn+ '/keyword/' + keyword;
+        location.href = $url;
+
+    }
+
+
+</script>
+
 </BODY></HTML>
