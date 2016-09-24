@@ -80,6 +80,7 @@ class LoginController extends Controller
             'fontttf' => '4.ttf',              // 验证码字体，不设置随机获取
         );
         $Verify = new Verify($config);
+        $Verify->codeSet = '0123456789';
         $Verify->entry();
     }
 
@@ -260,7 +261,8 @@ class LoginController extends Controller
         //找到
         if ($reult !== false && $reult !== null) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
-            $return_data['p_id'] = $reult[user_id];
+            $return_data['p_id'] = $reult['user_id'];
+            $return_data['family_name'] = $reult['family_name'];
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
 
         } else {

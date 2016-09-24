@@ -49,7 +49,7 @@
                 </li>
                 <li>
                     <div class="nei1">接收人的账户：</div>
-                    <div class="nei2"><input type="text" id="name" name="name" class="inp1" /><span class="xin">*</span><span class="tishi">无此用户</span></div>
+                    <div class="nei2"><input type="text" id="name" name="name" class="inp1" /><span class="xin">*</span><span class="tishi m_family_name">无此用户</span></div>
                     <input type="hidden" name="to_user_id" id="to_user_id"/>
                 </li>
                 <li>
@@ -91,14 +91,12 @@
             success : function(data){
                 //该人存在
                 if(data.result=='SUCCESS'){
-                    //location.href= data.return_data.url;
+                    $('.m_family_name').text( data.return_data.family_name);
                     $('#to_user_id').val(data.return_data.p_id);//获得该接收人的id
                 }else{
-                    //该名字不可以用,已经有人注册了
+                    $('.m_family_name').text('无此用户');
                     alert(data.msg);
-                    //$('#to_user_id').val();
-                    //$('#name').val('');
-                    //$('#name').focus();
+
 
                 }
 

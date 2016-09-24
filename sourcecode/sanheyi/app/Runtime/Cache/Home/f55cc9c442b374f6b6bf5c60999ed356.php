@@ -161,6 +161,10 @@
 
     function  act_user(user_id){
 
+        if(confirm('你确定要消耗1善种子,激活该会员么?')==false){
+            return;
+        }
+
         var path = "<?php echo U('user/ajxact_user');?>";
 
         $.ajax({

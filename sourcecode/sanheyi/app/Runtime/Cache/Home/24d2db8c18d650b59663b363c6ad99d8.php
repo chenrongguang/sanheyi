@@ -128,12 +128,16 @@
         </div>
         <ul class="er">
             <li>
+                <a href="<?php echo U('community/community_select_offer');?>">
                 <div class="ertu"><img src="/Public/images/5.jpg" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
+                </a>
             </li>
             <li>
+                <a href="<?php echo U('community/community_select_accept');?>">
                 <div class="ertu"><img src="/Public/images/5.jpg" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
+                </a>
             </li>
             <li>
                 <div class="ertu"><img src="/Public/images/5.jpg" /></div>
@@ -180,8 +184,8 @@
                 <li><?php echo ($vo["cname"]); ?></li>
                 <li><?php echo ($vo["num"]); ?></li>
                 <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
-                <li><?php if(($vo["confirm_status"]) == "0"): ?>未完成<?php endif; if(($vo["confirm_status"]) == "1"): ?>部分完成<?php endif; if(($vo["confirm_status"]) == "2"): ?>全部完成<?php endif; ?></li>
-                <li style="width:120px;"><?php if(($vo["match_status"]) == "1"): ?>部分匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; ?></li>
+                <li><?php if(($vo["confirm_status"]) == "0"): ?><font color="red">未完成</font><?php endif; if(($vo["confirm_status"]) == "1"): ?>部分完成<?php endif; if(($vo["confirm_status"]) == "2"): ?>全部完成<?php endif; ?></li>
+                <li style="width:120px;"><?php if(($vo["match_status"]) == "0"): ?><font color="red">未匹配</font><?php endif; ?>><?php if(($vo["match_status"]) == "1"): ?>部分匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<input type="button" value="查看" onclick="show_match_offer('<?php echo ($vo["offer_id"]); ?>')"><?php endif; ?></li>
             </ul><?php endforeach; endif; else: echo "" ;endif; ?>
         <ul class="qi">
             <li style="border-left:1px solid #c2c2c2; width:50px;">ID</li>
@@ -206,7 +210,10 @@
                 <li>接受资助</li>
                 <li><?php echo ($vo["total_num"]); ?></li>
                 <li style="width:200px;"><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+                <!--
                 <li><?php if(($vo["match_status"]) == "0"): ?>等待匹配<?php endif; if(($vo["match_status"]) == "1"): ?>部分匹配<?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<?php endif; ?></li>
+                -->
+                <li><?php if(($vo["confirm_status"]) == "0"): ?><font color="red">未完成</font><?php endif; if(($vo["confirm_status"]) == "1"): ?>部分完成<?php endif; if(($vo["confirm_status"]) == "2"): ?>全部完成<?php endif; ?></li>
                 <li><input type="button" value="查看" onclick="show_match_accept('<?php echo ($vo["accept_id"]); ?>')"></li>
             </ul><?php endforeach; endif; else: echo "" ;endif; ?>
 

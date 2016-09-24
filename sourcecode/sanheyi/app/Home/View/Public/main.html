@@ -72,12 +72,16 @@
         </div>
         <ul class="er">
             <li>
+                <a href="{:U('community/community_select_offer')}">
                 <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
+                </a>
             </li>
             <li>
+                <a href="{:U('community/community_select_accept')}">
                 <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
+                </a>
             </li>
             <li>
                 <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
@@ -125,8 +129,8 @@
                 <li>{$vo.cname}</li>
                 <li>{$vo.num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li style="width:120px;"><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
+                <li style="width:120px;"><eq name='vo.match_status' value='0'><font color="red">未匹配</font></eq>><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
             </ul>
         </volist>
         <ul class="qi">
@@ -153,7 +157,10 @@
                 <li>接受资助</li>
                 <li>{$vo.total_num}</li>
                 <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
+                <!--
                 <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
+                -->
+                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
                 <li><input type="button" value="查看" onclick="show_match_accept('{$vo.accept_id}')"></li>
             </ul>
         </volist>
