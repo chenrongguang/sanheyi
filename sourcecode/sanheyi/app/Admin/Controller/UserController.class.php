@@ -171,6 +171,10 @@ class UserController extends BaseController
             $confirm_data['confirm_user'] =$_SESSION['admin']['id'];
             $result = M('user')->where($where)->save($confirm_data);
 
+            //发送短信
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms('',$data['user_id'],'尊敬的会员,你的资料已经审核通过,请登陆系统查看!');
+
             //给会员发送审核通知
 
             $data['title'] = "审核通知";
@@ -180,6 +184,9 @@ class UserController extends BaseController
             $data['create_user'] = $_SESSION['admin']['id'];
             $data['create_time'] = strtotime(date("Y-m-d H:i:s",time()));
             $result_add = M('message')->add($data);
+
+
+
 
         }
 

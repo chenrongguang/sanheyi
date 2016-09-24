@@ -126,6 +126,11 @@ class MatchController extends BaseController
 
         if (!in_array(false, $r)) {
             M()->commit();
+
+            //发送短信
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms('',$accept_result['user_id'],'尊敬的会员,你的匹配已经打款,请登陆系统查看!');
+
             $return_data['url']= U('offer/offerlist');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
 

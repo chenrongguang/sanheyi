@@ -393,6 +393,11 @@ class UserController extends BaseController
         if (!in_array(false, $r)) {
             M()->commit();
             $this->make_user_currency_default($act_user);//激活之后生成该会员的默认货币记录
+
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms('',$act_user,'尊敬的会员,你已被成功激活,请登陆系统查看!');
+
+
             $return_data['url'] = U('user/level_down_all');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
 

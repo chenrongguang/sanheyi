@@ -129,6 +129,9 @@ class LoginController extends Controller
         $data['high_pwd'] = md5(I("post.pwd"));//默认密码和登陆密码一样
         $result = M('user')->add($data);
         if ($result) {
+
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms($data['mobile'],'','尊敬的会员,恭喜你注册成功!');
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
             $return_data['url'] = U('login/login');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '注册成功', $return_data));

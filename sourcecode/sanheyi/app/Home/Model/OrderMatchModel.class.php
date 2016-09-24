@@ -156,6 +156,11 @@ where  A.status=1";
 
         if (!in_array(false, $r)) {
             M()->commit();
+
+            //发送短信
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms('',$offer_result['user_id'],'尊敬的会员,你的匹配已经确认收款,请登陆系统查看!');
+
             return true;
         } else {
             M()->rollback();
@@ -371,6 +376,12 @@ where  A.status=1";
 
             if (!in_array(false, $r)) {
                 M()->commit();
+
+                //发送短信
+                $sendsms = new \Common\Util\Sendsms();
+                $sendsms->sand_sms('',$user_id,'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+                $sendsms->sand_sms('',$val['user_id'],'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+
                 $handle_flag = true;
 
             } else {
@@ -575,6 +586,12 @@ where  A.status=1";
 
             if (!in_array(false, $r)) {
                 M()->commit();
+
+                //发送短信
+                $sendsms = new \Common\Util\Sendsms();
+                $sendsms->sand_sms('',$user_id,'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+                $sendsms->sand_sms('',$val['user_id'],'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+
                 $handle_flag = true;
 
             } else {
