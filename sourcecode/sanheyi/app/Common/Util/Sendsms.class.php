@@ -22,13 +22,92 @@ class Sendsms  {
         $result_config_code_name = M('config')->where(array('key' => 'CODE_NAME'))->field('value')->find();
         $result_config_code_user_name = M('config')->where(array('key' => 'CODE_USER_NAME'))->field('value')->find();
         $result_config_code_user_pass = M('config')->where(array('key' => 'CODE_USER_PASS'))->field('value')->find();
-        $r = $this->sand($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value'],$content);
+       // $r = $this->sand($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value'],$content);
+        $r = $this->sand_huiyi($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value'],$content);
         if ($r != "短信发送成功") {
             return false;
         } else {
            return true;
         }
     }
+
+    /**
+     * @param $phone
+     * @param $name
+     * @param $user
+     * @param $pass
+     * @param $content
+     * 慧亿短信
+     */
+    private function sand_huiyi($phone,$name,$user,$pass,$content){
+
+        $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
+        $mobile = $phone;
+        $mobile_code = $this->random(4,1);
+
+        $post_data = "account=".$user."&password=".$pass."&mobile=".$mobile."&content=".rawurlencode("【".$name."】". $content);
+//查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
+        $gets =  $this->xml_to_array($this->Post($post_data, $target));
+        if($gets['SubmitResult']['code']==2){
+            // $_SESSION['mobile'] = $mobile;
+            // $_SESSION['mobile_code'] = $mobile_code;
+            session(array('name'=>'code','expire'=>600));
+            session('code',$mobile_code);  //设置session
+            session('time',time());
+            return "短信发送成功";
+        }
+        else{
+            return "短信发送失败:".$gets['SubmitResult']['msg'];
+        }
+
+    }
+
+
+  private  function Post($curlPost,$url){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_NOBODY, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
+        $return_str = curl_exec($curl);
+        curl_close($curl);
+        return $return_str;
+    }
+    private  function xml_to_array($xml){
+        $reg = "/<(\w+)[^>]*>([\\x00-\\xFF]*)<\\/\\1>/";
+        if(preg_match_all($reg, $xml, $matches)){
+            $count = count($matches[0]);
+            for($i = 0; $i < $count; $i++){
+                $subxml= $matches[2][$i];
+                $key = $matches[1][$i];
+                if(preg_match( $reg, $subxml )){
+                    $arr[$key] = xml_to_array( $subxml );
+                }else{
+                    $arr[$key] = $subxml;
+                }
+            }
+        }
+        return $arr;
+    }
+    private  function random($length = 6 , $numeric = 0) {
+        PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
+        if($numeric) {
+            $hash = sprintf('%0'.$length.'d', mt_rand(0, pow(10, $length) - 1));
+        } else {
+            $hash = '';
+            $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789abcdefghjkmnpqrstuvwxyz';
+            $max = strlen($chars) - 1;
+            for($i = 0; $i < $length; $i++) {
+                $hash .= $chars[mt_rand(0, $max)];
+            }
+        }
+        return $hash;
+    }
+
+
+
 
     /** 短信认证
      * @param $phone 电话号码

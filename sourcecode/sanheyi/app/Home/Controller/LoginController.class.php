@@ -193,7 +193,8 @@ class LoginController extends Controller
         $result_config_code_user_name = M('config')->where(array('key' => 'CODE_USER_NAME'))->field('value')->find();
         $result_config_code_user_pass = M('config')->where(array('key' => 'CODE_USER_PASS'))->field('value')->find();
 
-        $r = sandPhone($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value']);
+        //$r = sandPhone($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value']);
+        $r = sandPhone_huiyi($phone, $result_config_code_name['value'], $result_config_code_user_name['value'], $result_config_code_user_pass['value']);
         //$r = sandPhone($phone,$this->config['CODE_NAME'],$this->config['CODE_USER_NAME'],$this->config['CODE_USER_PASS']);
         if ($r != "短信发送成功") {
             $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0003', $r));

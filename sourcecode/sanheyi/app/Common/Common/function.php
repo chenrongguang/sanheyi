@@ -204,6 +204,113 @@ function sandPhone($phone,$name,$user,$pass){
 //     dump($user);dump($pass);dump($phone);dump($content);die;
     return $statusStr[$result];
 }
+
+
+function sandPhone_huiyi($phone,$name,$user,$pass){
+
+    $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
+    $mobile = $phone;
+    $mobile_code = random(4,1);
+
+    $post_data = "account=".$user."&password=".$pass."&mobile=".$mobile."&content=".rawurlencode("【".$name."】 您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
+//查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
+    $gets =  xml_to_array(Post($post_data, $target));
+    if($gets['SubmitResult']['code']==2){
+       // $_SESSION['mobile'] = $mobile;
+       // $_SESSION['mobile_code'] = $mobile_code;
+        session(array('name'=>'code','expire'=>600));
+        session('code',$mobile_code);  //设置session
+        session('time',time());
+        return "短信发送成功";
+    }
+    else{
+        return "短信发送失败:".$gets['SubmitResult']['msg'];
+    }
+
+
+    //echo $gets['SubmitResult']['msg'];
+
+    /*
+
+    $statusStr = array(
+        "0" => "短信发送成功",
+        "-1" => "参数不全",
+        "-2" => "服务器空间不支持,请确认支持curl或者fsocket，联系您的空间商解决或者更换空间！",
+        "30" => "密码错误",
+        "40" => "账号不存在",
+        "41" => "余额不足",
+        "42" => "帐户已过期",
+        "43" => "IP地址限制",
+        "50" => "内容含有敏感词",
+        "100"=>'您操作太频繁，请稍后再试'
+    );
+    $smsapi = "http://api.smsbao.com/";
+    $user = $user; //短信平台帐号
+    $pass = md5($pass); //短信平台密码
+    $time=session('time');
+    if (time()-$time<60&&!empty($time)){
+        return $statusStr['100'];
+    }
+    $code=rand(1000, 9999);
+    session(array('name'=>'code','expire'=>600));
+    session('code',$code);  //设置session
+    session('time',time());
+    $content="【".$name."】您的验证码为".$code."，请不要泄漏给他人。";//要发送的短信内容
+    $sendurl = $smsapi."sms?u=".$user."&p=".$pass."&m=".$phone."&c=".urlencode($content);
+    $result =file_get_contents($sendurl) ;
+//     dump($user);dump($pass);dump($phone);dump($content);die;
+    return $statusStr[$result];
+
+    */
+}
+
+function Post($curlPost,$url){
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_NOBODY, true);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
+    $return_str = curl_exec($curl);
+    curl_close($curl);
+    return $return_str;
+}
+function xml_to_array($xml){
+    $reg = "/<(\w+)[^>]*>([\\x00-\\xFF]*)<\\/\\1>/";
+    if(preg_match_all($reg, $xml, $matches)){
+        $count = count($matches[0]);
+        for($i = 0; $i < $count; $i++){
+            $subxml= $matches[2][$i];
+            $key = $matches[1][$i];
+            if(preg_match( $reg, $subxml )){
+                $arr[$key] = xml_to_array( $subxml );
+            }else{
+                $arr[$key] = $subxml;
+            }
+        }
+    }
+    return $arr;
+}
+function random($length = 6 , $numeric = 0) {
+    PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
+    if($numeric) {
+        $hash = sprintf('%0'.$length.'d', mt_rand(0, pow(10, $length) - 1));
+    } else {
+        $hash = '';
+        $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789abcdefghjkmnpqrstuvwxyz';
+        $max = strlen($chars) - 1;
+        for($i = 0; $i < $length; $i++) {
+            $hash .= $chars[mt_rand(0, $max)];
+        }
+    }
+    return $hash;
+}
+
+
+
+
+
 /**
  * 验证手机
  * @param $code
