@@ -58,7 +58,25 @@ class CurrencyController extends BaseController  {
 
             //发送短信
             $sendsms = new \Common\Util\Sendsms();
-            $sendsms->sand_sms('',$data['user_id'],'尊敬的会员,你已充值成功,请登陆系统查看!');
+
+
+            if($data['currency_id']==1){
+                $currency_name='善种子';
+            }
+             if($data['currency_id']==2){
+                 $currency_name='善心币';
+             }
+             if($data['currency_id']==5){
+                 $currency_name='出局钱包';
+             }
+            $now_date= date("m/d",time());
+            $now_time= date("H:i",time());
+
+            //您好，您的善心币账户与【变量】 【变量】成功充值【变量】个，如有疑问，请联系服务中心。
+
+            $content="您好，您的善心币账户与".$now_date." ".$now_time."成功充值".$data['num']."个，如有疑问，请联系服务中心。";
+
+            $sendsms->sand_sms('',$data['user_id'],$content);
 
             $return_data['url']= U('currency/rechargelist');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));

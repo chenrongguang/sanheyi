@@ -173,7 +173,7 @@ class UserController extends BaseController
 
             //发送短信
             $sendsms = new \Common\Util\Sendsms();
-            $sendsms->sand_sms('',$data['user_id'],'尊敬的会员,你的资料已经审核通过,请登陆系统查看!');
+            $sendsms->sand_sms('',$data['user_id'],'您好，您的资料已经审核通过，通过后无法自行修改任何资料，如需修改请联系服务中心。');
 
             //给会员发送审核通知
 

@@ -131,7 +131,12 @@ class LoginController extends Controller
         if ($result) {
 
             $sendsms = new \Common\Util\Sendsms();
-            $sendsms->sand_sms($data['mobile'],'','尊敬的会员,恭喜你注册成功!');
+
+            //您好，【变量】，恭喜注册成功，欢迎成为我们的注册会员，账户激活后更多精彩。
+
+            $content="您好，".$data['name']."，恭喜注册成功，欢迎成为我们的注册会员，账户激活后更多精彩。";
+
+            $sendsms->sand_sms($data['mobile'],'',$content);
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
             $return_data['url'] = U('login/login');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '注册成功', $return_data));

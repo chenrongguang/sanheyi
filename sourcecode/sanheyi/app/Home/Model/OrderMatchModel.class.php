@@ -158,8 +158,8 @@ where  A.status=1";
             M()->commit();
 
             //发送短信
-            $sendsms = new \Common\Util\Sendsms();
-            $sendsms->sand_sms('',$offer_result['user_id'],'尊敬的会员,你的匹配已经确认收款,请登陆系统查看!');
+            //$sendsms = new \Common\Util\Sendsms();
+            //$sendsms->sand_sms('',$offer_result['user_id'],$content);
 
             return true;
         } else {
@@ -379,8 +379,9 @@ where  A.status=1";
 
                 //发送短信
                 $sendsms = new \Common\Util\Sendsms();
-                $sendsms->sand_sms('',$user_id,'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
-                $sendsms->sand_sms('',$val['user_id'],'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+                $content="亲爱的会员，您申请的订单已成功匹配，请登录系统后台查看处理，任何人索要验证码的都不要给他，请勿轻信系统以外的信息。";
+                $sendsms->sand_sms('',$user_id,$content);
+                $sendsms->sand_sms('',$val['user_id'],$content);
 
                 $handle_flag = true;
 
@@ -589,8 +590,9 @@ where  A.status=1";
 
                 //发送短信
                 $sendsms = new \Common\Util\Sendsms();
-                $sendsms->sand_sms('',$user_id,'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
-                $sendsms->sand_sms('',$val['user_id'],'尊敬的会员,你已匹配成功,请登陆系统查看并进行后续处理!');
+                $content="亲爱的会员，您申请的订单已成功匹配，请登录系统后台查看处理，任何人索要验证码的都不要给他，请勿轻信系统以外的信息。";
+                $sendsms->sand_sms('',$user_id,$content);
+                $sendsms->sand_sms('',$val['user_id'],$content);
 
                 $handle_flag = true;
 

@@ -39,21 +39,21 @@ class Sendsms  {
      * @param $content
      * 慧亿短信
      */
-    private function sand_huiyi($phone,$name,$user,$pass,$content){
+    public function sand_huiyi($phone,$name,$user,$pass,$content){
 
         $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
         $mobile = $phone;
         $mobile_code = $this->random(4,1);
 
-        $post_data = "account=".$user."&password=".$pass."&mobile=".$mobile."&content=".rawurlencode("【".$name."】". $content);
+        $post_data = "account=".$user."&password=".$pass."&mobile=".$mobile."&content=".rawurlencode($content);
 //查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
         $gets =  $this->xml_to_array($this->Post($post_data, $target));
         if($gets['SubmitResult']['code']==2){
             // $_SESSION['mobile'] = $mobile;
             // $_SESSION['mobile_code'] = $mobile_code;
-            session(array('name'=>'code','expire'=>600));
-            session('code',$mobile_code);  //设置session
-            session('time',time());
+            //session(array('name'=>'code','expire'=>600));
+            //session('code',$mobile_code);  //设置session
+            //session('time',time());
             return "短信发送成功";
         }
         else{

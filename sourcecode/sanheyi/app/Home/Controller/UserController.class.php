@@ -202,6 +202,15 @@ class UserController extends BaseController
 
         if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
+
+            $sendsms = new \Common\Util\Sendsms();
+
+            //您的信息已提交，系统正在处理，请留意后续的通知。
+
+            $content="您的信息已提交，系统正在处理，请留意后续的通知。";
+
+            $sendsms->sand_sms('',$_SESSION['user']['user_id'],$content);
+
             $return_data['url'] = U('user/accountinfo');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
         } else {
@@ -243,6 +252,15 @@ class UserController extends BaseController
 
         if ($result) {
             // 如果主键是自动增长型 成功后返回值就是最新插入的值
+
+            $sendsms = new \Common\Util\Sendsms();
+
+            //您的信息已提交，系统正在处理，请留意后续的通知。
+
+            $content="您的信息已提交，系统正在处理，请留意后续的通知。";
+
+            $sendsms->sand_sms('',$_SESSION['user']['user_id'],$content);
+
             $return_data['url'] = U('user/identityinfo');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功', $return_data));
         } else {
@@ -394,8 +412,22 @@ class UserController extends BaseController
             M()->commit();
             $this->make_user_currency_default($act_user);//激活之后生成该会员的默认货币记录
 
+            $now_date= date("m/d",time());
+            $now_time= date("H:i",time());
+
+            //您的账户于【变量】 【变量】成功激活。
+
+            $content="您的账户于".$now_date." ".$now_time."成功激活。";
+
             $sendsms = new \Common\Util\Sendsms();
-            $sendsms->sand_sms('',$act_user,'尊敬的会员,你已被成功激活,请登陆系统查看!');
+            $sendsms->sand_sms('',$act_user,$content);
+
+            //您好，您的善心币账户与【变量】 【变量】成功扣除1个，如有疑问，请联系服务中心。
+            $now_date= date("m/d",time());
+            $now_time= date("H:i",time());
+
+            $content="您好，您的善种子账户与".$now_date." ".$now_time."成功扣除1个，如有疑问，请联系服务中心。";
+            $sendsms->sand_sms('', $_SESSION['user']['user_id'],$content);
 
 
             $return_data['url'] = U('user/level_down_all');

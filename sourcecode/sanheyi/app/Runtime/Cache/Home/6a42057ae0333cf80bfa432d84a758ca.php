@@ -46,6 +46,7 @@
             <dd><a href="<?php echo U('user/changepwd');?>">修改密码</a></dd>
             <dd><a href="<?php echo U('user/reg');?>">会员注册</a></dd>
             <dd><a href="<?php echo U('user/pidlink');?>">推荐链接</a></dd>
+           
             <dd><a href="<?php echo U('user/personinfo');?>">个人信息</a></dd>
         </dl>
     </li>
@@ -53,7 +54,8 @@
         <dl class="caidan">
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
-            <dd><a href="<?php echo U('user/level_down_all');?>">激活会员</a></dd>
+            <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+            
         </dl>
     </li>
     <li>
@@ -121,7 +123,7 @@
         </form>
     </div>
     <div class="foot">
-    <div class="beian">善心汇  版权所有  粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 <script type="text/javascript">

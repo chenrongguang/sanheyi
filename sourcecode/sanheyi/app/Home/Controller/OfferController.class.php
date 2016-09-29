@@ -145,6 +145,17 @@ class OfferController extends BaseController
 
         if (!in_array(false, $r)) {
             M()->commit();
+
+            $now_date= date("m/d",time());
+            $now_time= date("H:i",time());
+
+            //您好，您的善心币账户于【变量】 【变量】成功扣除【变量】个，如有疑问，请联系服务中心。
+
+            $content="您好，您的善心币账户于".$now_date." ".$now_time."成功扣除".$data['need_SXB']."个，如有疑问，请联系服务中心。";
+            //发送短信
+            $sendsms = new \Common\Util\Sendsms();
+            $sendsms->sand_sms('',$_SESSION['user']['user_id'],$content);
+
             $return_data['url']= U('offer/offerlist');
             $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS','0','处理成功',$return_data));
 
