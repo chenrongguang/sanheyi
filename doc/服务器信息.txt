@@ -1,4 +1,4 @@
-120.26.241.166
+﻿120.26.241.166
 Administrator
 qy123!@#
 
@@ -6,3 +6,7 @@ qy123!@#
 118.178.93.195
 Administrator
 Sxh666888
+
+ftp:
+sanheyi
+sanheyi123
