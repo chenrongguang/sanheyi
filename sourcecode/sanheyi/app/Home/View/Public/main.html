@@ -119,16 +119,7 @@
             <li>详细信息</li>
             <li style="width:120px;">匹配信息</li>
         </ul>
-        <!--后加的边框-->
-         <ul class="xinjia">
-            <li><a href="">1111</a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li style="width:120px;"><a href=""></a></li>
-        </ul>
+
         <volist name="offer_list" id="vo">
             <ul class="liu">
                 <li>{$vo.offer_id}</li>
@@ -136,8 +127,20 @@
                 <li>{$vo.cname}</li>
                 <li>{$vo.num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li style="width:120px;"><eq name='vo.match_status' value='0'><font color="red">未匹配</font></eq>><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+                <li>
+                    <a  href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">
+                    <eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq>
+                    <eq name='vo.confirm_status' value='1'>部分完成</eq>
+                    <eq name='vo.confirm_status' value='2'>全部完成</eq>
+                    </a>
+                </li>
+                <li style="width:120px;">
+                    <a  href="{:U('match/offer_matchlist',array('offer_id'=>$vo['offer_id']))}">
+                    <eq name='vo.match_status' value='0'><font color="red">未匹配</font></eq>
+                    <eq name='vo.match_status' value='1'>部分匹配</eq>
+                    <eq name='vo.match_status' value='2'>全部匹配</eq>
+                    </a>
+                </li>
             </ul>
         </volist>
         <ul class="qi">
@@ -146,18 +149,9 @@
             <li>金额</li>
             <li style="width:190px">提交时间</li>
             <li>详细信息</li>
-            <li style="width:80px;">操作</li>
+
         </ul>
-         <!--后加的边框2-->
-         <ul class="xinjia2">
-            <li style="width: 50px;"><a href="">222</a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li  style="width: 190px;"><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li style="width: 80px;"><a href=""></a></li>
-            
-        </ul>
+
         <volist name="accept_list" id="vo">
             <ul class="ba">
                 <li>{$vo.accept_id}</li>
@@ -167,8 +161,14 @@
                 <!--
                 <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
                 -->
-                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li><input type="button" value="查看" onclick="show_match_accept('{$vo.accept_id}')"></li>
+                <li>
+                    <a href="{:U('match/accept_matchlist',array('accept_id'=>$vo['accept_id']))}">
+                        <eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq>
+                        <eq name='vo.confirm_status' value='1'>部分完成</eq>
+                        <eq name='vo.confirm_status' value='2'>全部完成</eq>
+                    </a>
+                </li>
+
             </ul>
         </volist>
 
@@ -190,11 +190,13 @@
 <script type="text/javascript">
 
     function show_match_offer(offer_id){
-        alert(offer_id);
+        //alert(offer_id);
+
     }
 
     function  show_match_accept(accept_id){
-        alert(offer_id);
+        //alert(offer_id);
+
     }
 
 </script>

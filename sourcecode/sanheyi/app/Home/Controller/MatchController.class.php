@@ -26,6 +26,14 @@ class MatchController extends BaseController
         if (empty($offer_id)) {
             exit('系统错误');
         }
+        //防止攻击，这个offerid,必须是当前人的，不然用户可以在浏览器随意修改之后查看别人的
+        $where['offer_id']=$offer_id;
+        $where['user_id']=$_SESSION['user']['user_id'];
+        $retsult=M('order_offer')->where($where)->find();
+        if($retsult==null || $retsult==false){
+            exit('非法操作');
+        }
+
         $paras['offer_id'] = $offer_id;
         $list = D('OrderMatch')->getList($paras);
 
@@ -40,6 +48,15 @@ class MatchController extends BaseController
         if (empty($accept_id)) {
             exit('系统错误');
         }
+
+        $where['accept_id']=$accept_id;
+        $where['user_id']=$_SESSION['user']['user_id'];
+        $retsult=M('order_accept')->where($where)->find();
+        if($retsult==null || $retsult==false){
+            exit('非法操作');
+        }
+
+
         $paras['accept_id'] = $accept_id;
         $list = D('OrderMatch')->getList($paras);
 

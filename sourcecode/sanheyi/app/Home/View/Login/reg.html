@@ -182,6 +182,7 @@
 	                //return_handle(data);
 	                if(data.result=='SUCCESS'){
 	                    //location.href= data.return_data.url;
+                        $('#p_id').val(data.return_data.p_id);
 	                    showMsg($("#p_name").siblings(".hou"),isError(1)+"正确","#000");
 
 	                }else{
