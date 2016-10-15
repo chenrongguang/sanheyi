@@ -127,20 +127,67 @@ where  A.status=1";
             //如果该数组下标不为空
             if (!empty($level_retult['level_' . $x . '_user_id']) &&  $level_retult['level_' . $x . '_money']>0) {
 
-                $r[] = M('user_currency')
-                    ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $level_currency_id))
-                    ->setInc('num', $level_retult['level_' . $x . '_money']);
 
-                //增加offer人对应的货币明细记录
+                //第一代特殊，要有一半转换为善金币3
+                if ($x ==1) {
 
-                $detail_data_level['user_id'] = $level_retult['level_' . $x . '_user_id'];
-                $detail_data_level['currency_id'] = $level_currency_id;
-                $detail_data_level['detail_type'] = 1;
-                $detail_data_level['detail_num'] = $level_retult['level_' . $x . '_money'];
-                $detail_data_level['create_time'] = time();
-                $detail_data_level['handle_type'] = '管理钱包收入';
-                $detail_data_level['remark'] = '下级确认收款返佣';
-                $r[] = M('user_currency_detail')->add($detail_data_level);
+                    $half=$level_retult['level_' . $x . '_money']/2;
+
+                    //一半进入善金币
+                    $currency_sjb=3;
+                    $r[] = M('user_currency')
+                        ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $currency_sjb))
+                        ->setInc('num', $half);
+
+                    $detail_data_level['user_id'] = $level_retult['level_' . $x . '_user_id'];
+                    $detail_data_level['currency_id'] = $currency_sjb;
+                    $detail_data_level['detail_type'] = 1;
+                    $detail_data_level['detail_num'] = $half;
+                    $detail_data_level['create_time'] = time();
+                    $detail_data_level['handle_type'] = '善金币收入';
+                    $detail_data_level['remark'] = '下级确认收款返佣';
+                    $r[] = M('user_currency_detail')->add($detail_data_level);
+                    
+
+
+                   //一半进入管理奖
+                    $r[] = M('user_currency')
+                        ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $level_currency_id))
+                        ->setInc('num', $half);
+
+                    //增加offer人对应的货币明细记录
+
+                    $detail_data_level['user_id'] = $level_retult['level_' . $x . '_user_id'];
+                    $detail_data_level['currency_id'] = $level_currency_id;
+                    $detail_data_level['detail_type'] = 1;
+                    $detail_data_level['detail_num'] = $half;
+                    $detail_data_level['create_time'] = time();
+                    $detail_data_level['handle_type'] = '管理钱包收入';
+                    $detail_data_level['remark'] = '下级确认收款返佣';
+                    $r[] = M('user_currency_detail')->add($detail_data_level);
+                }
+
+
+
+
+
+                if ($x > 1) {
+
+                    $r[] = M('user_currency')
+                        ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $level_currency_id))
+                        ->setInc('num', $level_retult['level_' . $x . '_money']);
+
+                    //增加offer人对应的货币明细记录
+
+                    $detail_data_level['user_id'] = $level_retult['level_' . $x . '_user_id'];
+                    $detail_data_level['currency_id'] = $level_currency_id;
+                    $detail_data_level['detail_type'] = 1;
+                    $detail_data_level['detail_num'] = $level_retult['level_' . $x . '_money'];
+                    $detail_data_level['create_time'] = time();
+                    $detail_data_level['handle_type'] = '管理钱包收入';
+                    $detail_data_level['remark'] = '下级确认收款返佣';
+                    $r[] = M('user_currency_detail')->add($detail_data_level);
+                }
             }
         }
 
