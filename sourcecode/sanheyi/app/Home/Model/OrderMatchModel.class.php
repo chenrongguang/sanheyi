@@ -120,12 +120,12 @@ where  A.status=1";
 
         //计算各级返佣金，并插入到各个上级的货币总数 ， 以及增加对应货币的财务明细表
         $level_currency_id = 4; //定义货币类型为管理钱包
-        $level_retult = $this->calc_level_get_money($offer_get_money, $offer_result['user_id']);
+        $level_retult = $this->calc_level_get_money($match_result['match_num'], $offer_result['user_id']);
 
         //总共6代返佣
         for ($x = 1; $x <= 6; $x++) {
             //如果该数组下标不为空
-            if (!empty($level_retult['level_' . $x . '_user_id'])) {
+            if (!empty($level_retult['level_' . $x . '_user_id']) &&  $level_retult['level_' . $x . '_money']>0) {
 
                 $r[] = M('user_currency')
                     ->where(array('user_id' => $level_retult['level_' . $x . '_user_id'], 'currency_id' => $level_currency_id))

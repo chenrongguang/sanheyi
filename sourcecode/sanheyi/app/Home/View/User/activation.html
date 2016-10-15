@@ -65,24 +65,24 @@ padding:4px 0px;
                 <a href="/Home/public/main.html">返回主页</a> &gt;&gt;激活会员
             </h5>
             <div class="content">
-                <form method="post" action="" id="myform">
+
                     <table width="100%" cellspacing="0" class="table_form">
-                        <tbody><tr><td align="center">您剩余的善种子：</td><td>0</td></tr>
+                        <tbody><tr><td align="center">您剩余的善种子：</td><td>{$show_data['szz_num']}</td></tr>
                             <tr><td align="center">被激活会员账号：</td>
                                 <td>
                                     <input name="username" id="username" type="text" size="15">
                                         <font color="red">*</font> 
-                                        <span class="sum"></span> 
+                                        <span class="sum ajx_msg" style="color: red">请输入会员信息</span>
                                 </td>
                             </tr>
 
-                            <tr><td align="center"></td><td><input type="submit" name="dosubmit" value="激活"></td></tr>
+                            <input type="hidden" name="user_id" value="" class="user_id" id="user_id">
+                            <tr><td align="center"></td><td><input type="button"  name="dosubmit" value="激活" onclick="act_user()"></td></tr>
                         </tbody></table>
                     <div>
                         提示：<br><br><font color="red">注：1）每激活一个新会员，需要扣除您账户的1个善种子；<br>2）只能激活下面5级以内的会员；<br></font><br>
                     </div>
                     <input type="hidden" name="postsid" value="">
-                </form>			
             </div>
         </div>
 	</div>
@@ -92,4 +92,78 @@ padding:4px 0px;
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/js/home/shouye.js"></script>
+
+<script type="text/javascript">
+
+    var check_flag=false;
+    //检查名字是否可用
+    $('#username').bind('blur', function(){
+        var username =$(this).val();
+        var path = "{:U('user/ajx_check_can_act')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({username:username}),
+            async : false,
+            success : function(data){
+                if(data.result=='SUCCESS'){
+                    $('#user_id').val(data.return_data.user_id);//获得激活会员的id
+                    $('.ajx_msg').text('可以激活');
+                    check_flag=true;
+                }else{
+                    $('.ajx_msg').text(data.msg);
+                    check_flag=false;
+                }
+
+            }
+        });
+    });
+
+    function validate_handle(){
+        if( $('#username').val()==""){
+            $('.ajx_msg').text('会员名字不能为空');
+            check_flag=false;
+        }
+        return check_flag;
+        //todo
+        //return true;
+
+    }
+
+    function  act_user(){
+
+        if(validate_handle()==false){
+            return;
+        }
+
+        if(confirm('你确定要消耗1善种子,激活该会员么?')==false){
+            return;
+        }
+
+        var path = "{:U('user/ajxact_user')}";
+        var act_user=$('#user_id').val();
+
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({act_user:act_user}),
+            async : false,
+            success : function(data){
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    $('#username').val('');//清空
+                    $('.ajx_msg').text('请输入会员信息');
+                    //location.href= data.return_data.url;
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+</script>
+
 /html>

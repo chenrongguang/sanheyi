@@ -46,7 +46,7 @@
             <form method="post" action="{:U('offer/sendofferDo')}" name="form" id="form">
                 <li>
                     <div class="nei1">资助金额(元)：</div>
-                    <div class="nei2"><input type="text" class="inp1" id="num" name="num" /><span class="xin">*</span><span class="tishi">1000-3000 必须是100的整倍数</span></div>
+                    <div class="nei2"><input type="text" class="inp1" id="num" name="num" /><span class="xin">*</span><span class="tishi">1000-2000 必须是100的整倍数</span></div>
                 </li>
                 <li>
                     <div class="nei1">二级密码：</div>
@@ -80,23 +80,23 @@
     }
     var count="<?php echo $_GET['id'] ?>";
     if(count==2){
-        $("#num").siblings('.tishi').html('1000-3000 必须是100的整倍数');
-        $('#num').focus(function(){$("#num").siblings('.tishi').html('1000-3000 必须是100的整倍数')});
+        $("#num").siblings('.tishi').html('1000-2000 必须是100的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('1000-2000 必须是100的整倍数')});
     }else if(count==3){
-        $("#num").siblings('.tishi').html('10000-30000 必须是1000的整倍数');
-        $('#num').focus(function(){$("#num").siblings('.tishi').html('10000-30000 必须是1000的整倍数')});
+        $("#num").siblings('.tishi').html('5000-20000 必须是1000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('5000-20000 必须是1000的整倍数')});
     }else if(count==4){
-        $("#num").siblings('.tishi').html('50000-300000 必须是1000的整倍数');
-        $('#num').focus(function(){$("#num").siblings('.tishi').html('50000-300000 必须是1000的整倍数')});
+        $("#num").siblings('.tishi').html('50000-200000 必须是10000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('50000-200000 必须是10000的整倍数')});
     }
 
     $("#btn_sub").click(function(){
         if(count==2){
-            checkMoney('#num',$("#num").siblings('.tishi'),1000,3000,100);
+            checkMoney('#num',$("#num").siblings('.tishi'),1000,2000,100);
         }else if(count==3){
-            checkMoney('#num',$("#num").siblings('.tishi'),10000,30000,1000);
+            checkMoney('#num',$("#num").siblings('.tishi'),5000,20000,1000);
         }else if(count==4){
-            checkMoney('#num',$("#num").siblings('.tishi'),50000,300000,1000);
+            checkMoney('#num',$("#num").siblings('.tishi'),50000,200000,10000);
         }
     });
     function checkMoney(el,msgBox,begin,end,step){
