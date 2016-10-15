@@ -54,10 +54,12 @@ class Sendsms  {
             //session(array('name'=>'code','expire'=>600));
             //session('code',$mobile_code);  //设置session
             //session('time',time());
+            //\Think\Log::write("conteent:".$content ." phone:". $phone ." msg:". $gets['SubmitResult']['msg']);
             return "短信发送成功";
         }
         else{
             return "短信发送失败:".$gets['SubmitResult']['msg'];
+            \Think\Log::write("conteent:".$content ." phone:". $phone ." msg:". $gets['SubmitResult']['msg']);
         }
 
     }
