@@ -7,7 +7,6 @@
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
     <title>注册会员后台</title>
     <style type="text/css">
-        h2{font-weight:normal;}
         .yi{width:900px; height:100px; float:left; margin-top:30px; margin-left:50px; border-bottom:1px solid #c2c2c2;}
         .yi1{float:left; margin-top:10px; margin-left:30px;}
         .yi1 li{width:250px; height:30px; line-height:30px; text-align:left; float:left;}
@@ -24,13 +23,7 @@
         .xinjia li{float:left; width:104px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
         /*新加的ul2*/
        	.xinjia2{float:left; margin-left:130px;}
-        .xinjia2 li{float:left; width:141px;height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
-        .ba>li:first-child{width:50px}
-        .ba>li:nth-child(2){width:143px}
-        .ba>li:nth-child(3){width:143px}
-        .ba>li:nth-child(4){width:190px}
-        .ba>li:nth-child(5){width:143px}
-        .ba>li:nth-child(6){width:80px}
+        .xinjia2 li{float:left; width:141px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
         .wu{float:left; margin-top:30px; margin-left:130px;}
         .wu li{float:left; width:105px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .liu{float:left; margin-left:130px;}
@@ -46,7 +39,7 @@
         .gengduo{width:200px; height:30px; line-height:30px; text-align:right; float:right;}
         .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
         .beian{margin-top:80px;}
-        .beianIcon{width:20px;height:20px;display:inline-block;background:url('__PUBLIC__/images/beianIcon.png');}
+        }
         @media screen and (max-width:1520px){
         }
     </style>
@@ -79,19 +72,15 @@
         </div>
         <ul class="er">
             <li>
-                <a href="{:U('community/community_select_offer')}">
-                <div class="ertu"><img src="__PUBLIC__/images/icon-event.png" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
-                </a>
             </li>
             <li>
-                <a href="{:U('community/community_select_accept')}">
-                <div class="ertu"><img src="__PUBLIC__/images/icon-cart.png" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
-                </a>
             </li>
             <li>
-                <div class="ertu"><img src="__PUBLIC__/images/icon-help.png" /></div>
+                <div class="ertu"><img src="__PUBLIC__/images/5.jpg" /></div>
                 <div class="erxiao"><h3>审核反馈</h3></div>
             </li>
         </ul>
@@ -136,8 +125,8 @@
                 <li>{$vo.cname}</li>
                 <li>{$vo.num}</li>
                 <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
-                <li style="width:120px;"><eq name='vo.match_status' value='0'><font color="red">未匹配</font></eq>><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
+                <li><eq name='vo.confirm_status' value='0'>未完成</eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
+                <li style="width:120px;"><eq name='vo.match_status' value='1'>部分匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq><eq name='vo.match_status' value='2'>全部匹配<input type="button" value="查看" onclick="show_match_offer('{$vo.offer_id}')"></eq></li>
             </ul>
         </volist>
         <ul class="qi">
@@ -163,11 +152,8 @@
                 <li>{$vo.accept_id}</li>
                 <li>接受资助</li>
                 <li>{$vo.total_num}</li>
-                <li>{$vo.create_time|date="Y-m-d H:i:s",###}</li>
-                <!--
+                <li style="width:200px;">{$vo.create_time|date="Y-m-d H:i:s",###}</li>
                 <li><eq name='vo.match_status' value='0'>等待匹配</eq><eq name='vo.match_status' value='1'>部分匹配</eq><eq name='vo.match_status' value='2'>全部匹配</eq></li>
-                -->
-                <li><eq name='vo.confirm_status' value='0'><font color="red">未完成</font></eq><eq name='vo.confirm_status' value='1'>部分完成</eq><eq name='vo.confirm_status' value='2'>全部完成</eq></li>
                 <li><input type="button" value="查看" onclick="show_match_accept('{$vo.accept_id}')"></li>
             </ul>
         </volist>

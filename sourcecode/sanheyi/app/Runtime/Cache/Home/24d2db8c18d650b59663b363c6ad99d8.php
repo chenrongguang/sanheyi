@@ -7,6 +7,7 @@
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
     <title>注册会员后台</title>
     <style type="text/css">
+        h2{font-weight:normal;}
         .yi{width:900px; height:100px; float:left; margin-top:30px; margin-left:50px; border-bottom:1px solid #c2c2c2;}
         .yi1{float:left; margin-top:10px; margin-left:30px;}
         .yi1 li{width:250px; height:30px; line-height:30px; text-align:left; float:left;}
@@ -23,7 +24,13 @@
         .xinjia li{float:left; width:104px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
         /*新加的ul2*/
        	.xinjia2{float:left; margin-left:130px;}
-        .xinjia2 li{float:left; width:141px; height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        .xinjia2 li{float:left; width:141px;height:35px; line-height:35px; text-align:center; border-right:1px solid #c2c2c2; border-bottom:1px solid #c2c2c2;border:1px solid #c2c2c2;}
+        .ba>li:first-child{width:50px}
+        .ba>li:nth-child(2){width:143px}
+        .ba>li:nth-child(3){width:143px}
+        .ba>li:nth-child(4){width:190px}
+        .ba>li:nth-child(5){width:143px}
+        .ba>li:nth-child(6){width:80px}
         .wu{float:left; margin-top:30px; margin-left:130px;}
         .wu li{float:left; width:105px; height:35px; line-height:35px; text-align:center; color:#fff; background:#333333; border-right:1px solid #c2c2c2;}
         .liu{float:left; margin-left:130px;}
@@ -39,7 +46,7 @@
         .gengduo{width:200px; height:30px; line-height:30px; text-align:right; float:right;}
         .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
         .beian{margin-top:80px;}
-        }
+        .beianIcon{width:20px;height:20px;display:inline-block;background:url('/Public/images/beianIcon.png');}
         @media screen and (max-width:1520px){
         }
     </style>
@@ -55,7 +62,11 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
-    <div class="head"></div>
+    <style>
+.beianIcon{width:20px;height:20px;display:inline-block;background:url('/Public/images/beianIcon.png');}
+ 
+</style>
+<div class="head"></div>
     <ul class="nav">
     <li>
         <dl class="caidan">
@@ -79,6 +90,7 @@
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
             <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+			<dd><a href="<?php echo U('user/activation');?>">会员激活</a></dd>
             
         </dl>
     </li>
@@ -129,18 +141,18 @@
         <ul class="er">
             <li>
                 <a href="<?php echo U('community/community_select_offer');?>">
-                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/icon-event.png" /></div>
                 <div class="erxiao"><h3>布施积德</h3></div>
                 </a>
             </li>
             <li>
                 <a href="<?php echo U('community/community_select_accept');?>">
-                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/icon-cart.png" /></div>
                 <div class="erxiao"><h3>感恩受助</h3></div>
                 </a>
             </li>
             <li>
-                <div class="ertu"><img src="/Public/images/5.jpg" /></div>
+                <div class="ertu"><img src="/Public/images/icon-help.png" /></div>
                 <div class="erxiao"><h3>审核反馈</h3></div>
             </li>
         </ul>
@@ -209,7 +221,7 @@
                 <li><?php echo ($vo["accept_id"]); ?></li>
                 <li>接受资助</li>
                 <li><?php echo ($vo["total_num"]); ?></li>
-                <li style="width:200px;"><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
+                <li><?php echo (date("Y-m-d H:i:s",$vo["create_time"])); ?></li>
                 <!--
                 <li><?php if(($vo["match_status"]) == "0"): ?>等待匹配<?php endif; if(($vo["match_status"]) == "1"): ?>部分匹配<?php endif; if(($vo["match_status"]) == "2"): ?>全部匹配<?php endif; ?></li>
                 -->
@@ -228,7 +240,7 @@
 
         </div>
     <div class="foot">
-    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇&nbsp;&nbsp;&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;<b class="beianIcon"></b>&nbsp;&nbsp;粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 

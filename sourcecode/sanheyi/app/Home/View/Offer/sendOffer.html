@@ -32,7 +32,6 @@
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/js/home/zizhu.js"></script>
 </head>
-
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
     <include file ='Public:header' />
@@ -60,7 +59,7 @@
                 </li>
                 <!--社区id-->
                 <input type="hidden" name="community_id" id="community_id" value="{$community_id}" />
-                <li><input   id="btn_sub"  type="button"  onclick="sub(1)"  class="tijiao" value="提交资助" /></li>
+                <li><input   id="btn_sub"  type="button"  class="tijiao" value="提交资助" /></li>
             </form>
         </ul>
         <dl class="san">
@@ -74,12 +73,63 @@
     </div>
     <include file ='Public:foot' />
 </div>
-
 <script type="text/javascript">
     function validate_handle(){
         //todo
         return true;
+    }
+    var count="<?php echo $_GET['id'] ?>";
+    if(count==2){
+        $("#num").siblings('.tishi').html('1000-3000 必须是100的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('1000-3000 必须是100的整倍数')});
+    }else if(count==3){
+        $("#num").siblings('.tishi').html('10000-30000 必须是1000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('10000-30000 必须是1000的整倍数')});
+    }else if(count==4){
+        $("#num").siblings('.tishi').html('50000-300000 必须是1000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('50000-300000 必须是1000的整倍数')});
+    }
 
+    $("#btn_sub").click(function(){
+        if(count==2){
+            checkMoney('#num',$("#num").siblings('.tishi'),1000,3000,100);
+        }else if(count==3){
+            checkMoney('#num',$("#num").siblings('.tishi'),10000,30000,1000);
+        }else if(count==4){
+            checkMoney('#num',$("#num").siblings('.tishi'),50000,300000,1000);
+        }
+    });
+    function checkMoney(el,msgBox,begin,end,step){
+        var money=parseInt($(el).val());
+        if(money){
+            $(el).val(parseInt($(el).val()));
+            if(money < begin){
+                showMsg(msgBox,'金额不能少于'+begin);
+                return false;
+            }
+            if(money > end){
+                showMsg(msgBox,'金额不能大于'+end);
+                return false;
+            }
+            if(money%step!==0){
+                showMsg(msgBox,'必须是'+step+'的整倍数');
+                return false;
+            }
+            if(!$("#high_pwd").val().trim()){
+                alert('二级密码不能为空');
+                return false;
+            }
+            sub(1);
+        }else{
+            alert('请输入正确的金额');
+            $("#num").val('');
+            return false;
+        }
+    }
+    function showMsg(el,text,color){
+        if(!color){color='red'}
+        el.css('color',color);
+        el.html(text);
     }
 </script>
 

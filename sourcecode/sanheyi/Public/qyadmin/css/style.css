@@ -57,9 +57,68 @@ table.hxtabbor th{ line-height:30px; border:1px #bbb solid; background:#eee; col
 .fenye a{ display:block; float:left; height:30px; width:auto; padding:0 10px; border:1px #ccc solid; margin-right:5px; font:12px/30px 微软雅黑;}
 .fenye span{ display:block; float:left; height:30px; width:auto; padding:0 10px; border:1px #ccc solid; margin-right:5px; font:12px/30px 微软雅黑;}
 
+.beizhu>.pagination{
+	text-align:center;
+}
+.beizhu>.pagination>ul{
+	text-align:center;
+	float:left;
+}
+.beizhu>.pagination>ul:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.beizhu>.pagination>ul>li{
+	float:left;
+	height:30px;
+	line-height:23px;
+	box-sizing:border-box;
+	padding-top:5px;
+	margin:0px 10px;
+}
+.beizhu>.pagination>ul>li>.combobox{
+	width:60px;
+	height:20px;
+	margin-right:100px;
+}
+.beizhu>.pagination>ul>li>.combobox>select{
+	width:100%;
+	height:100%;	
+}
+.beizhu>.pagination>ul>li>a{
+	display:block;
+	hegiht:20px;
+	line-height:20px;
+	border:1px solid #ddd;
+	box-sizing:border-box;
+	padding:0px 3px;
+}
 
-
-
-
-
-
+.beizhu>.pagination .pagination-info{
+	height:30px;
+	line-height:30px;
+	float:right;
+}
+.xtgl>.er>li{
+	height:30px;
+	line-height:30px;
+}
+.xtgl>.er>li>input{
+	height:25px;
+	margin-top:1px;
+	border-radius:3px;
+	border:1px solid #ddd;
+}
+.xtg1>.err>li>select{
+	    height: 24px;
+}
+#btn_search,#btn_batch_match{
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    padding: 3px 0px;
+    color: #fff;
+    background-color: #abcdef;
+    margin-bottom:10px;
+}

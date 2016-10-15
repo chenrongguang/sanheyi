@@ -5,13 +5,13 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="keywords" content="java培训 , .net培训 , php培训" />
     <meta name="description" content="IT培训的龙头老大，口碑最好的XX培训" />
-    <title>提供资助</title>
+    <title>资助</title>
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
         .er{float:left; margin-left:50px; margin-top:20px; border:2px solid red; width:655px;}
         .er li{float:left; height:200px;}
-        .eryi{width:70%; background:url('__PUBLIC__/images/de.png');background-size:100% 100%;}
+        .eryi{width:70%; background:#c2c2c2;}
         .erer{width:30%; line-height:100px; text-align:center; font-size:40px; font-weight:bold;}
         .red{color:red;}
         .blue{color:#4f7ca9;}
@@ -30,7 +30,7 @@
     <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
-    <script src="__PUBLIC__/js/home/tigongzizhu.js"></script>
+    <script src="__PUBLIC__/js/home/jieshouzizhu.js"></script>
 </head>
 
 <body>
@@ -44,11 +44,11 @@
         </ul>
         <br />
         <ul class="san">
-            <li><a href="{:U('offer/sendoffer',array('id'=>2))}">贫困<br />社区</a></li>
-            <li><a href="{:U('offer/sendoffer',array('id'=>3))}">小康<br />社区</a></li>
+            <li><a href="{:U('accept/sendaccept',array('id'=>2))}">贫困<br />社区</a></li>
+            <li><a href="{:U('accept/sendaccept',array('id'=>3))}">小康<br />社区</a></li>
         </ul>
         <ul class="san">
-            <li><a href="{:U('offer/sendoffer',array('id'=>4))}">富人<br />社区</a></li>
+            <li><a href="{:U('accept/sendaccept',array('id'=>4))}">富人<br />社区</a></li>
             <li><a href="">德善<br />社区</a></li>
         </ul>
         <ul class="er">

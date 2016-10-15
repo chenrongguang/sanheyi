@@ -8,10 +8,10 @@
     <title>身份验证</title>
     <style type="text/css">.yi{margin-left:50px; float:left;}
     .yi li{float:left;}
-    .er{float:left; margin-left:50px; margin-top:20px;}
+    .er{float:left; margin-left:120px; margin-top:20px;}
     .er li{width:700px; color:#09F;}
     .red{color:red;}
-    .san{float:left; margin-left:50px; width:700px;}
+    .san{float:left; margin-left:175px; width:700px;}
     .san li{float:left; height:200px; line-height:200px; margin-top:10px; color:#999;}
     .lv{color:green;}
     .beizhu{margin-left:50px; margin-top:10px; float:left;}
@@ -31,7 +31,11 @@
 
 <body>
 <div class="beijing"><!--此处可以用行间样式加背景图，背景图长宽比例最好是跟屏幕大小一致-->
-    <div class="head"></div>
+    <style>
+.beianIcon{width:20px;height:20px;display:inline-block;background:url('/Public/images/beianIcon.png');}
+ 
+</style>
+<div class="head"></div>
     <ul class="nav">
     <li>
         <dl class="caidan">
@@ -55,6 +59,7 @@
             <dt><h2>布施中心</h2><div class="tubiao"><img src="/Public/images/3.png" /></div></dt>
             <dd><a href="<?php echo U('user/level_down_info');?>">因缘图</a></dd>
             <dd><a href="<?php echo U('user/level_down_all');?>">下级会员</a></dd>
+			<dd><a href="<?php echo U('user/activation');?>">会员激活</a></dd>
             
         </dl>
     </li>
@@ -123,7 +128,7 @@
         </form>
     </div>
     <div class="foot">
-    <div class="beian">善心汇     版权所有     粤ICP备15076181号<br />2016V1.0版本</div>
+    <div class="beian">善心汇&nbsp;&nbsp;&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;<b class="beianIcon"></b>&nbsp;&nbsp;粤ICP备15076181号<br />2016V1.0版本</div>
 </div>
 </div>
 <script type="text/javascript">

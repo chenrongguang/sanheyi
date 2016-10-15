@@ -27,10 +27,10 @@
         @media screen and (max-width:1520px){
         }
     </style>
-     <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script> 
+    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
-    <script src="__PUBLIC__/js/home/zhuce.js"></script> 
+    <script src="__PUBLIC__/js/home/zhuce.js"></script>
 </head>
 
 <body>
@@ -83,7 +83,7 @@
                 <a href="">我已阅读并同意相关用户协议和条款</a>
             </div>
             <div class="two">
-                <input class="tijiao" type="button" value="提交注册" onclick="check()" />
+                <input class="tijiao" type="button" value="提交注册" onclick="sub()" />
             </div>
         </form>
     </div>
@@ -101,29 +101,25 @@
     $('#name').bind('blur', function(){
         var name =$(this).val();
         var path = "{:U('login/ajaxCheckName')}";
-         if(name.trim()!=""){
-           if(/\w{6,16}/g.test($("#name").val())){
-                 $.ajax({
-                    type : "post",
-                    url : path,
-                    data : JSON.stringify({name:name}),
-                    async : true,
-                    success : function(data){
-                        //return_handle(data);
-                        if(data.result=='SUCCESS'){
-                            //location.href= data.return_data.url;
-                           showMsg($("#name").siblings(".hou"),isError(1)+"该帐号可以使用","#000");
-                        }else{
-                            showMsg($("#name").siblings(".hou"),isError(0)+"该帐号已被注册","#000");
-                        }
-                    }
-                 });
-             }else{
-                  showMsg($("#name").siblings(".hou"),isError(0)+"帐号为6-16位","#000");
-                }
-        	
+        if(name.trim()!=""){
+      		console.log("121654646");
+        	$.ajax({
+	            type : "post",
+	            url : path,
+	            data : JSON.stringify({name:name}),
+	            async : false,
+	            success : function(data){
+	                //return_handle(data);
+	                if(data.result=='SUCCESS'){
+	                    //location.href= data.return_data.url;
+	                   showMsg($("#name").siblings(".hou"),isError(1)+"该帐号可以使用","#000");
+	                }else{
+	                    showMsg($("#name").siblings(".hou"),isError(0)+"该帐号已被注册","#000");
+	                }
+	            }
+            });
         }else{
-        	alert("请输入帐号");
+        	alert("请输入用户名");
         }
     });
 
@@ -186,7 +182,6 @@
 	                //return_handle(data);
 	                if(data.result=='SUCCESS'){
 	                    //location.href= data.return_data.url;
-                        $('#p_id').val(data.return_data.p_id);
 	                    showMsg($("#p_name").siblings(".hou"),isError(1)+"正确","#000");
 
 	                }else{
@@ -230,140 +225,12 @@
     		 showMsg($("#repwd").siblings(".hou"),isError(0)+"确认密码不能为空","#000");
     	}
     });
-     $("#family_name").on("blur",function(){
-        if($("#family_name").val().trim()==""){
-            showMsg($("#family_name").siblings(".hou"),isError(0)+"姓名不能为空","#000");
-            return false;
-        }else{
-            showMsg($("#family_name").siblings(".hou"),isError(1)+"验证成功","#000");
-        }
-     });
     function validate_handle(){
         //todo
         return true;
 
     }
-    function check(){
-        if($("#name").val().trim()==""){
-            showMsg($("#name").siblings(".hou"),isError(0)+"帐号不能为空","#000");
-            return false;
-        }else{
-            if(/\w{6,16}/g.test($("#name").val())){
-                  var path = "{:U('login/ajaxCheckName')}";
-                  var name=$("#name").val();
 
-                $.ajax({
-                    type : "post",
-                    url : path,
-                    data : JSON.stringify({name:name}),
-                    async : true,
-                    success : function(data){
-                        if(data.result=='SUCCESS'){
-                            showMsg($("#name").siblings(".hou"),isError(1)+"正确","#000");
-
-                        }else{
-                          showMsg($("#name").siblings(".hou"),isError(0)+data.msg,"#000");
-                            return false;
-                        }
-
-                    }
-                });
-
-                console.log("name 有问题");
-            }else{
-                  showMsg($("#name").siblings(".hou"),isError(0)+"帐号为6-16位","#000");
-                 return false;
-            }
-           
-        }
-        if($("#pwd").val().trim()==""){
-            showMsg($("#pwd").siblings(".hou"),isError(0)+"密码不能为空","#000");
-            return false;
-        }else{
-             if(!/\w{6,16}/g.test($("#pwd").val())){
-                showMsg($("#pwd").siblings(".hou"),isError(0)+"密码格式错误","#000");
-                return false;
-            }else{
-                showMsg($("#pwd").siblings(".hou"),isError(1)+"此密码可用","#000");
-            }
-        }
-        console.log($("#repwd").val().trim());
-         if($("#repwd").val().trim()==""){
-            showMsg($("#repwd").siblings(".hou"),isError(0)+"确认密码不能为空","#000");
-           return false;
-         }else{
-            if($("#repwd").val().trim()!==$("#pwd").val().trim()){
-                showMsg($("#repwd").siblings(".hou"),isError(0)+"两次密码不一致","#000");
-                return false;
-            }else{
-                 showMsg($("#repwd").siblings(".hou"),isError(1)+"验证成功","#000");
-            }
-         }
-        
-        if($("#family_name").val().trim()==""){
-            showMsg($("#family_name").siblings(".hou"),isError(0)+"姓名不能为空","#000");
-            return false;
-        }else{
-            showMsg($("#family_name").siblings(".hou"),isError(1)+"验证成功","#000");
-        }
-       // if($("#mobile").trim()!==""){
-        var mb= $("#mobile").val();
-        if($.trim(mb)!==""){
-            if(checkMobile($("#mobile").val())){
-                 var path = "{:U('login/ajaxCheckmobile')}";
-                $.ajax({
-                    type : "post",
-                    url : path,
-                    data : JSON.stringify({mobile:$("#mobile").val()}),
-                    async : false,
-                    success : function(data){
-                        //return_handle(data);
-                        if(data.result=='SUCCESS'){
-                            showMsg($("#mobile").siblings(".hou"),isError(1)+"该手机号可以使用","#000");
-                        }else{
-                           showMsg($("#mobile").siblings(".hou"),isError(0)+"该手机已被注册","#000");
-                           return false;
-                        }
-
-                    }
-                });
-            
-            }else{
-                 showMsg($("#mobile").siblings(".hou"),isError(0)+"手机号格式不正确","#000");
-                 return false;
-            }
-        }else{
-            showMsg($("#mobile").siblings(".hou"),isError(0)+"手机号不能为空","#000");
-            return false;
-        }
-       if($("#p_name").val().trim()!==""){
-            var path = "{:U('login/ajaxCheckPid')}";
-            $.ajax({
-                type : "post",
-                url : path,
-                data : JSON.stringify({p_name:$("#p_name").val()}),
-                async : false,
-                success : function(data){
-                    //return_handle(data);
-                    if(data.result=='SUCCESS'){
-                        //location.href= data.return_data.url;
-                        $('#p_id').val(data.return_data.p_id);
-                        showMsg($("#p_name").siblings(".hou"),isError(1)+"正确","#000");
-
-                    }else{
-                      showMsg($("#p_name").siblings(".hou"),isError(0)+data.msg,"#000");
-                      return false;
-
-                    }
-
-                }
-            });
-       }else{
-            showMsg($("#p_name").siblings(".hou"),isError(0)+"推荐人不能为空","#000");
-            return false;
-       }
-        sub(1);
-    }
 </script>
 </body>
 </html>
