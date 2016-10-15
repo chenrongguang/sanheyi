@@ -129,7 +129,7 @@ where  A.status=1";
 
 
                 //第一代特殊，要有一半转换为善金币3
-                if ($x ==1) {
+                //if ($x ==1) {
 
                     $half=$level_retult['level_' . $x . '_money']/2;
 
@@ -147,7 +147,7 @@ where  A.status=1";
                     $detail_data_level['handle_type'] = '善金币收入';
                     $detail_data_level['remark'] = '下级确认收款返佣';
                     $r[] = M('user_currency_detail')->add($detail_data_level);
-                    
+
 
 
                    //一半进入管理奖
@@ -165,12 +165,12 @@ where  A.status=1";
                     $detail_data_level['handle_type'] = '管理钱包收入';
                     $detail_data_level['remark'] = '下级确认收款返佣';
                     $r[] = M('user_currency_detail')->add($detail_data_level);
-                }
+                //}
 
 
 
 
-
+                /*
                 if ($x > 1) {
 
                     $r[] = M('user_currency')
@@ -188,6 +188,7 @@ where  A.status=1";
                     $detail_data_level['remark'] = '下级确认收款返佣';
                     $r[] = M('user_currency_detail')->add($detail_data_level);
                 }
+                */
             }
         }
 
