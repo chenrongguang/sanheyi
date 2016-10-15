@@ -60,6 +60,11 @@
 
     function validate_handle(){
         //todo
+        if($('#pay_pic_url').val()==""){
+            alert('必须上传打款凭证');
+            return false;
+        }
+
         return true;
 
     }
