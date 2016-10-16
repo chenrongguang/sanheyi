@@ -86,7 +86,16 @@ class MatchController extends BaseController
 
         }
         $this->assign('show_data', $show_data);
-        $this->display();
+
+        //判断是移动端访问还是pc端访问
+       // if(ismobile()){
+            $this->display('sendmoneyh');
+       // }
+       // else{
+       //     $this->display();
+       // }
+
+
     }
 
     public function sendmoneyDo()
