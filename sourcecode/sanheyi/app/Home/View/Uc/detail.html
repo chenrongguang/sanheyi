@@ -39,28 +39,72 @@
         </ul>
         <br />
         <ul class="san">
-            <li>善种子</li>
-            <li>善心币</li>
-            <li>善金币</li>
-            <li>管理钱包</li>
-            <li>出局钱包</li>
+            <li style="width:60px;">善种子</li>
+            <li style="width:70px;">善心币</li>
+            <li style="width:70px;">善金币</li>
+            <li style="width:200px;">管理钱包</li>
+            <li style="width:100px;">出局钱包</li>
             <li style="width:200px;">操作管理</li>
         </ul>
         <ul class="san">
 
-           <li><a href="{:U('Uc/sendSZZ')}">{$show_data['szz_num']}</a></li>
+           <li style="width:60px;"><a href="{:U('Uc/sendSZZ')}">{$show_data['szz_num']}</a></li>
 
-           <li><a href="{:U('Uc/sendSXB')}">{$show_data['sxb_num']}</a></li>
+           <li style="width:70px;"><a href="{:U('Uc/sendSXB')}">{$show_data['sxb_num']}</a></li>
+            <li style="width:70px;"><a href="">{$show_data['sjb_num']}</a></li>
+           <li style="width:200px;"><nobr><a href="{:U('Uc/manager_money')}">{$show_data['glqb_num']}</a>&nbsp;&nbsp;<input type="button" value="转出局钱包" onclick="convert()"></nobr></li>
 
-            <li><a href="">{$show_data['sjb_num']}</a></li>
-           <li><a href="{:U('Uc/manager_money')}">{$show_data['glqb_num']}</a></li>
-
-           <li><a href="{:U('community/community_select_accept')}">{$show_data['cjqb_num']}</a></li>
+           <li style="width:100px;"><a href="{:U('community/community_select_accept')}">{$show_data['cjqb_num']}</a></li>
            <li style="width:200px;"><a href="{:U('Uc/sendSZZ')}">[转善种子]</a>&nbsp;&nbsp;<a href="{:U('Uc/sendSXB')}">[转善心币]</a></li>
 
         </ul>
     </div>
     <include file ='Public:foot' />
 </div>
+
+<script type="text/javascript">
+    var check_flag=false;
+    function convert(){
+
+        if(validate_handle()==false){
+            return;
+        }
+
+        if(confirm('你确定要将管理钱包的余额转换到出局钱包么?')==false){
+            return;
+        }
+
+        var path = "{:U('uc/ajxconvert')}";
+
+        $.ajax({
+            type : "post",
+            url : path,
+            async : false,
+            success : function(data){
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    location.href= data.return_data.url;
+                }else{
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+        function validate_handle(){
+            if("{$show_data['glqb_num']}">0){
+                check_flag=true;
+            }
+            else{
+                alert('管理钱包为0,不能转换');
+                check_flag=false;
+            }
+            return check_flag;
+            //todo
+            //return true;
+
+        }
+    }
+</script>
 </body>
 </html>

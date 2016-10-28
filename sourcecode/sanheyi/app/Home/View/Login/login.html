@@ -8,10 +8,35 @@
     <title>个人登录</title>
     <link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        @media screen and (max-width:1920px){
+		.beijing{width:1000px; margin:0 auto; position:relative; z-index:0;}
+			.beijing img{width:100%; position:relative; z-index:1;}
+            .denglu{width:500px; height:260px; position:absolute;top:350px; left: 50%;margin:0 auto;margin-left:-250px;background-color:#fff; border:1px solid #c2c2c2;  z-index:2;
+                border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;background-color: rgba(255,255,255,0.8);}
+            .username{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:50px;;}
+            .password{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:15px;}
+            .yanzheng{width:400px; height:40px;line-height:40px; margin:0 auto; margin-top:15px;vertical-align:middle;}
+			.yanzheng>span{width:60px;height:40px;line-height:40px;float:left;}
+			.yanzheng>input{float:left;}
+			.yanzheng>img{float:left;margin-left:10px;margin-right:5px;}
+			.tijiao{width:400px; height:40px; margin:0 auto; margin-top:15px;}
+            .tubiao{width:40px; height:40px; float:left;}
+            .tubiao img{width:50%; height:50%; margin-top:11px;}
+            .shuru{width:88%; height:40px; padding-left:6px; float:right; border:1px solid #c2c2c2;
+                border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px;}
+            .yan{width:20%; margin-left:10%; margin-top:2%; float:left;width: 131px;height: 23px;border: 1px solid #333;}
+            .shuzi{width:30%; margin-top:2%; float:left;}
+            .tj{margin-left:10%; float:left; cursor:pointer; background-color:#4bb9da;background-image: linear-gradient(to bottom, #5bc0de 0px, #2aabd2 100%);background-repeat: repeat-x; border-color: #28a4c9;
+                box-sizing: border-box;font-size: 14px;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap; color:#fff;
+                border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;-o-border-radius:5px; border:none;}
+            .lianjie{float:right;}
+            .lianjie li{float:left; margin-right:10px; margin-top:3%;}
+            .lianjie li a{color:#808080;}
+            .lianjie li a:hover{color:#000;}
+			#captcha{height:40px;display:inline;}
+			@media screen and (max-width:1920px){
             .beijing{width:1000px; margin:0 auto; position:relative; z-index:0;}
 			.beijing img{width:100%; position:relative; z-index:1;}
-            .denglu{width:500px; height:250px; position:absolute;top:100px; left: 100px; border:1px solid #c2c2c2;  z-index:2;
+            .denglu{width:500px; height:250px; position:absolute; border:1px solid #c2c2c2;  z-index:2;
                 border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; -ms-border-radius:10px;-o-border-radius:10px;background-color: rgba(255,255,255,0.8);}
             .username{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:50px;;}
             .password{width:400px; height:40px; line-height:40px; margin:0 auto; margin-top:15px;}
@@ -34,7 +59,7 @@
         @media screen and (max-width:1520px){
         }
     </style>
-    <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/js/home/geren.js"></script>
@@ -54,16 +79,18 @@
                 <input class="shuru" type="password" name="password" placeholder="密码" />
             </div>
             <div class="yanzheng">
-                    验证码:
+                    <span>验证码:</span>
                     <input class="loginValue" name="captcha" id="captcha">
-                    <img id="captchaimg" src="{:U('Login/showVerify')}" style="width:60px;height:40px">
+                    <img id="captchaimg" src="{:U('Login/showVerify')}" style="width:60px;height:40px;vertical-align:middle;">
                     <a href="#" onclick="$('#captchaimg').attr('src', '{:U(\'Login/showVerify\')}?t='+Math.random())">看不清？</a></li>
             </div>
             <div class="tijiao">
                 <input class="tj" type="button" value="登录" onclick="sub()" />
                 <ul class="lianjie">
+                    <li><a href="{:U('Login/login')}">手机版</a></li>
                     <li><a href="{:U('Login/reg')}">快速注册</a></li>
                     <li><a href="{:U('Login/findpwd')}">找回密码</a></li>
+                    <li><a href="{:U('Login/login')}">企业版登陆</a></li>
                 </ul>
             </div>
         </form>

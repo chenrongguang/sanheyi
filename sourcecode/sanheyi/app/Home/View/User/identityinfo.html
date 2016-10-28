@@ -8,10 +8,10 @@
     <title>身份验证</title>
     <style type="text/css">.yi{margin-left:50px; float:left;}
     .yi li{float:left;}
-    .er{float:left; margin-left:50px; margin-top:20px;}
+    .er{float:left; margin-left:120px; margin-top:20px;}
     .er li{width:700px; color:#09F;}
     .red{color:red;}
-    .san{float:left; margin-left:50px; width:700px;}
+    .san{float:left; margin-left:175px; width:700px;}
     .san li{float:left; height:200px; line-height:200px; margin-top:10px; color:#999;}
     .lv{color:green;}
     .beizhu{margin-left:50px; margin-top:10px; float:left;}
@@ -24,8 +24,12 @@
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/js/home/shenfenyanzheng.js"></script>
 
+    <!--
     <script src="__PUBLIC__/js/jquery.uploadify.min.js"></script>
     <script src="__PUBLIC__/js/uploadify.swf"></script>
+    -->
+    <link href="__PUBLIC__/js/uploadH/Huploadify.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/uploadH/jquery.Huploadify.js"></script>
 
 </head>
 
@@ -46,19 +50,34 @@
                 <ul class="san">
                     <li class="wen">身份证正面：</li>
                     <li class="tu"><img id="cardp" name="cardp"  src="{$show_data['card_p_url']}" style="width:200px;height: 100px;"/></li>
-                    <li><input type="file" name="image_file_p" id="image_file_p" /> </li>
+                    <li>
+                        <!--
+                        <input type="file" name="image_file_p" id="image_file_p" />
+                        -->
+                        <div id="upload1"></div>
+                    </li>
                     <input  type="hidden" id="card_p_url" name="card_p_url" value ="{$show_data['card_p_url']}"/>
                 </ul>
                 <ul class="san">
                     <li class="wen">身份证反面：</li>
                     <li class="tu"><img id="cardo" name="cardo"  src="{$show_data['card_o_url']}" style="width:200px;height: 100px;"/></li>
-                    <li><input type="file" name="image_file_o" id="image_file_o" /> </li>
+                    <li>
+                        <!--
+                        <input type="file" name="image_file_o" id="image_file_o" />
+                        -->
+                        <div id="upload2"></div>
+                    </li>
                     <input  type="hidden" id="card_o_url" name="card_o_url" value ="{$show_data['card_o_url']}"/>
                 </ul>
                 <ul class="san">
                     <li class="wen">手持身份证：</li>
                     <li class="tu"><img id="cardh" name="cardh"  src="{$show_data['card_h_url']}" style="width:200px;height: 100px;"/></li>
-                    <li><input type="file" name="image_file_h" id="image_file_h" /> </li>
+                    <li>
+                        <!--
+                        <input type="file" name="image_file_h" id="image_file_h" />
+                        -->
+                        <div id="upload3"></div>
+                    </li>
                     <input  type="hidden" id="card_h_url" name="card_h_url" value ="{$show_data['card_h_url']}"/>
                 </ul>
                 <ul>
@@ -80,9 +99,12 @@
         //状态为2，不让修改
         var st="{$show_data['confirm_status']}";
         if(st==2){
-            $('#image_file_p').css('display','none');
-            $('#image_file_o').css('display','none');
-            $('#image_file_h').css('display','none');
+            //$('#image_file_p').css('display','none');
+            //$('#image_file_o').css('display','none');
+            //$('#image_file_h').css('display','none');
+            $('#upload1').css('display','none');
+            $('#upload2').css('display','none');
+            $('#upload3').css('display','none');
             $('#btn_sub').css('display','none');
         }
         else {
@@ -94,10 +116,11 @@
     });
 
     function init_img_file_p(){
-        $("#image_file_p").uploadify({
-            'swf': "__PUBLIC__/js/uploadify.swf",
+        //$("#image_file_p").uploadify({
+        $('#upload1').Huploadify({
+            auto:true,
             'formData': {SESSION_ID:"{:session_id()}"},
-            'uploader': "{:U('public/uploadimg')}",
+            'uploader': "{:U('public/uploadimgH')}",
             'buttonText': "上传图片",
             'buttonClass':"buttons",
             'width':'110px',
@@ -123,10 +146,10 @@
     }
 
     function init_img_file_o(){
-        $("#image_file_o").uploadify({
-            'swf': "__PUBLIC__/js/uploadify.swf",
+        $('#upload2').Huploadify({
+            auto:true,
             'formData': {SESSION_ID:"{:session_id()}"},
-            'uploader': "{:U('public/uploadimg')}",
+            'uploader': "{:U('public/uploadimgH')}",
             'buttonText': "上传图片",
             'buttonClass':"buttons",
             'width':'110px',
@@ -153,10 +176,10 @@
     }
 
     function init_img_file_h(){
-        $("#image_file_h").uploadify({
-            'swf': "__PUBLIC__/js/uploadify.swf",
+        $('#upload3').Huploadify({
+            auto:true,
             'formData': {SESSION_ID:"{:session_id()}"},
-            'uploader': "{:U('public/uploadimg')}",
+            'uploader': "{:U('public/uploadimgH')}",
             'buttonText': "上传图片",
             'buttonClass':"buttons",
             'width':'110px',

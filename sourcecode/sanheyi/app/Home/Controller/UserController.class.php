@@ -508,4 +508,126 @@ class UserController extends BaseController
 
     }
 
+    //激活会员-界面显示
+    public function activation(){
+
+        $where['user_id'] = $_SESSION['user']['user_id'];
+        $where['currency_id'] = 1; //善种子
+        $para['where'] = $where;
+        $result = D('user_currency')->getSingle($para);
+        if ($result !== false && $result !== null) {
+            $show_data['szz_num'] = (int)$result['num'];
+        } else {
+            $show_data['szz_num'] = 0;
+        }
+
+        $this->assign('show_data', $show_data);
+        $this->display();
+    }
+
+
+    //判断该会员是否可以被激活，1.必须存在，2.必须没激活，3.必须是自己的下级5代以内的会员
+    public function  ajx_check_can_act()
+    {
+        $content = file_get_contents('php://input');
+        $post = json_decode($content, true);
+        $username= $post['username'];
+        $where['name'] = $username;
+        $where['act_status'] = 0; //必须是未激活的
+        //$where['name']=I("post.name");
+        $reult = M('user')->where($where)->find();
+        //找到了
+        if ($reult !== false && $reult !== null) {
+            // 如果主键是自动增长型 成功后返回值就是最新插入的值
+            $return_data['user_id'] = $reult['user_id'];
+            //判断是否是当前人5代以内的下级会员
+            $check_flag=$this->check_level5($reult['p_id']);
+            if($check_flag){
+                $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '处理成功',$return_data));
+            }
+            else{
+                $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '你没有权限激活该会员!'));
+            }
+
+        } else {
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '会员信息不正确!'));
+        }
+
+
+    }
+
+    /**
+     * @param $user_id
+     * @param $p_id
+     * 判断是否是当前人5代以内的下级会员
+     */
+    private function check_level5($p_id){
+        $ret=false;
+        //第一代
+        if($p_id==$_SESSION['user']['user_id']){
+            $ret=true;
+            return $ret;
+        }
+        //第二代
+        $where['user_id'] = $p_id;
+        $reult = M('user')->where($where)->field('p_id')->find();
+        //有父节点
+        if ($reult !== false && $reult !== null && $reult['p_id']>0) {
+            $p_id=$reult['p_id'];
+            if($p_id==$_SESSION['user']['user_id']){
+                $ret=true;
+                return $ret;
+            }
+        }
+        else{
+            return $ret; //无父节点，直接返回失败
+        }
+
+        //第三代
+        $where['user_id'] = $p_id;
+        $reult = M('user')->where($where)->field('p_id')->find();
+        //有父节点
+        if ($reult !== false && $reult !== null && $reult['p_id']>0) {
+            $p_id=$reult['p_id'];
+            if($p_id==$_SESSION['user']['user_id']){
+                $ret=true;
+                return $ret;
+            }
+        }
+        else{
+            return $ret; //无父节点，直接返回失败
+        }
+
+        //第四代
+        $where['user_id'] = $p_id;
+        $reult = M('user')->where($where)->field('p_id')->find();
+        //有父节点
+        if ($reult !== false && $reult !== null && $reult['p_id']>0) {
+            $p_id=$reult['p_id'];
+            if($p_id==$_SESSION['user']['user_id']){
+                $ret=true;
+                return $ret;
+            }
+        }
+        else{
+            return $ret; //无父节点，直接返回失败
+        }
+
+        //第五代
+        $where['user_id'] = $p_id;
+        $reult = M('user')->where($where)->field('p_id')->find();
+        //有父节点
+        if ($reult !== false && $reult !== null && $reult['p_id']>0) {
+            $p_id=$reult['p_id'];
+            if($p_id==$_SESSION['user']['user_id']){
+                $ret=true;
+                return $ret;
+            }
+        }
+        else{
+            return $ret; //无父节点，直接返回失败
+        }
+
+    }
+
 }

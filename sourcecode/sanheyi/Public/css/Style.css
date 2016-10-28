@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 * {margin: 0;padding: 0;list-style-type: none;}
 a {blr:expression(this.onFocus=this.blur())}/*去掉a标签的虚线框，避免出现奇怪的选中区域*/
@@ -21,7 +21,7 @@ select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: 
     padding-right:5px;}
 /*---------------------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (max-width:1920px){
-    .beijing{width:1200px; height:1000px; margin:0 auto; background:url(/Public/images/left.jpg) no-repeat scroll left 200px;}
+    .beijing{width:1200px; min-height:1000px;height:1050px; margin:0 auto; background:url(/Public/images/left.jpg) no-repeat scroll left 200px;background-size:300px 1050px;}
     .head{width:1200px; height:200px; float:left; background:url(/Public/images/header.jpg) no-repeat scroll center center; background-size:100%;}
 	.head img{width:100%;}
     .nav{width:200px; float:left; margin-left:50px; margin-top:30px;}
@@ -32,12 +32,15 @@ select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: 
     .caidan dd{width:200px; display:none; line-height:40px; text-align:center;}
     .caidan a{color:#626262;font-size: 16px;font-family: 'Microsoft Yahei';}
     .caidan dd:hover{background:#ececec;}
-    .you{width:900px; float:left; margin-top:30px;}
+    .you{width:900px; float:left; margin-top:30px;margin-left: 49px;}
 /*-------------------------------------以上为导航栏样式-----------------------------------------------------------------*/
 /*-------------------------------------以下为备案号样式-----------------------------------------------------------------*/
 
     .foot{width:1200px; height:200px; float:left; margin:0 auto; text-align:center;}
     .beian{margin-top:80px;}
+	//国徽图标
+	.beianIcon{width:20px;height:20px;display:inline-block;background:url('/Public/images/beianIcon.png');}
+
 }
 @media screen and (max-width:1520px){
 }
@@ -52,6 +55,7 @@ select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: 
 }
 
 
+        
 
 
 
@@ -61,7 +65,4 @@ select{appearance:none;-moz-appearance:none;-webkit-appearance:none;background: 
 
 
 
-
-
-
-
+

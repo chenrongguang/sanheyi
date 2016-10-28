@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+        <title></title>
+        <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+		<link href="__PUBLIC__/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/Style.css" rel="stylesheet" type="text/css" />
+	
+    <style type="text/css">
+	#waf_nc_block {position: fixed;_position: absolute;width: 100%;height: 100%;top: 0;bottom: 0;left: 0;z-index: 9999;}
+	.waf-nc-mask {background: #f8f8f8;opacity: 0.5;filter:alpha(opacity=50); width: 100%;height: 100%;}
+	.waf-nc-wrapper {width:480px; height:254px; position: absolute; top: 50%; left: 50%; margin-top: -127px; margin-left: -240px; margin-bottom: 16px; background:#ffffff; border:3px solid #00A2CA;} .waf-nc-icon {position: absolute;top: 18px;left: 20px;} 
+	.waf-nc-title {margin-top: 23px; margin-left: 47px; font-size:16px; color:#333333; line-height:10px; text-align:left;}
+	.waf-nc-splitter {margin-left: 26px; margin-top: 5px; width:430px; height:0px; border:1px solid #f4f4f4; } 
+	.waf-nc-description { margin-top: 22px; margin-left: 23px; font-size:12px; color:#333333; text-align: left; } 
+	#nocaptcha { margin-top: 20px; margin-left: 92px; width:300px; height36px;}
+	.col-1 h5.title, .col-1 h6.title {
+    color: #386ea8;
+    padding: 5px 10px 3px;
+	    margin: 0px;
+}
+body, html, input {
+    font: 12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;
+}
+.table_form {
+    font-size: 12px;
+	padding-top:20px;
+}
+.table_form  td{
+border-bottom: 1px solid #EEEEEE;
+padding:4px 0px; 
+}
+.col-1 {
+	width:calc(100% - 300px);
+	float:right;
+	margin-top:30px;
+    position: relative;
+    border: 1px solid #c4d5df;
+    zoom: 1;
+    background: url(__PUBLIC__/images/member_title.png) repeat-x;
+}
+.col-1 div.content {
+    padding: 0px 10px 10px;
+}
+.table_form {
+    font-size: 12px;
+}
+.table_form td, .table_form th {
+    padding: 4px 0 4px 8px;
+}
+.head{float:none;}
+
+	</style>
+	  
+  <body>	
+ 
+	<div class="beijing">
+	   <include file ='Public:header' />
+		<include file ='Public:left' />
+        <div class="col-1 ">
+            <h5 class="title">
+                <a href="/Home/public/main.html">返回主页</a> &gt;&gt;激活会员
+            </h5>
+            <div class="content">
+
+                    <table width="100%" cellspacing="0" class="table_form">
+                        <tbody><tr><td align="center">您剩余的善种子：</td><td>{$show_data['szz_num']}</td></tr>
+                            <tr><td align="center">被激活会员账号：</td>
+                                <td>
+                                    <input name="username" id="username" type="text" size="15">
+                                        <font color="red">*</font> 
+                                        <span class="sum ajx_msg" style="color: red">请输入会员信息</span>
+                                </td>
+                            </tr>
+
+                            <input type="hidden" name="user_id" value="" class="user_id" id="user_id">
+                            <tr><td align="center"></td><td><input type="button"  name="dosubmit" value="激活" onclick="act_user()"></td></tr>
+                        </tbody></table>
+                    <div>
+                        提示：<br><br><font color="red">注：1）每激活一个新会员，需要扣除您账户的1个善种子；<br>2）只能激活下面5级以内的会员；<br></font><br>
+                    </div>
+                    <input type="hidden" name="postsid" value="">
+            </div>
+        </div>
+	</div>
+    
+</body>
+  <script src="__PUBLIC__/js/jquery-3.0.0.min.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.form.min.js"></script>
+    <script src="__PUBLIC__/js/home/shouye.js"></script>
+
+<script type="text/javascript">
+
+    var check_flag=false;
+    //检查名字是否可用
+    $('#username').bind('blur', function(){
+        var username =$(this).val();
+        var path = "{:U('user/ajx_check_can_act')}";
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({username:username}),
+            async : false,
+            success : function(data){
+                if(data.result=='SUCCESS'){
+                    $('#user_id').val(data.return_data.user_id);//获得激活会员的id
+                    $('.ajx_msg').text('可以激活');
+                    check_flag=true;
+                }else{
+                    $('.ajx_msg').text(data.msg);
+                    check_flag=false;
+                }
+
+            }
+        });
+    });
+
+    function validate_handle(){
+        if( $('#username').val()==""){
+            $('.ajx_msg').text('会员名字不能为空');
+            check_flag=false;
+        }
+        return check_flag;
+        //todo
+        //return true;
+
+    }
+
+    function  act_user(){
+
+        if(validate_handle()==false){
+            return;
+        }
+
+        if(confirm('你确定要消耗1善种子,激活该会员么?')==false){
+            return;
+        }
+
+        var path = "{:U('user/ajxact_user')}";
+        var act_user=$('#user_id').val();
+
+        $.ajax({
+            type : "post",
+            url : path,
+            data : JSON.stringify({act_user:act_user}),
+            async : false,
+            success : function(data){
+                if(data.result=='SUCCESS'){
+                    alert(data.msg);
+                    $('#username').val('');//清空
+                    $('.ajx_msg').text('请输入会员信息');
+                    //location.href= data.return_data.url;
+                }else{
+                    //该名字不可以用,已经有人注册了
+                    alert(data.msg);
+                }
+
+            }
+        });
+
+    }
+
+</script>
+
+/html>

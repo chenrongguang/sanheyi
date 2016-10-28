@@ -89,6 +89,7 @@
                 //该名字可以用
                 if(data.result=='SUCCESS'){
                     //location.href= data.return_data.url;
+                     showMsg($("#name").siblings(".hou"),isError(1)+"该帐号可以使用","#000");
                 }else{
                     //该名字不可以用,已经有人注册了
                     //$('#name').val('');

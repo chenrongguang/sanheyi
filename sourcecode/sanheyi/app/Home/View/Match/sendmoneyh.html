@@ -23,12 +23,8 @@
     <script src="__PUBLIC__/js/common.js"></script>
     <script src="__PUBLIC__/js/jquery.form.min.js"></script>
     <script src="__PUBLIC__/js/home/shenfenyanzheng.js"></script>
-    <script src="__PUBLIC__/js/jquery.uploadify.min.js"></script>
-    <!--
-   <script src="__PUBLIC__/js/jquery.uploadify.min.js"></script>
-
-   <script src="__PUBLIC__/js/uploadify.swf"></script>
-   -->
+    <link href="__PUBLIC__/js/uploadH/Huploadify.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/js/uploadH/jquery.Huploadify.js"></script>
 
 </head>
 
@@ -48,7 +44,10 @@
             <ul class="san">
                 <li class="wen">打款凭证：</li>
                 <li class="tu"><img id="img_pingzheng" name="img_pingzheng"  src="{$show_data['pay_pic_url']}" style="width:200px;height: 100px;"/></li>
+                <!--
                 <li><input type="file" name="image_file" id="image_file" /> </li>
+                -->
+                <div id="upload"></div>
                 <input  type="hidden" id="pay_pic_url" name="pay_pic_url" value ="{$show_data['pay_pic_url']}"/>
             </ul>
 
@@ -76,7 +75,7 @@
         //状态为1，已付款,不再显示
         var st="{$show_data['pay_status']}";
         if(st==1){
-            $('#image_file').css('display','none');
+            $('#upload').css('display','none');
             $('#btn_sub').css('display','none');
         }
         else {
@@ -86,10 +85,12 @@
     });
 // 'swf': "__PUBLIC__/js/uploadify.swf",
     function init_img_file(){
-        $("#image_file").uploadify({
-            'swf': "__PUBLIC__/js/uploadify.swf",
+
+        //$("#image_file").uploadify({
+        $('#upload').Huploadify({
+             auto:true,
             'formData': {SESSION_ID:"{:session_id()}"},
-            'uploader': "{:U('public/uploadimg')}",
+            'uploader': "{:U('public/uploadimgH')}",
             'buttonText': "上传图片",
             'buttonClass':"buttons",
             'width':'110px',
@@ -105,6 +106,7 @@
                 if(jsonData['error']==0){
                     //显示预览的图片，并且负责给隐藏域，点保存的时候传递到后台
                     //alert(jsonData['url']);
+                    alert(jsonData['url']);
                     $('#pay_pic_url').val(jsonData['url']);
                     $('#img_pingzheng').attr('src',jsonData['url']);
                 }

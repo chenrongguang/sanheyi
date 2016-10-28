@@ -333,9 +333,77 @@ class UcController extends BaseController
 
     }
 
-    //动态获取该用户当前该货币的数量
-    public function ajxgettypecurrency()
+
+
+    //管理钱包的钱转换为出局钱包
+    public function  ajxconvert()
     {
 
+        //获取管理钱包的余额:
+        $where['user_id'] = $_SESSION['user']['user_id'];
+        $where['currency_id'] = 4; //管理钱包
+        $para['where'] = $where;
+        $result = D('user_currency')->getSingle($para);
+        $glqb_num = $result['num'];
+
+        if($glqb_num<=0){
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '为0转换失败'));
+
+        }
+
+        //开启事务
+        M()->startTrans();
+
+        $currency_id=4;//管理钱包
+
+        //减少本人的管理钱包总数
+        $r[] = M('user_currency')
+            ->where(array('user_id' => $_SESSION['user']['user_id'],'currency_id'=>$currency_id))
+            ->setDec('num', $glqb_num);
+
+        //记录本人的减少明细
+        $detail_data['user_id']= $_SESSION['user']['user_id'];
+        $detail_data['currency_id']=$currency_id;
+        $detail_data['detail_type']=2;
+        $detail_data['detail_num']=$glqb_num*-1;
+        $detail_data['rel_user_id']=$_SESSION['user']['user_id']; //接收关系方id
+        $detail_data['rel_user']=$_SESSION['user']['name'];//接收关系方名字
+        $detail_data['create_time']=time();
+        $detail_data['handle_type']='支出管理钱包';
+        $detail_data['remark']='转换管理钱包';
+        $r[] = M('user_currency_detail')->add($detail_data);
+
+        $currency_id=5;//管理钱包
+
+        $glqb_num_convert=$glqb_num*1; //按一比一的比例转换
+
+        //增加接收人的数量
+        $r[] = M('user_currency')
+            ->where(array('user_id' => $_SESSION['user']['user_id'],'currency_id'=>$currency_id))
+            ->setInc('num', $glqb_num_convert);
+
+        //增加接收人的增加明细
+        $detail_data_to['user_id']= $_SESSION['user']['user_id'] ;
+        $detail_data_to['currency_id']=$currency_id;
+        $detail_data_to['detail_type']=1;
+        $detail_data_to['detail_num']=$glqb_num_convert;
+        $detail_data_to['rel_user_id']=$_SESSION['user']['user_id']; //发送方关系方id
+        $detail_data_to['rel_user']=$_SESSION['user']['name'];//发送方名字
+        $detail_data_to['create_time']=time();
+        $detail_data_to['handle_type']='收入出局钱包';
+        $detail_data_to['remark']='转换管理钱包';
+        $r[] = M('user_currency_detail')->add($detail_data_to);
+
+        if (!in_array(false, $r)) {
+            M()->commit();
+            $return_data['url'] =U('uc/detail');
+            $this->ajaxReturn(\Common\Util\Response::get_response('SUCCESS', '0', '转换成功',$return_data));
+
+        } else {
+            M()->rollback();
+            $this->ajaxReturn(\Common\Util\Response::get_response('FAIL', '0001', '转换失败'));
+        }
+
     }
+
 }

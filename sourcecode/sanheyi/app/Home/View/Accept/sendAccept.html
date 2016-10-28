@@ -9,10 +9,10 @@
     <style type="text/css">
         .yi{margin-left:50px; float:left;}
         .yi li{float:left;}
-        .er{margin-left:50px; float:left;}
-        .er li{width:500px; height:30px; line-height:30px; border-bottom:1px solid #c2c2c2;}
-        .nei1{width:30%; height:30px; line-height:30px; float:left; text-align:center;}
-        .nei2{width:70%; height:30px; line-height:30px; float:left;}
+        .er{margin-left:50px; float:left; margin-top:20px;}
+        .er li{width:600px; height:30px; line-height:30px; border-bottom:1px solid #c2c2c2;}
+        .nei1{width:20%; height:30px; line-height:30px; float:left; text-align:center;}
+        .nei2{width:80%; height:30px; line-height:30px; float:left;}
         .xin{color:red; margin-left:5px;}
         .tishi{color:red; margin-left:10px;}
         .inp{float:left;}
@@ -59,7 +59,8 @@
                     <div class="nei2"><input type="password" class="inp1" name="high_pwd" id="high_pwd"  /><span class="xin">*</span><span class="tishi">密码错误</span></div>
                 </li>
                 <input type="hidden" name="community_id" id="community_id" value="{$community_id}" />
-                <li><input  id="btn_sub"  type="button"  onclick="sub(1)" class="tijiao" value="接受资助" /></li>
+                <li>
+                    <input   id="btn_sub"  type="button"  class="tijiao" value="接受资助" /></li>
             </form>
         </ul>
         <dl class="san">
@@ -77,6 +78,61 @@
         //todo
         return true;
     }
+
+    var count="<?php echo $_GET['id'] ?>";
+    if(count==2){
+        $("#num").siblings('.tishi').html('1000-2000 必须是100的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('1000-2000 必须是100的整倍数')});
+    }else if(count==3){
+        $("#num").siblings('.tishi').html('5000-20000 必须是1000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('5000-20000 必须是1000的整倍数')});
+    }else if(count==4){
+        $("#num").siblings('.tishi').html('50000-200000 必须是10000的整倍数');
+        $('#num').focus(function(){$("#num").siblings('.tishi').html('50000-200000 必须是10000的整倍数')});
+    }
+
+    $("#btn_sub").click(function(){
+        if(count==2){
+            checkMoney('#num',$("#num").siblings('.tishi'),1000,2000,100);
+        }else if(count==3){
+            checkMoney('#num',$("#num").siblings('.tishi'),5000,20000,1000);
+        }else if(count==4){
+            checkMoney('#num',$("#num").siblings('.tishi'),50000,200000,10000);
+        }
+    });
+    function checkMoney(el,msgBox,begin,end,step){
+        var money=parseInt($(el).val());
+        if(money){
+            $(el).val(parseInt($(el).val()));
+            if(money < begin){
+                showMsg(msgBox,'金额不能少于'+begin);
+                return false;
+            }
+            if(money > end){
+                showMsg(msgBox,'金额不能大于'+end);
+                return false;
+            }
+            if(money%step!==0){
+                showMsg(msgBox,'必须是'+step+'的整倍数');
+                return false;
+            }
+            if(!$("#high_pwd").val().trim()){
+                alert('二级密码不能为空');
+                return false;
+            }
+            sub(1);
+        }else{
+            alert('请输入正确的金额');
+            $("#num").val('');
+            return false;
+        }
+    }
+    function showMsg(el,text,color){
+        if(!color){color='red'}
+        el.css('color',color);
+        el.html(text);
+    }
+
 
 </script>
 
